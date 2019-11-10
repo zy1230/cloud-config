@@ -1,0 +1,7662 @@
+
+——————————————————————————————————————————————————》
+
+1、JSP：JSP全名为Java Server Pages，中文名叫java服务器页面
+
+   SP技术有点类似ASP技术，它是在传统的网页HTML（标准通用标记语言的子集）文件(*.htm,*.html)中
+   
+插入Java程序段(Scriptlet)和JSP标记(tag)，从而形成JSP文件，后缀名为(*.jsp)。
+
+   SP与Servlet一样，是在服务器端执行的。通常返回给客户端的就是一个HTML文本，
+
+因此客户端只要有浏览器就能浏览。
+
+   Servlet（Server Applet）是Java Servlet的简称，称为小服务程序或服务连接器，
+
+用Java编写的服务器端程序，具有独立于平台和协议的特性，主要功能在于交互式地浏览和生成数据，
+
+生成动态Web内容。
+--------------------------------------------------------------------------------------———————》
+
+【】【】课堂笔记：
+
+
+2、JDK配置环境
+
+3、eclipse下载
+
+4、cmd 命令窗口先定义到java文件所在的位置：
+
+        D:(表示在D盘）
+
+        cd tae(打开的是tae文件夹）
+
+用命令窗口来编译、执行java文件
+
+编译java文件,会生成 .class文件 :  javac HelloWorld.java
+
+再执行类:  java HelloWorld
+
+会出现java文件里的内容，java里的文件的简单内容：输出“HelloWorld”
+
+-----------------------------------------------------
+
+ public class HelloWorld
+
+ {
+
+    public static void main(String [] args);
+
+   {
+    
+      System.out.println("HelloWorld");
+    }
+
+ }
+
+
+-------------------------------------------------------
+
+
+
+类名与文件名相同,如果不相同，将class前的public去掉即可，main()是主方法，是入口
+
+System.out.println();System是类名，out是属性，println()是方法
+
+5、JVM虚拟机：
+
+    Java语言里负责解释执行字节码文件的是Java虚拟机，即JVM——Java Virtual Machine（Java虚拟机）。
+
+    由Java语言编写的程序需要进过编译步骤，但这个编译步骤并不会生成特定平台的机器码，
+
+而是生成一种与平台无关的字节码（*.class文件）。
+
+    这种字节码不是可执行的，必须使用Java解释器来解释执行。
+
+    所有Java语言既不是纯粹的编译型语言，也不是纯粹的解释型语言。
+
+    Java程序的执行过程必须经过先编译，后解释两个步骤。
+
+    Java语言里负责解释执行字节码文件的是Java虚拟机，JVM是可运行Java字节码文件的虚拟计算机。
+
+    JDK JRE JVM的关系：
+
+                     JDK>JRE>JVM
+   
+                     JDK包含JRE，JRE包含JVM
+
+    JVM是一个抽象的计算机，和实际的计算机一样，它具有指令集并使用不同的存储区域。
+
+负责执行指令，还要管理数据、内存和寄存器。
+
+
+-----------------------------------------------------------------------------------------
+    
+6、
+  ◇访问控制修饰符：
+
+          private  protected  public
+
+  ◇类与类之间关系的关键字：
+
+                 extends（继承）  implements（接口）
+
+    接口内可有不抽象的方法（jdk8之前不能）
+
+  ◇标识符：
+
+         包名、类名、方法名、变量名
+
+  ◇unicode：
+       
+     Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准，包括字符集、编码方案等。
+
+     Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的
+
+二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。
+
+  ◇常量： 123、078（0在java里表示八进制）、0X23(十六进制）、0b122（二进制）
+
+-----------------------------------------------------------------------------------------
+  
+7、数据类型：4种8类
+
+   数据类型包括了布尔型、字符型和数值类型，数值类型又有整数型、浮点型
+
+   ◇整数型：byte （1字节 ：-128—127） short （2字节） 
+
+             int （4字节）（java默认整数型）
+
+             long（8字节）
+   
+   ◇浮点型: float （32位）定义数字后要加f或F
+
+             double  （64位）（java默认浮点型）
+
+   ◇字符型:  char 16位（无符号整数）char a= ' '; 用英文的单引号
+
+   ◇布尔型：
+
+        boolean 布尔型有两个值true、flase
+       
+        true 和 flase 在JVM虚拟机表示数字1和0，但它是不能做运算的，即true+1是错误的
+
+        布尔型在编译后，会编译成int数据类型，或byte数组
+
+-----------------------------------------------------------------------------------
+
+8、 // 单行注释
+  
+    /*    
+   ............
+.........
+
+    */ 多行注释
+
+9、强制转换（类型）：
+
+   String字符串，在字符串中相加一个数字，只是进行连接，“ + ”只是连接符
+
+   String s=" ";
+
+   s = s + 2;
+
+   就只是单纯地在后面加了个2
+
+  “\u888”\u表示unicode表里找数字代表着什么
+
+   比如“System.out.println("\u4e2d");这个表示“中”。”
+
+--------------------------------------------------------------------------------------
+
+10、Java的运算符，分为四类：
+
+　　            算数运算符、关系运算符、逻辑运算符、位运算符。
+
+　      ◇ 算数运算符：+  -  *  /  %  ++  --
+
+     算数运算符分为一元、二元、三元运算符：
+
+                 二元运算符：（）+（）2个操作数
+
+                 三元运算符：（） ？（） ：（）3个操作数
+
+    “++”和“--”用于数值变量之前，在赋值操作中，先对被“++”或“--”操作变量值先加1或者先减1，
+
+然后在进行其他的操作；
+
+例子：
+
+     int a=1;
+
+     int b= ++a; // b为2，也就是a先加了1，再赋予值给b
+
+     System.out.println(a);// a为2
+
+    “ ++ ”和“ -- ”用于数值变量之后，在赋值操作中，先用被”++“或”--“的操作变量值进行其他的操作，
+
+然后在对其值加1或者减1。
+
+例子：
+
+     int a = 1;
+
+     b = a++; // b为1
+
+     System.out.println(a); // a为2
+  
+     模2运算： %就是求余
+
+               5 % 2 = 1  5是被模数，2是模数
+
+               2 % 5 = 2
+
+               -5 % 2 = -1  被模数为负数，只需加个负号
+
+               5 % -2 = 1  模数为负数没有关系，会加上绝对值
+
+　　　　◇ 关系运算符：==  !=  >  >=  <  <=
+
+     关系运算符用于比较两个数值之间的大小，其运算结果为一个逻辑类型(boolean布尔类型)的数值。
+
+　　　　◇ 逻辑运算符：&&  ||  !  ^  &  |
+
+     &和|运算是把逻辑表达式全部计算完，而&&和||运算具有短路计算功能。
+
+     异或：“  ^  ”：不同为1，即为true
+
+     逻辑与：&、&&（短路逻辑与）
+
+     逻辑或：|、||（短路逻辑或）
+
+     逻辑非：!
+
+
+　　　　◇ 位运算符：&  |  ~  ^  >>  <<  >>>
+
+   取反：“  ~  ”
+
+   位运算：
+ 
+       <<  左移，移空的部位取0，相当于原数乘以个2的幂（移的位数）次方
+
+      3<<2 =12    （3*2的2次幂）
+
+       >>  右移，看最高位，为1，则移空的部位取1；为0则取0；相当于原数除以个2的幂（移的位数）次方
+
+      3>>2 =0  3除以2的2次幂
+
+       >>> 无符号右移，移空的部位取0
+
+---------------------------------------------------------------------------------
+
+11、流控制语句：
+
+      ●  if else 语句
+
+       ◇ if(表达式){
+
+          .........
+
+         }
+          if(){
+
+          .......
+
+         }if(){
+
+          .........
+
+         }
+
+      if里面的表达式是True或者Flase
+
+       ◇ if() {
+
+             ........
+
+
+          }else if(){
+
+            ...........
+
+
+           }else  ........
+     
+      ● switch语句：
+
+         switch(表达式){
+
+         case 取值1：
+
+               语句块1
+      
+               break;（一定要加，不加，后面的仍会执行，switch它只做一次匹配）
+         ...
+
+         case 取值n:
+
+               语句块n
+              
+               break;
+
+         default（默认）:
+
+                语句块n+1
+
+                break;
+       }
+        switch里的表达式可以是byte、short、int、char、枚举等，不能是布尔型
+
+获取键盘输入(用户控制台输入）：
+
+      要引入包里的Scanner类：
+
+               import java.util.Scanner;
+
+     在方法里使用：
+
+      Scanner sc=new Scanner(System.in); //System是类，in是成员变量，类型为InputStream，返回的一个输入流的对象，
+
+                                           InputStream是抽象类，不能实例化，但是可以指向实现了它的抽象的方法的类
+
+                                           的对象
+
+      int a=sc.nextInt();//将输入流转换成int型
+
+      String b=sc.next();
+
+产生随机数：
+
+     引入包里的Random类：
+
+     import java.util.Random;
+
+     Random a=new Random();
+
+     a.nextInt(10);（10表示随机数的范围，表示0到9）
+
+------------------------------------------------------------------------------------
+
+12、一些快捷键：
+
+    ctrl+1：eclipse的错误的第一行解决方法
+
+--------------------------------------------------------------------------
+
+13、循环语句：
+
+    while语句
+
+    do...while语句 ：至少执行一次
+
+    for循环
+
+    for( 初始化 ; 循环条件  ;  循环后执行的表达式 )
+{
+     //语句块
+}
+
+    死循环：
+            while(true){
+
+                //
+            }
+
+            for(; ;){
+
+　　　　　　　　　//
+              }
+            }
+
+     嵌套for循环：
+
+               for(  ;   ;){
+
+                  for(  ;  ;　){
+
+　　　　　　　　　　　　　//　　
+　　　　　　　　　}
+　　 　　　　　　}
+
+     对于嵌套循环，是先循环完内循环，在循环完外循环，循环次数相当于它们的乘积。
+
+     System.out.println();换行打印
+
+     System.out.print();不换行打印
+
+     \t  制表符
+
+     break ： 用于循环和switch语句中 ，跳出整个循环
+
+     continue： 跳出本次循环
+
+     break label  ：label指的是循环的别名
+
+     /////// label: for( ; ;){  }
+
+     continue label
+
+     
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+14、断点调试：
+
+代码段行最旁边的数字，双击，点击“Debug”，即执行的边旁边一个键。（再双击取消）
+
+Resum:  表示跳到下一节点的调试断点
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+15、数组：
+
+     创建数组： new int[数组长度]
+ 
+     声明数组： int a[] 或 int []a
+
+     int a[]=new int [5];
+
+     JVM虚拟机：解释字节码文件。
+
+     JVM也包括了寄存器、堆内存、栈内存、方法区
+
+     栈内存：
+
+             存放的是局部变量，作用域完后，内存便释放，速度很快，仅次于寄存器，只有1M的空间。
+
+     堆内存：
+
+             存放的变量有默认的初始值，int型是0，float型是0.0f，double型是0.0，boolean是false，
+ 
+char型是空格符 " "。
+  
+             它存放的是数组和对象，（数组也是对象），每一个都有地址，引用时找到的是地址，当堆内存
+
+的数据在方法执行完后，就变成了垃圾，因为失去了引用，会被垃圾回收器销毁。
+
+     ● 数组排序：
+ 
+          现实中常用java.util.Arrays.sort()
+
+     面试常用：
+
+     ◇ 1、选择排序：（从最左边开始确定数字）
+
+        第一个数字与之后的每一个数字比较，最小的放在第一个
+ 
+        第二个数字与之后比较，第二小的放在第二个
+
+        之后一样
+
+        用两个循环即可：
+ 
+           for(int a=0;a<v.length;a++){
+
+                   for(int b=a+1;b<v.length;b++){
+
+                        if(v[a]>v[b]){
+
+                           int c=v[a];
+
+                           v[a]=v[b];
+
+                           v[b]=c;
+                        }
+                     }
+                  }
+
+
+     ◇ 2、冒泡排序：
+  
+        相邻的数字分别比较，大的往右排，最大的会被推向最右边，从最右边开始确定数字。
+
+         for(int x=0;x<v.length;x++){
+
+              for(int y=1;y<v.length-x;y++){
+
+                  if(v[y-1]>v[y]){
+
+                      int c=v[y-1];
+
+                           v[y-1]=v[y];
+
+                           v[y]=c;
+                      }
+                   }
+               }
+      ◇ 3、插入排序：
+   
+         将数组分成两组，一组有序，一组无序，拿无序里的数字和有序里的进行比较。
+
+          for(int x=1;x<v.length;x++){
+
+                 int a=v[x];  
+
+                 int j;
+
+                 for(j=x-1;j>=0&&v[j]>a;j--){
+
+                        v[j+1]=v[j];  //大的数字往后排
+
+                 }
+
+               v[j+1]=a;///最小的肯定在v[0],此时j=-1，j+1=0
+            }
+
+
+     j>=0&&v[j]>a   ：这个条件不可反过来，若是反过来，则它会判断v[-1]，而这是错误的。
+
+     编译时不会出错，执行时报错：
+
+                   Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -1
+      
+      ◇ 4、快速排序：
+
+      找基准分成比它小和比它大的两部分，在在小的部分找基准继续分，大的部分也是找基准继续分。
+
+      右边j比它大的位置不变，继续左移，否则，停下。与左边的值换，左边i比它小的就位置不变，继续右移，
+ 
+停下之后，如果i!=j，则互换，如果i=j，则与基准换。
+
+      基准在右边，则从左边i开始移，基准在右边，则从右边j开始移
+
+代码：
+
+       int []a={5,3,7,1,8,2};
+
+       quick(a,0,a.length-1);
+
+       for(int i=0;i<a.length;i++){
+
+                   System.out.print(a[i]+" ");
+        }
+
+
+       public static void quick(int []a,int left,int right){
+
+          if(left > right)
+		   
+                     return;
+
+          int d=a[left];
+ 
+          int  i=left;
+
+          int  j=right;
+
+         while(i!=j){
+
+                 while(j>i&&a[j]>=d){    j--;  }
+
+                 while(j>i&&a[i]<=d){    i++;  }
+
+           if(j>i){
+          
+              int c=a[i];
+
+              a[i]=a[j];
+
+              a[j]=c;
+           }
+         }
+
+     a[left]=a[i];
+
+     a[i]=d;
+
+    quick(a,left,i-1);
+
+    quick(a,i+1,right);
+}
+
+
+
+
+这几种排序方法，快速排序效率最高。
+
+     ● 数组查找：（数组是顺序的）
+
+       ◇顺序查找
+
+              将要查找的数字一一与数组的数字进行比较，返回数组的下标，如果没有返回-1
+
+       ◇折中查找
+
+              将要查找的数字永远与中间的数字比较，比它大就往右边查找，比它小往左边查找，一样是与
+
+中间的数字比较，如果查找不到返回-1。返回都是数组的下标。
+
+     ● 数组进制转换：
+ 
+
+        将数字转换成什么8进制、16进制等等 
+
+        比如16进制，4位表示一位16进制，先与，可求得最后四位，再无符号右移4位，求倒数第二位数字。
+
+        例如：
+              int a=60;
+
+              int整型是4个字节，二进制符号0和1为32位。
+
+              0000-0000-0000-0000-0000-0000-0011-1100
+              
+              与15  （000000000.................-1111)
+              ————————————————————————
+                                                 1100
+
+              再向右移4位：
+           
+              0000-0000-0000-0000-0000-0000-0000-0011
+
+              与15
+
+              ————————————————————————
+                                                 0011
+
+       将数字转换为大写字母：
+
+            char((w-10)+'A')(w>10)
+              
+
+        查表法：
+
+               将会出现的数全部列出来放在一个数组中。
+ 
+        char ch[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E'}
+
+        出现的数字直接=ch[w];
+
+        相当于在ch数组中进行查找，这就是查表法
+
+   ◇◇ 二维数组：
+
+        int [][] a=new int[3][];
+
+        二维里的a[0] ，默认是空，当a[0]=new int[2]之后，存放的是其一维数组的地址。
+
+        int [][] a=new int[3][2];
+
+        int [][] a={{ },{ },{ }};
+
+        输出二维数组：
+
+            for(int x=0;x<a.length;x++){
+
+                    for(int y=0;y<a[x].length;y++){
+
+                                    System.out.print(a[x][y]);
+                     }
+                System.out.println();
+              }
+        
+        
+——————————————————————————————————————————
+
+16、方法：
+
+    public static void main(String []args){  }
+
+    public 访问控制修饰符
+
+    static 修饰符（静态）【final、abstract】
+
+    void  函数返回类型，void表示返回为空，但都返回这个操作，即return ;只是它可以省略。
+
+    main 方法名字（要具有可阅读性）
+
+    String [] args 入参，即形参，args为参数名。
+   
+   
+
+
+---------------------------------------------------------------------------
+
+网站：leetcode
+
+里面有面试的一些算法
+
+
+--------------------------------------------------------
+
+ 17、面向对象基础：
+
+     对象：
+             对象有以下特点：
+
+                            对象具有属性和行为。
+
+                            对象具有变化的状态。
+
+                            对象具有唯一性。
+
+                            对象都是某个类别的实例。
+ 
+                            一切皆为对象，真实世界中的所有事物都可以视为对象。
+
+     面向对象的特性：
+                     封装、多态、继承
+
+     封装：
+ 
+           封装是将代码及其处理的数据绑定在一起的一种编程机制，该机制保证了程序和数据都不受外部干扰
+
+且不被误用。封装的目的在于保护信息，
+       
+
+     成员变量与局部变量
+
+
+ 
+     构造函数与普通函数
+
+
+
+——————————————————————————————————————————
+
+
+   
+18、this关键字：
+
+               表示本类的对象调用，可区别成员变量与局部变量。
+
+               一般用于对象的函数中。
+
+    static关键字，也是修饰符：
+ 
+               static优于对象存在，随着类的加载而加载
+                  
+               static修饰的数据存放在静态区，普通成员变量存放在堆内存。
+
+   new 类名()这个是匿名对象
+
+   new 类名().方法名()  调用方法
+
+   类名 a=new 类名();
+
+   a.方法名()  也一样调用方法
+
+例子：
+
+     public class a{
+
+         static{
+                 System.out.println("这是静态代码块");
+
+         }//最先执行，类加载的时候就加载
+
+         {
+             System.out.println("这是构造代码块");
+
+          }//比构造函数先执行
+       
+         a(){
+
+             System.out.println("这是构造函数");
+          }
+
+         void s(){
+
+             System.out.println("这是这里最后执行的");
+
+          }
+
+       public static void main(String [] args){
+
+              
+          }
+    }
+
+
+     　①、静态代码块在类被加载的时候就运行了，而且只运行一次，并且优先于各种代码块以及构造函数。
+
+如果一个类中有多个静态代码块，会按照书写顺序依次执行
+
+       ②、构造代码块在创建对象时被调用，每次创建对象都会调用一次，但是优先于构造函数执行。
+
+需要注意的是，听名字我们就知道，构造代码块不是优先于构造函数执行，而是依托于构造函数，
+
+也就是说，如果不实例化对象，构造代码块是不会执行的。
+
+另外：
+
+       普通代码块：
+
+                   普通代码块和构造代码块的区别是，构造代码块是在类中定义的，而普通代码块是
+
+在方法体中定义的。且普通代码块的执行顺序和书写顺序一致。
+ 
+                  public void sayHello(){
+	
+                        {
+		           System.out.println("普通代码块");
+	                 }
+                   }
+
+执行顺序：
+
+　         静态代码块  >  构造代码块  >  构造函数  >  普通代码块　
+
+
+————————————————————————————————————————————
+
+   
+19、工具类
+
+    实现功能的类
+
+     javacdoc
+
+
+
+
+
+————————————————————————————————————————
+
+20、单例模式：
+
+            单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。
+
+这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
+
+            这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。
+
+这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。
+
+            SingleObject 类有它的私有构造函数和本身的一个静态实例：
+
+                  SingleObject 类提供了一个静态方法，供外界获取它的静态实例。
+
+                  SingletonPatternDemo，我们的演示类使用 SingleObject 类来获取 SingleObject 对象。
+
+           就是只有一个对象。
+
+代码：
+
+   创建一个 Singleton 类：（SingleObject.java）
+
+   下面这个就是单例模式：
+
+       public class SingleObject {
+ 
+                           //创建 SingleObject 的一个对象
+  
+                      private static SingleObject instance = new SingleObject();
+ 
+                          //让构造函数为 private，这样该类就不会被实例化
+   
+                      private SingleObject(){ }
+ 
+                         //获取唯一可用的对象
+                          
+                      public static SingleObject getInstance(){
+            
+                                     return instance;
+                        }
+ 
+             public void showMessage(){
+
+                        System.out.println("Hello World!");
+              }
+          }
+
+    我再用上面的唯一的对象：
+
+               public class SingletonPatternDemo {
+   
+                      public static void main(String[] args) {
+ 
+                                  //不合法的构造函数
+      
+                                  //编译时错误：构造函数 SingleObject() 是不可见的
+      
+                                  //SingleObject object = new SingleObject();
+ 
+                                  //获取唯一可用的对象
+     
+                                       SingleObject object = SingleObject.getInstance();
+ 
+                                  //显示消息
+      
+                                  object.showMessage();
+                        }
+                  }
+
+  private static SingleObject instance = new SingleObject(); 显式初始化
+
+  private static SingleObject instance; 隐式初始化（此时的instance为null）
+
+  线程安全问题：
+
+          线程安全问题常出现在成员变量和静态方法
+
+          或者 synchronized 加锁（线程）只允许单个线程访问
+
+  单例模式的几种实现方法：
+
+       1、懒汉式，线程不安全：
+
+     public class Singleton {  
+
+             private static Singleton instance;  
+       
+             private Singleton (){
+  
+              }  
+  
+        public static Singleton getInstance() {  
+    
+              if (instance == null) {  
+                                       instance = new Singleton();  
+              }  
+               return instance;  
+           }  
+     }
+          多线程调用的时候不安全
+
+       2、懒汉式，线程安全：
+
+     public class Singleton {  
+          
+             private static Singleton instance;  
+   
+             private Singleton (){
+
+                    }  
+                    public static synchronized Singleton getInstance() {  
+
+             //加了个锁 synchronized 只允许单线程进行访问
+    
+                    if (instance == null) {  
+       
+                                instance = new Singleton();  
+                    }  
+               return instance;  
+            }  
+         }
+
+        3、饿汉式：
+     
+       public class Singleton {  
+              
+               private static Singleton instance = new Singleton();  
+
+               // 在类装载时就实例化
+    
+               private Singleton (){
+
+                }  
+               public static Singleton getInstance() {  
+           
+                     return instance;  
+                }  
+          }
+
+——————————————————————————————————————
+
+21、final关键字：
+
+             用来修饰成员变量，表示不可修改，但往往与static一起使用，这样就存放在类的静态区，
+
+无须放在堆内存。
+
+    继承：
+
+        关于super():调用父类
+
+                   但super()不是代表父类的对象，表示一个空间。
+
+       子类继承父类的方法，如果进行了重写，则new了一个子类的对象，它调用的是子类被重写的方法。
+
+       默认情况下，super()调用的是父类无参的构造器，如果要调用有参的，则要手动输入：
+
+                                               super(" ");  
+
+
+例：
+      public class D{
+
+        public static void main(String [] args){
+
+               Zi a=new Zi(10);   
+     
+               a.show();
+         }
+       }
+
+      class Fu{
+                     int n;  //进行的是默认初始化，为0
+              Fu(){
+
+                 System.out.println("kkk");
+               }
+              Fu(int x){             
+                           System.out.println("sss");
+               }
+
+               void show(){
+                              System.out.println("num="+n);
+
+                 //子类若是没有覆盖这个方法，则它输出的是0
+
+               }
+         }
+       class Zi extends Fu{
+                            int n=4;
+
+       //父类执行完毕后，才对子类的成员变量进行显式初始化，此时n=4
+
+                 Zi(){
+                            System.out.println("oooo");
+                      }
+                 Zi(int x){
+                              super(8);
+
+      //如果不手写这个加了参数的super(8),则会默认执行无参数super()。
+
+                            System.out.println("yyyy");
+                           }  
+             } 
+
+
+    抽象类：
+
+            abstract
+          
+    抽象类可以有构造函数：
+
+            它的构造函数是为子类准备的，为了继承父类的初始化成员，就必须要有构造函数。
+
+    抽象类的关键字不能和private、static、final共存。
+  
+    抽象类的存在就是为了让类去继承，或者去实现它里面所有的抽象的方法的。
+  
+    private —— 别的类不能访问，自然不能与 abstract 共存。
+
+    static —— 静态，它是无须对象去调用，而抽象类是没有实例的，即没有对象，没必要共存
+ 
+    final ——不能更改
+
+例:
+
+    public class D extends H{
+
+          public static void main(String [] args){
+
+                 D s=new D();
+
+                 s.a();
+
+                 s.b();   
+          }
+               void a(){
+                          System.out.println("a");
+                        }
+               void  b(){
+                          System.out.println("f");
+                       }
+    }
+     abstract class H
+   {
+          abstract void a();
+
+          abstract void b();
+    }
+
+   抽象方法是不能有主体的，即使它里面没有东西，即：
+
+            abstract void a(){ }    这个是错误的！！！！！
+
+   下面两个才是正确的：
+                      abstract void a();
+                 
+                      abstract void b();
+
+注意：
+
+    继承了抽象类，且自身又不是抽象类的，一定要实现它里面所有的抽象方法。
+
+    实现它抽象方法的时候无须加abstract这个关键字，只要保证返回类型和参数相同就可以。
+
+
+——————————————————————————————————————————
+
+20、接口：interface
+
+      当一个抽象类全是抽象方法，就可以用接口，在接口里的方法不需要写abstract，只要没有方法体，就是
+
+抽象方法。
+
+      interface Demo{
+
+          ( public static final )  int n=4;
+
+         （public） void show();
+  
+         （public） void run();
+
+        }
+   
+    interface其编译结果仍是.class字节码文件
+
+例子：
+
+     interface A{
+
+           void m();
+
+     }
+   
+     interface B{
+
+           int m();
+
+     }
+
+     public class C interface  A , B{
+
+           public void m(){
+   
+               System.out.println("jkdbs");
+  
+            }
+
+           public int m(){   ////出错
+   
+               System.out.println("jkdbs");
+  
+            }
+       }    
+
+      这样是会出错的，因为违反了方法重载的规范，相同的函数名在同一个类中，参数一定要不同，
+
+返回类型可以不同可以相同。
+
+注意：
+
+      在实现接口的方法中的类里，实现它的方法一定要加public，因为子类一定要大于父类的权限。
+
+例子：
+
+      interface A{
+                    void b();
+      }
+      
+      interface B extends A,C{  //接口可以多继承
+    
+      }
+
+      interface C{
+
+          void m();
+      }
+  
+      接口可以多继承，类只能单继承，原因就是因为接口中的方法无主体。
+
+      ————      ————————    ——————————    ————————
+  
+      以上是JDK8之前的情况，JDK8以后接口可以有非抽象方法，在之前，其方法只能是抽象方法。
+
+例子：
+
+      interface C{
+
+          void m();（默认已经加了public）
+    
+          default void n(){
+
+             System.out.println("efeff");
+
+          } //非抽象方法
+    }
+   
+    class B implements C{
+  
+     public void m(){  //注意：这里在实现接口里的方法要加public
+
+         System.out.println("sdhbfsajd");
+     }
+   }
+
+    public class A{
+
+      public static void main(String [] args){
+
+      new B().n();//调用的就是非抽象方法
+
+     }
+   }
+
+
+  
+——————————————————————————————————————————
+
+注解： @。。
+
+
+
+————————————————————————————————————
+
+21、多态：多种形态
+
+     ◇◇转型：
+
+          向下转型时，为了代码的健壮性，用到instanceof 来进行判断该子类是否属于子类。
+
+     ◇◇ 1、关于成员变量：
+
+       例子：
+
+             class Fu{
+
+                  int n=4;
+             }
+
+             class Zi extends F{
+ 
+                  int n=3;
+             }
+
+            public class K{
+             
+                 public static void main(String [] args){
+
+                    new zi = new Zi();
+        
+                    System.out.println(zi.n);///打印的是3
+    
+                    Fu fu=zi;
+
+                    System.out.println(fu.n);//////这个打印的是4
+
+                }
+             }
+
+请注意：
+
+       在关于成员变量的时候，其与成员函数不同，子类的成员函数会覆盖父类的成员函数，但是成员变量在
+
+子对象的堆内存中会有子类的成员变量空间和父类的成员变量空间，父类对象会去引用父类的成员变量空间的值。
+
+      ◇◇ 2、成员函数
+
+               成员函数就是会覆盖。
+
+      ◇◇ 3、静态函数：
+  
+            static void n(){
+                              ..............
+                     }
+
+            静态函数与对象无关，和类有关。
+
+            fu.n(); 调用的就是父类的静态方法
+   
+            zi.n(); 调用的就是子类的静态方法
+
+
+——————————————————————————————————
+
+22、内部类
+
+            ◇◇  一个类里有另一个类
+
+            ◇◇  内部类常用来类的设计
+
+      ◇ 定义了内部类，生成的也是class字节码文件，其字节码文件命名是  “ 外部类名$内部类名 ”。
+
+例：
+
+   class Outer{
+
+        int n=7;
+
+        class Inner{  //这是成员内部类，其字节码文件命名是  “ 外部类名$内部类名 ”
+
+           void s(){
+
+                 System.out.println(n);//可以访问外部类的变量
+           }
+ 
+         }
+
+        public void m(){
+
+          
+             class Q{ //在方法里的内部类，称作局部内部类，其字节码文件命名是  “ 外部类名$1内部类名 ”
+
+                    void s(){
+
+                          System.out.println(n);
+                    }
+ 
+             }
+
+         Inner v=new Inner();
+
+         v.s();
+        }
+     }
+   
+    public class D{
+
+       public static void main(String [] args){
+
+            Outer.Inner c=new Outer().new Inner();//创建内部类的对象
+            
+            c.s();
+       }
+    }
+
+      ◇ 当内部类想访问外部类的成员变量时，可以用 “ 外部类.this ”
+
+         因为内部类对象有了外部类对象的引用。
+  
+例子：
+
+    class O{
+
+       int n=7;
+  
+      class I{
+
+          int n=2;
+         
+          public void s(){
+
+                 System.out.println(n); //输出的是2
+
+                 System.out.println(this.n);//输出的是2
+
+                 System.out.println(O.this.n); //输出的是7
+            }
+ 
+          }
+    }
+   
+   public class F{
+
+        public static void main(String [] args){
+
+          O.I v=new O().new I();
+      
+          v.s();
+        }
+    }
+    
+        ◇ 局部内部类访问局部变量必须要给局部变量加上final。
+          
+          因为方法在执行完后，内存也会被释放，而如果局部内部类的对象可能还活着，就会出问题。
+
+          为了避免问题，加上final，值就不会进入栈内存存储，而是进入了常量池，常量池的生命周期等同
+
+所属类的声明周期，外部类肯定长于内部类的声明周期，所以可以让内部类对象正常访问该局部变量。
+
+          final 在jdk8以后，可以不用显式声明，编译器会自动识别。
+
+例：
+     class O{
+
+             int n=7;  int u=8;
+           
+             Object m(){
+
+             int f=7;
+  
+                  class S{
+
+                      int u=3;
+    
+                      void s(){
+
+                            System.out.println(f);
+
+                            f=f+2;//这里会报错：
+
+         【  A.java:23: 错误: 从内部类引用的本地变量必须是最终变量或实际上的最终变量  f=f+2; 】
+                          
+                      }
+
+                   }
+
+                    S a=new S();
+
+                    a.s();   
+   
+                    return a;
+               }  
+          }
+   
+    public class A{
+
+       public static void main(String [] args){
+
+            O g=new O();  g.m();
+       }
+    }
+
+——————————————————————————————---
+
+23、异常处理：
+
+       ◇ 异常类是怎样去抛出的：
+
+       1、JVM运行代码，识别数组角标越界，然后new了一个异常对象，并将这个对象抛出给对象调用者
+
+main函数。
+
+       2、main函数接受到异常对象，抛给JVM
+
+       3、JVM启动默认异常处理机制，处理错误，说白了就是将错误信息打印在控制台上。
+
+    在现实中，异常不会只打印在控制台上，而是存储在日志文件中，供维护者阅读。
+
+            
+
+例：
+
+   class Pro extends Exception{  //Exception类的子类
+  
+         Pro(){ }
+  
+         Pro(String s){
+
+            super(s);//调用父类的方法，子类没有写，但可以用super（）去调用父类的方法
+        }
+   
+}
+
+
+   //假如它是继承RuntimeException类，它可以不用在“ main方法 ”那抛出异常错误类
+
+
+   //如果又没有RuntimeException类，又没有在“ main方法 ”那抛出异常错误类，会报错：
+
+           A.java:17: 错误: 未报告的异常错误ProException; 必须对其进行捕获或声明以便抛出
+      
+           p(a);
+             ^
+           1 个错误
+
+
+ public class A{
+
+   public static void main(String [] args) throws Pro{
+
+     //throws 类名 ——— 关于throws关键字，在“ 方法名 ”和“ { ”中间使用。
+
+      int [] a=new int[3];
+
+      p(a);
+
+   }
+
+   public static void p(int [] a) throws Pro{
+
+     for(int i=0;i<=3;i++){
+
+     if(i>2)
+
+          throw new Pro("出错了");//在方法体内用，throw new 类名();
+  
+          System.out.println(a[i]);
+  
+     }
+  }
+}
+
+执行结果：
+           0
+
+           0
+
+           0
+
+           Exception in thread "main" Pro: 出错了
+
+                  at A.p(A.java:27)
+
+                  at A.main(A.java:17)
+
+     ◇ 编译时被检测异常，只要是Exception及其子类，除了RuntimeException及其子类，都是被检测异常。
+
+     ◇ 编译时不检测异常，又称为运行异常。
+
+例：
+       if(i>2)
+
+          throw new Pro("出错了");//在方法体内用，throw new 类名();
+
+          这个就是被检测异常，需要有东西来处理异常。
+
+     ◇ 上面是抛出异常，还有一种是捕获异常：
+
+        捕获异常：
+
+                try{
+
+                 //正常的业务逻辑
+
+                }catch(Exception e){ //这里的Exception可变）
+
+                 //处理异常的代码
+
+                }finally{
+                   
+                  //这里的代码必须执行
+
+                }
+
+     ◇ 多个catch块：
+
+                try{
+
+                 //正常的业务逻辑
+
+                }catch(cccException e){ //这里的Exception可变）
+
+                 //处理异常的代码
+
+                }catch(aaaException e){
+
+
+                }catch(bbbException e){
+
+
+                }........
+   
+        处理异常的代码：
+
+                 可输出的有：
+
+                         1、System.out.println(e);//输出异常类
+
+                         2、System.out.println(e.getMessage());//输出错误信息
+         
+                         3、e.printStackTrace();//输出栈里的信息
+
+例：
+
+    java.lang.NullPointerException
+
+    --------------------
+
+    null
+
+    --------------------
+
+    java.lang.NullPointerException
+
+            at java.lang.String.compareTo(Unknown Source)
+
+            at A.com(A.java:27)
+
+            at A.main(A.java:7)
+
+   上面的打印的信息对应的是： 1、System.out.println(e);//输出错误信息
+
+                              2、System.out.println(e.getMessage());
+         
+                              3、e.printStackTrace();//输出栈里的信息
+
+    多个catch块在jdk7以后，还可以简写为：
+
+
+              try{
+
+
+              }catch(aaaException|bbbException|ccccException e){
+
+
+              }
+
+
+
+注意：
+
+      在多个catch块里，假如第一个catch块里的异常已经捕捉到了后面catch块里的异常，则不能编译成功，
+
+会报错：已经捕捉到xxxException异常。
+
+      例子：
+
+          try{
+
+          }catch(Exception e){
+
+          }catch(xxxException e){  //这个是Exception的子类
+
+          }catch(bbbException e){  //这个是Exception的子类
+
+          } 
+     
+          假如后面的异常有，则父类Exception都会捕捉到，此时后面的全是多余的，多余的东西编译器
+
+       不允许出现，会报错：已捕获到异常错误xxxException；已捕获到异常错误bbbException
+
+
+     可以修改：
+  
+           try{
+
+
+              }catch(bbbException e){  //这个是Exception的子类
+
+
+              }catch(xxxException e){  //这个是Exception的子类
+
+
+              }catch(Exception e){ 
+ 
+                     
+                   //此时这里就是除了上面那两个异常错误的异常错误。
+
+             } 
+
+
+
+     ◇ ◇ ◇ 关于异常处理的规则：
+
+          函数内部抛出编译检测错误，必须在函数声明中用throws 异常类名，否则就在函数内部写try catch ,
+
+函数外部如果引用了该函数，一样用throws或者try catch
+ 
+          那什么时候用try catch，什么时候throws
+
+          功能内部解决的了，用try catch ； 解决不了抛出，即用throws告诉调用者。
+
+          如果一个功能不止抛出一个错误，则调用时，也需要对应几个catch来捕捉。
+
+     ◇ ◇ ◇  关于finally：
+
+                   无论如何都要执行的代码
+
+                   有一个前提，虚拟机JVM没停止
+
+                   有一种代码可以手动关闭运行环境，也就是关闭JVM实例： System.exit(0);
+
+    那怎样的代码要放在finally：
+
+                   就是很重要，一般是关系到内存的资源的消耗问题。
+
+    例如：连接数据库，无论有没有错误，数据库的关闭等等必须要执行，省得消耗资源。
+
+          connection 
+
+          关于这个数据库的连接有些麻烦，要自己之后去了解。
+
+          ？？？
+           
+          在这里又会扯到另一个东西：
+
+             jdk7以后又出了一个新的try catch
+
+             try(  语句1 ; 语句2 ; 语句3){ //这些语句是要关闭的资源，只要这些可关闭的资源对象
+
+    实现了或者继承了java.lang.AutoCloseable的对象，还包括了java.io.Closeable的对象，则都可自动关闭，
+
+    不需要声明finally
+
+ 
+             }catch(xxxException e){ 
+
+
+
+             }
+
+    
+    ◇ ◇ ◇ 关于子类和父类抛出的异常的联系：
+
+      子类在覆盖父类的方法时，如果父类的方法抛出异常，那么子类只能抛出父类的异常或该异常的子类。
+      
+例子：
+
+     public class A{
+
+        public static void main(String [] args){
+
+         
+          Zi a =new Zi();
+
+          a.s();
+       }
+     }
+
+          class Fu{
+
+              public void s() throws Exception{
+ 
+                    System.out.println("sajhfkvw");
+             } 
+          }
+
+         class Zi extends Fu{
+
+              public void s()throws RuntimeException{
+     
+                  System.out.println("asjefawyuefewwwwwwaeffffffffff");
+              }
+         } 
+
+        //输出：asjefawyuefewwwwwwaeffffffffff
+   
+————————————————————————————————————————
+
+24、工具类
+
+          ◇ ◇ ◇  Object类：
+
+                    所有类的父类，它没有父类，它是根类。
+
+                1、equals —————它在Object类里的定义：
+
+                       public boolean equals(Object obj){  
+                                 
+                               return this==obj;
+                          }  
+
+例子：
+
+     public class A{
+
+          public static void main(String [] args){
+
+                   Person a=new Person(11);
+ 
+                   Person b=new Person(11);
+
+                   System.out.println(a==b);   //输出的是错误，因为比较的是对象的地址
+
+                   System.out.println(a.equals(b)); //输出的是错误，因为比较的是对象的地址
+          }
+     }
+
+    class Person{
+
+           int age;
+ 
+           Person(int age){
+
+             this.age=age;
+
+           }
+     }
+           
+ 关于equals方法，如果不想它比较对象地址，可以重写该方法。
+
+         2、hashCode()方法：
+
+                打印的是对象的十进制的地址。
+
+例子：
+
+    public class A{
+
+       public static void main(String [] args){
+
+             Person a=new Person(11);
+
+             System.out.println(a);
+
+             System.out.println(a.hashCode());
+
+             System.out.println(Integer.toHexString(a.hashCode()));
+                     
+          }
+       }
+
+    class Person{
+
+           int age;
+ 
+           Person(int age){
+
+                    this.age=age;
+
+           }
+     }  
+
+输出的结果是：
+
+      Person@15db9742  //System.out.println(a);  调用的是toString()方法，输出的格式：
+
+                                                            “ 类名 ”+“ @ ”+“ 对象的地址 ”
+
+      366712642    //System.out.println(a.hashCode());  输出的是“ 对象地址 ”
+
+      15db9742   //System.out.println(Integer.toHexString(a.hashCode())); 将十进制的对象的地址转换
+
+                   为十六进制。
+
+
+             3、getClass()方法：
+
+
+    字节码文件形容类，也会有一个类来形容字节码文件。这个类就是Class类，所有的类型类都是Class类的实例对象。
+
+例如：
+
+      A a = new A();
+
+      System.out.println(a.getClass()==A.class);
+
+     //这是对的，A类的对象调用getClass()方法，就是调用父类Object的getClass()方法，这个方法是获得类的类型类，
+
+       使用a.getClass()返回的结果正是A的类型类。
+
+       在Java中表示一个特定类型的类型类可以用“类型.class”的方式获得。
+
+
+       两者输出的都是 ——》 class A
+  
+例子：
+
+      public class A{
+
+          public static void main(String [] args){
+
+              Person a=new Person(11);
+ 
+              Person b=new Person(11);
+
+              System.out.println(a.getClass()==b.getClass());
+
+              System.out.println(a.getClass().getName()); //获得类名
+
+
+          或
+
+
+              Class z1=a.getClass();  //向上转型，转成父类Class（  java.lang.Class  ）
+
+              Class z2=a.getClass();
+
+              System.out.println(z1==z2);
+
+              System.out.println(z1.getName());
+                     
+          }
+     }
+
+    class Person{
+
+           int age;
+ 
+           Person(int age){
+
+                 this.age=age;
+
+           }
+     }
+
+
+      4、toString()方法：打印“ 类名 ”+“ @ ”+“ 该类的对象的地址 ”。
+
+         关于String ：
+
+                 它是引用类型。
+
+         此外：
+
+               String str="hhh";
+ 
+               字符串一旦创建，它的值不能被改变，它的值放在字符串常量池中，而左边只是它引用。
+
+例子：
+
+     public class A{
+
+          public static void main(String [] args){
+
+             String s="hhh";
+
+             String s1="hhh";
+
+             System.out.println(s==s1);// 打印出true
+
+             // 常量池里字符串可共享，且其地址无论如何外部是无法查看的。
+ 
+             System.out.println(s.equals(s1));  // 打印出true             
+          }
+        }
+ 
+又一个例子：
+
+     public class A{
+
+          public static void main(String [] args){
+
+                String s=new String("hh");
+
+                String s1=new String("hh");
+
+                System.out.println(s==s1);//输出false
+
+                这个是在new对象，每个对象都各有一个地址，自然不相同
+ 
+                System.out.println(s.equals(s1)); //输出true
+
+                //在String类中，equals()方法比较的内容是否相同。     
+                     
+          }
+        }
+
+ // String类中重写的equals()方法 源码：
+   
+
+     public boolean equals(Object anObject) {
+        
+
+        if (this == anObject) {  // 首先判断是否为同一个对象，若是直接返回true
+        
+
+               return true;
+       
+         }
+        
+
+        if (anObject instanceof String) {  // 接着判断传进来的是否是String的实例，若是则继续判断
+ 
+
+           String anotherString = (String)anObject;
+            
+
+           int n = value.length;
+           
+
+               if (n == anotherString.value.length) {  
+
+               // 首先判断两个字符串的长度，若不是等长直接返回false
+                
+ 
+                char v1[] = value;  // 字符串的底层是用一个名为value的字符数组来装载数据的。
+  
+
+                char v2[] = anotherString.value;
+             
+
+                int i = 0;
+               
+
+                    while (n-- != 0) { 
+                    
+
+                        if (v1[i] != v2[i])  // 比较每个字符是否相等
+                        
+
+                               return false;
+                 
+
+                                    i++;
+              
+
+                         }
+               
+
+                      return true;
+          
+
+                    }
+       
+
+                }
+       
+
+                   return false;
+   
+            }
+
+            ◇ ◇ ◇  String 类 ◇ ◇ ◇ 
+
+    1、java.lang包里的类
+
+    2、String常用的api:
+
+             它常用的方法：
+
+             1）、length(): 求字符串长度
+ 
+             2）、charAt(int index):查找第index位的字符，它和数组类似，是从0开始计数的。
+
+          例如：   String a="asddad";
+
+                   System.out.println(a.charAt(2));  //输出为 d
+
+             3）、indexOf(String s): 返回某字符串在字符串中的位置，返回值是int型，s可为空字符串，可为单个
+
+字符，或多个字符，多个字符时，返回的是相同的位置的第一个标号，一样是从0开始计数。当没有该字符串时，返回的值是-1。
+
+返回的是第一个s的位置。
+
+             4）、lastIndexOf(String s):字符串s出现的最后的一个位置,多个字符时，返回的是仍相同的位置的第一个标号，
+
+只不过是最后相同的位置。
+
+          例如： String a="dasd da";
+
+                 System.out.println(a.lastIndexOf("da"));  //输出为5
+
+             5）、substring(int a):从第a位开始截取到字符串的末尾，包括了第a位。
+
+                  substring(int a,int b):从第a位开始截取到字符串的第b位，包括了第a位，但不包括第b位。
+
+             6）、split(String s):按照“s”来进行分割字符串用的，返回的值是字符串型数组。
+ 
+          例如：
+           
+                      String s="dasdda";
+
+                   String [] c=s.split("s");
+
+                      for(String a:c)
+
+                         System.out.println(a);//输出 “ da ”和“ dda ”
+
+
+                  有时候一些符号有特殊意义，如果想要它就表示原来的意义，可以用转义字符：\
+
+             7）、toCharArray(): 字符串转字符数组
+
+             用法：
+
+                   char [] ch=s.toCharArray();
+
+             8）、getBytes(): 字符串转byte数组[]
+
+                      返回值类型         方法
+
+                        byte[]	       getBytes()
+
+              用法：
+
+                   byte [] by=s.getBytes(); 这个是按照ASCII码来转换的，比如“ a ”在ASCII码表中代表97
+
+                  还有一种重载方法，有参数：getBytes(Charset Charset)，这个参数就是决定怎样的方式去编码。
+
+                  Charset是抽象类，不能实例化，它可以调用forName("")方法来用什么编码方式。编码方式有：
+
+                  UTF-8（UTF－8 编码是用以解决国际上字符的一种多字节编码，它对英文使用8位（即一个字节），
+
+中文使用24位（三个字节）来编码。）
+
+                  还有 GBK（GBK编码专门用来解决中文编码的，是双字节的。不论中英文都是双字节的。）等等
+
+             例如：
+
+                  String s="中国";
+
+                  byte [] a=s.getBytes(Charset.forName("UTF-8"));这里用了UTF-8
+
+                  for(byte c:a)
+
+                      System.out.println(c);
+
+           System.out.println(new String(a,Charset.forName("UTF-8")));这里转回去字符串也要用UTF-8，否则会乱码
+           
+             9）、字母大小写转换：
+
+                           toLowerCase() : 转小写字母
+
+                           toUpperCase() : 转大写字母
+
+            10）、替换方法：
+
+                           replace(char old  ,char  new) : 返回值是字符串型
+
+                           replace(CharSequence target,CharsSquence replacement) : 返回值是字符串型
+
+         补充：
+                CharSequence是java.lang包下的一个接口，String类，StringBuffet类，StringBuilder类都是实现了
+
+它的类，CharSequence类和String类都可以定义字符串，但是String定义的字符串只能读，CharSequence定义的字符串是
+
+可读可写的。
+
+                    对于抽象类或者接口来说不可以直接使用new的方式创建对象，但是可以直接给它赋值：
+
+                                 CharSequence b = "s";
+                    
+
+                           replaceAll(String old  ,String  new) : 返回值是字符串型
+
+                           replaceFirst(String old  ,String  new) : 返回值是字符串型
+            例如：
+
+                    String s="abcddbcd";
+
+                    System.out.println(s.replace('d','f'));  //输出 abcffbcf
+
+                    System.out.println(s.replace("bc","f")); //输出  afddfd
+
+                    System.out.println(s.replaceAll("bc","f"));  //输出  afddfd
+
+                    System.out.println(s.replaceFirst("bc","f")); // 输出 afddbcd
+
+              11）、trim()：去除首尾空字符" "，返回值类型String
+
+               用法：
+
+                     String s="         abcddbcd        ";
+
+                     System.out.println(s.trim());   //   输出:abcddbcd   
+
+              12）、concat(String s)：连接字符串的
+
+               例如：
+                
+                     String s="abcddbcd";
+
+                     System.out.println(s.concat("jjj"));//输出 abcddbcdjjj
+
+              13）、equalsIgnoreCase(String a) 比较字符串的内容是否相等，忽视大小写，返回布尔值。
+
+               例如：
+
+                     String s="abc";
+
+                     System.out.println(s.equalsIgnoreCase("ABc"));  //输出 true
+
+              14）、contains(CharSequence s) 是否包含“ s ”字符串，返回布尔值。
+
+               例如：
+
+                    String s="abcad";
+
+                    System.out.println(s.contains("ca")); //输出 true
+
+              15）、判断字符串是不是以某字符串开头或结尾：
+
+                    statsWith(String a)
+
+                    endsWith(String a)
+
+               例如：
+
+                     String s="abc";
+
+                     System.out.println(s.startsWith("ab")); //输出true
+
+                     System.out.println(s.endsWith("bc"));  //输出true
+
+              16）、compareTo(String s):比较字符串的内容，按照ASCII表的来进行比较，返回int型。
+
+                    一位一位进行比较
+               例如：
+
+                    String s="abc";
+
+                    System.out.println(s.compareTo("aba")); //输出的是2，因为“c”在ASCII表里比“a”大2
+
+                    System.out.println(s.compareTo("abc")); //输出 0，相等则为0
+
+                    System.out.println(s.compareTo("abe"));  //输出-2，因为“c”在ASCII表里比“e”小2
+
+              17）、intern(): 将字符串变量，在运行中放入字符串常量池中，并返回它的引用。
+
+              例如：
+
+                   String s="abc";
+
+                   String b=s+"a"; s 是变量，b右边的值是存放在堆内存中。
+ 
+                   // String c=b.intern(); //加了这个，b右边的值放入了字符串常量池中。
+
+                   System.out.println(b=="abca"); //这个输出的是false
+
+                   // System.out.println(c=="abca"); //这个输出的是true
+
+          注意：
+
+                 如果在b的值放入常量池之前，该值已经存在了，则intern(),这个方法人就不会将这个值放入常量池中，
+
+则b指向的地址与常量池中的这个值得地址不会相同，但它返回的仍是常量池这个值的地址。
+
+          例如：
+                String s="abc";
+
+                String b=s+"a";
+
+                String a="abca";  //  abca这个常量的地址这个已经在常量池中了
+ 
+                String c=b.intern();  // “ c ”是指向常量池中的地址的，但“ b ”，它的值是不会放进去的
+
+                System.out.println(b=="abca"); //输出flase
+
+                System.out.println(c=="abca");  //输出true
+
+
+         
+              ◇ ◇ ◇      StringBuffer类 和  SringBuilder类     ◇ ◇ ◇   
+
+
+         1、java.lang包里的类
+
+         2、与String类的不同是：它们的内容创建后可修改，String是不行的。
+
+         3、这两个类和String类都是CharSequence的子类，其实就是一个字符串的缓冲区容器，内部实际上是对数组的封装。
+
+         4、两者的特点：
+
+                  第一个肯定是长度可变，字符串里的内容也可以改变，最终是将字符串缓冲区的转换成字符串对象使用。
+
+         5、它们的方法：
+
+                 1）、增加：append(): 添加内容的，有很多种重载方法，大多数重载是里面传入的参数可以有很多种类型。
+
+                      有布尔值，int型，字符型，字符串型，object类类型，精度型等等，返回值类型是StringBuffer，
+
+                      即它的引用。
+
+                  例如：
+
+                       StringBuffer a=new StringBuffer("wqfhuwfli");
+
+                       System.out.println(a.append(new H())); //输出的是wqfhuwfli加上了H对象的地址，也就是：
+
+                                                                wqfhuwfliH@15db9742
+
+
+                 2）、插入：insert()，也有很多重载方法，大部分的格式是  inser(int offset,int i)，其中offset是
+
+                      偏移量，即要插入的位置。重载是后面的插入的值的类型不同，有布尔值，int型，字符型，
+
+                      字符串型，object类类型，精度型等等
+
+                  例如：
+
+                       StringBuffer a=new StringBuffer("wqfhuwfli");
+
+                       System.out.println(a.insert(2,"jkjk")); //输出  wqjkjkfhuwfli
+
+                3）、删除：delete(int start,int end) 和 deleteCharAt(int index)
+
+                     返回值类型是 StringBuffer 或者 StringBuilder 
+
+                     就是删除一段或者某个字符，从0开始算，包括了“ Start位 ”，但不包括“ end位 ”
+
+                  例如：
+ 
+                      StringBuffer a=new StringBuffer("wqfhuwfli");
+
+                      System.out.println(a.delete(2,3)); //输出  wqhuwfli
+
+                      System.out.println(a.deleteCharAt(2));  //输出  wquwfli
+
+                4）、查：charAt(int index) 查找第几位的字符，从0开始算
+
+                         indexOf(String str) 和 indexOf(String str,int fromindex)返回str的位置，从0开始算
+
+                         第二个重载的方法是从哪里开始查找返回
+
+                         lastIndexOf(String str) 和 lastIndexOf(String str,int fromindex) 返回str最后出现的位置
+
+                         第二个重载的方法是从哪里开始查找并返回最后出现的位置
+
+            6、StringBuilder是因为StringBuffer执行效率不高，才被引入的，两者差不多，只不是一个加了锁。
+
+
+                ◇ ◇ ◇     ◇ ◇ ◇  Integer类  ◇ ◇ ◇    ◇ ◇ ◇
+
+          1、java.lang包里的类
+
+          2、int的包装类
+
+          3、它的一些方法：
+
+               1）、parseInt(String s) :返回值类型是int型，将字符串型转换为int型。它是静态方法，用类名Integer
+
+      即可调用。还有一种重载方法，就是  parseInt(String s，int radix)，其中radix表示进制，按照什么进制来返回这
+ 
+      个字符串。
+
+           例如：
+
+               System.out.println(Integer.parseInt("a"));//会报错，NumberFormatException: For input string: "a"
+
+                                                           所以只能输入数字
+
+               System.out.println(Integer.parseInt("30",8)); //以8进制来算出这个字符串，输出 3*8
+
+               System.out.println(Integer.parseInt("1000",2));//2进制来算出这个字符串，输出 8
+
+               2）、intValue():空参，返回int型，将包装类型转换为基础数据类型。
+
+           例如：
+
+                Integer i=new Integer("12");  
+
+                int a=i.intValue();
+
+                System.out.println(a);  //输出12
+
+                System.out.println(i);  //输出一样是12，而并非是地址，因为自动装箱和拆箱
+
+              3）、把Integer转换成字符串：
+
+                        toString() 返回的Integer的值的字符串形式
+
+                        toString(int i) 返回的是 i 的字符串形式
+
+                        toBinaryString(int i) 静态方法，将数字转换成一个二进制的字符串
+
+                        toHexString(int i) 静态方法，将数字转换成一个16进制的字符串
+
+                        toOctalString(int i) 静态方法，将数字转换成一个8进制的字符串
+
+                  例如：
+
+                    Integer i=new Integer(12);
+
+
+注意，integer的构造器中只有两种，一种是new Integer(int)，还有一种是new Integer(String)  
+
+
+                    System.out.println(i.toString(8));//输出 “ 8 ”
+
+                    System.out.println(Integer.toBinaryString(8)); //输出 “ 1000 ”
+
+                    System.out.println(Integer.toOctalString(8)); //输出 “ 10 ”
+ 
+                    System.out.println(Integer.toHexString(8)); //输出 “ 8 ”
+
+              4）、 Integer a=127;
+
+                    Integer b=127;  a,b的地址是相同的，因为Integer的机制是，值在-128到127之间，就先放入包装类的
+
+              缓冲区中，这些数字是对象共享的，如果不在就new Integer()，并且自动装箱。
+
+              5）、 Integer a=12; Integer b=9;
+
+                    a>b 相当于 a.intValue()>b.intValue() (自动拆箱）
+
+              6）、自动装箱：
+
+                     public class H{
+
+                         public static void main(String [] args){
+ 
+                           int i=12;
+    
+                           s(i);
+
+                         }
+                        public static void s(Integer i){
+
+                           System.out.println(i);
+
+                         }
+                      }
+
+
+
+                 ◇ ◇ ◇  ◇ ◇ ◇         Date类         ◇ ◇ ◇  ◇ ◇ ◇
+
+
+        1、java.util包里的类
+
+        2、它里面的一些方法：
+
+              Date类里面大多数方法已经被覆盖了，不能用了，比如：
+
+                         Date a=new Date();
+
+                         System.out.println(a.getDate());
+
+              会报出：
+
+                      注: H.java使用或覆盖了已过时的 API。
+                 
+                      注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+
+         所以这里不讲它类的方法
+
+
+                ◇ ◇ ◇  ◇ ◇ ◇ DateFormat类 和 SimpleDateFormat 类  ◇ ◇ ◇  ◇ ◇ ◇
+
+        1、都是java.text包里的类
+
+ ◇ ◇ ◇  DateFormat类：
+
+        1、DateFormat类其本身是一个抽象类，SimpleDateFormat 类是DateFormat类的子类,一般情况下来讲DateFormat类
+
+很少会直接使用,而都使用SimpleDateFormat类完成。
+
+        2、DateFormat 的作用是 格式化并解析“日期/时间”。实际上，它是Date的格式化工具，它能帮助我们格式化Date，
+
+进而将Date转换成我们想要的String字符串供我们使用。
+
+        3、DateFormat 的作用是格式化Date。它支持格式化风格包括 FULL、LONG、MEDIUM 和 SHORT 共4种：
+
+             (1) DateFormat.SHORT
+       
+                         完全为数字，如 12.13.52 或 3:30pm
+
+             (2) DateFormat.MEDIUM
+     
+                         较长，如 Jan 12, 1952
+
+             (3) DateFormat.LONG
+     
+                         更长，如 January 12, 1952 或 3:30:32pm
+
+             (4) DateFormat.FULL
+     
+                         是完全指定，如 Tuesday、April 12、1952 AD 或 3:30:42pm PST。
+
+          上面都是类变量，直接类名引用
+
+        3、它里面的方法：
+
+                1）、getDateInstance()返回DateFormat类的引用类型，其实是向上转型了，它是抽象类，不能new 实例，
+
+                     它是静态方法
+
+                DateFormat是一个抽象类。
+
+                当我们通过DateFormat的 getInstance(), getDateInstance()和getDateTimeInstance() 获取
+
+DateFormat实例时；实际上是返回的SimpleDateFormat对象。
+
+                      getDateInstance(int style): style的值可以是FULL、LONG、MEDIUM 和 SHORT
+
+                2）、format(Date date)将日期型转换为字符串型
+              
+
+              例如：
+
+                 import java.util.Date;
+
+                 import java.text.DateFormat;
+
+                 public class H{
+
+                      public static void main(String [] args){
+ 
+                      Date a=new Date();
+
+                      DateFormat b=DateFormat.getDateInstance(); 默认格式 MEDIUM
+
+                      DateFormat b1=DateFormat.getDateInstance(DateFormat.SHORT);
+
+                      DateFormat b4=DateFormat.getDateInstance(DateFormat.MEDIUM);
+
+                      DateFormat b2=DateFormat.getDateInstance(DateFormat.LONG);
+
+                      DateFormat b3=DateFormat.getDateInstance(DateFormat.FULL);
+
+
+                      System.out.println(b.format(a)); //2019-8-13
+
+                      System.out.println(b1.format(a)); // 19-8-13
+
+                      System.out.println(b2.format(a)); // 2019-8-13
+
+                      System.out.println(b3.format(a)); // 2019年8月13日
+  
+                      System.out.println(b4.format(a)); // 2019年8月13日 星期二
+
+                   }
+
+                }
+
+  ◇ ◇ ◇  SimpleDateFormat 类
+
+   1、SimpleDateFormat 是一个格式化Date 以及 解析日期字符串 的工具。它的最常用途是，能够按照指定的格式来对Date
+
+进行格式化，然后我们使用可以格式化Date后得到的字符串。
+
+      更严格的说，SimpleDateFormat 是一个以与语言环境有关的方式来格式化和解析日期的具体类。
+
+它允许进行格式化（日期 -> 文本）、解析（文本 -> 日期）和规范化。 
+
+     public class SimpleDateFormat extends DateFormat
+  
+   2、将上面的例子用SimpleDateFormat类来表示，会更简洁：
+
+         import java.util.Date;
+
+         import java.text.SimpleDateFormat;
+
+         public class H{
+
+             public static void main(String [] args){
+  
+                Date date = new Date(); 
+
+                SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+
+                System.out.println(s.format(date));  //输出2019-8-13（当前日子）
+
+            }
+         }
+
+   3、SimpleDateFormat里的方法：
+
+          1）、parse(String s)，将字符串转换成日期形式
+                
+课上的例子：
+
+          算出两个时间段的相隔多少天？
+
+         import java.util.Date;
+
+         import java.text.SimpleDateFormat;
+
+         public class H{
+
+           public static void main(String [] args)throws Exception{ //注意：这里要抛出异常，否则会报错：
+
+                          //  H.java:18: 错误: 未报告的异常错误ParseException; 必须对其进行捕获或声明以便抛出
+                        
+                          //  Date c=a.parse(s1);
+                                    
+                          //  H.java:20: 错误: 未报告的异常错误ParseException; 必须对其进行捕获或声明以便抛出
+               
+                          //  Date b=a.parse(s2);
+ 
+              SimpleDateFormat a=new SimpleDateFormat("yyyy-mm-dd");
+
+              String s1="2019-7-12";
+
+              String s2="2018-7-12";
+
+              Date c=a.parse(s1);将字符串转换成日期形式
+
+              Date b=a.parse(s2);将字符串转换成日期形式
+
+              long p=Math.abs(c.getTime()-b.getTime());// 加上了绝对值，Date类的getTime()方法是获得该时间的毫秒。
+
+                                                           让它们相减得到的是毫秒数
+          
+              System.out.println(p/1000/60/60/24); //还要除以这些数得到天数
+
+       }
+}
+
+            ◇ ◇ ◇   ◇ ◇ ◇     Calender类      ◇ ◇ ◇   ◇ ◇ ◇
+
+    1、它是java.util包里的类
+
+    2、public abstract class Calendar extends Object implements Serializable, Cloneable, Comparable<Calendar>
+
+       Calendar类是一个抽象类（Calendar类不能直接创建实例），它为特定瞬间与一组诸如YEAR、MONTH、DAY_OF_MONTH、
+
+       HOUR等日历字段之间的转换提供了一些方法，并为操作日历字段（例如获得下个星期的日期）提供了一些方法；
+
+       瞬间可用毫秒值来表示，它是距历元（格林威治时间1970年1月1日的00:00:00.000）的偏移量。
+
+       
+
+Calendar类如果要创建实例，必须通过getInstance方法构造Calendar的子类对象。
+
+    3、它的方法：
+
+            1）、getInstance（）静态方法 ：
+
+Calendar.getInstance();
+
+                   
+
+/*该方法返回Calendar类的子类对象；为什么说『返回Calendar类的子类对象』？首先Calendar类是
+
+一个抽象类，所以不存在所谓的Calendar类的实例，其次在地球上有很多不同的时区，不同的时区就要对应不同的Calendar类
+
+的的子类（每个国家都有自己的一套日历算法，比如西方的国家的第一个星期大部分为星期日，而中国则为星期一，等等）*/
+
+            2）、get(int field):
+
+                   该方法接受Calendar类的YEAR、MONTH、DAY_OF_MONTH、HOUR、MINUTE、SECOND等日历字段，这些
+
+字段都是类变量，直接用类名引用。
+
+            例如：
+                  
+                 import java.util.Calendar;
+
+                 public class H{
+
+                    public static void main(String [] args){
+ 
+                          Calendar a=Calendar.getInstance();
+  
+                          System.out.println(a.get(Calendar.YEAR)); //得到当前时间的年份
+
+                          a.set(Calendar.YEAR,2000); //设置年份为2000
+
+                          System.out.println(a.get(Calendar.YEAR));
+       }
+}
+                 
+有一个注意：
+            System.out.println(a.get(Calendar.MONTH)+1); //得到当前时间的月份，因为这里的月份是0到11
+
+           
+           3）、set(int field, int value):  设置时间，返回类型void
+
+
+           ◇ ◇ ◇   ◇ ◇ ◇   LocalDate类    ◇ ◇ ◇   ◇ ◇ ◇
+
+    1、java1.8之后出现的新的api
+
+    2、在java.time包里的类
+
+    3、public final class LocalTime  extends Object  implements Temporal, TemporalAdjuster, 
+
+       Comparable<LocalTime>, Serializable
+
+    4、LocalDate类使用ISO日历表示年、月、日
+
+    5、它类里的方法：
+ 
+          1）、now(); 获取系统当前日期，静态方法，使用类名即可调用，返回的是LocalDate类类型，即LocalDate对象
+
+        例如：
+              
+             import java.time.LocalDate;
+
+             public class H{
+
+                  public static void main(String [] args){
+ 
+                  LocalDate a=LocalDate.now();
+
+                  System.out.println(a); // 输出的是 2019-08-13
+
+                  LocalDate b=LocalDate.of(2000,12,30); //输出的是 2000-12-30
+          
+                 System.out.println(b);
+             }
+            }
+             
+          2）、of(int year,int month,int dayOfMonth);按指定日期创建LocalDate对象
+
+          3）、getYear(); 返回日期中的年份
+
+          4）、getMonth(); 返回月份
+
+          5）、getDayOfMonth(); 返回月份中的日
+
+          6）、parse(CharSequence text)
+
+                          该方法从文本字符串获取LocalTime的实例。
+          例如：
+
+               import java.time.LocalDate;
+
+               public class H{
+
+               public static void main(String [] args){
+ 
+                     LocalDate a=LocalDate.now();
+          
+                     System.out.println(a.parse("2017-12-12")); //输出2017-12-12
+
+                 }
+               }
+
+
+           ◇ ◇ ◇   ◇ ◇ ◇   Instant类    ◇ ◇ ◇   ◇ ◇ ◇
+
+      1、在java.time包里的类
+
+      2、它的一个方法：
+
+                   now() : 使用系统时钟的当前瞬间，不为null，静态方法，用类名即可调用，返回值是Instant对象
+
+    例子：
+
+          import java.time.LocalDate;
+
+          import java.time.Instant;
+
+          public class H{
+
+               public static void main(String [] args){
+ 
+                        LocalDate a=LocalDate.now();
+
+                        Instant a1=Instant.now();//系统的当前时间，返回值是Instant对象
+
+                        System.out.println(a); //输出 2019-08-14
+
+                        System.out.println(a.ofEpochDay(a1.getEpochSecond()/60/60/24));//输出 2019-08-14
+
+              }
+            }
+
+   //  a1.getEpochSecond() 得到的是当前时间的分钟数
+
+   //  a1.getEpochSecond()/60/60/24) 换算成天数
+
+        
+
+            ◇  ◇  ◇   ◇  ◇  ◇   DateTimeFormat类    ◇  ◇  ◇   ◇  ◇  ◇
+
+
+        ？？？？
+
+        ofPattern()
+
+————————————————————————————————————————————
+
+25、关于包：package
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+————————————————————————————————————————————
+
+26、集合：
+
+         ◇ 集合和数组类似，都是用来放数据的，不同的是，数组的长度不可变，而集合的长度可变。
+
+还有就是数组即可存放基础数据类型，也可存放引用类型的数据，而集合只能存放引用类型。
+
+         ◇ Java中的集合框架大类可分为 Collection 和 Map；
+
+                 两者的区别：
+
+                             
+1、Collection是单列集合；Map是双列集合
+
+                             
+2、Collection中只有Set系列要求元素唯一；Map中键需要唯一，值可以重复
+
+                             
+3、Collection的数据结构是针对元素的；Map的数据结构是针对键的。
+
+
+
+         ◇ List , Set, Map都是接口，前两个继承至Collection接口，Map为独立接口
+
+
+            Set下有HashSet，LinkedHashSet，TreeSet
+
+            
+List下有ArrayList，Vector，LinkedList
+
+
+            Map下有Hashtable，LinkedHashMap，HashMap，TreeMap
+
+         ◇ Collection,Set,List的区别如下：
+
+            Set,List是Collection的子类。
+
+            Collection各元素对象之间没有指定的顺序，允许有重复元素和多个Null元素对象。所以不可以排序，
+
+也不可以找出第几个第几个元素。
+
+            Set各元素对象之间没有指定的顺序，不允许有重复元素，最多允许有一个Null元素对象。
+
+            List各元素对象之间有指定的顺序，允许有重复元素和多个Null元素对象。
+
+         ◇ 以上所有的接口和实现类均在java.util包里。
+
+——————————————————
+
+         ◇ 先看接口Collection ：
+
+         1、要从实现了Collection接口的类的实例中取出保存在其中的元素对象，必须通过Collection接口的Iterator()方法，
+
+返回一个Iterator接口。
+
+            因为要取出元素，collection的子接口都要实现hasNext()和next()方法，所以将这两种方法提取出来，放在一个
+
+接口里，也就是Iterator接口。
+
+            Collection接口的Iterator()方法，返回的是Iterator接口，再定义该对象的引用，指向实现了该接口的对象，该
+
+引用可以调用接口本身提供的方法（实现类已经重写了的）。
+
+  【 接口可以创建对象的引用，指向实现了该接口的类的对象。但引用变量只能调用接口本身提供的方法（在类中被重写的）】
+
+          2、它里面的方法：
+
+             add(): 添加元素
+
+————————————————————
+
+         ◇ 再看List接口：
+
+            描述：
+
+                 All Known Implementing Classes:
+
+                                        AbstractList, AbstractSequentialList, ArrayList, AttributeList, 
+
+                                        CopyOnWriteArrayList, LinkedList, RoleList, RoleUnresolvedList, 
+
+                                        Stack, Vector
+
+
+                 public interface List<E> extends Collection<E>
+
+———————————————————————
+ 
+             ◇  ◇ ArrayList：实现了List接口的类 
+
+              1、其描述：               
+                        public class ArrayList<E> extends AbstractList<E>
+
+                        implements List<E>, RandomAccess, Cloneable, Serializable
+
+              2、方法：
+
+                    1）、add()
+
+              用法：
+
+                    import java.util.ArrayList;
+
+                    import java.util.Iterator;
+
+                    public class Demo{
+
+                       public static void main(String [] args)throws Exception{
+      
+                            ArrayList a=new ArrayList();
+ 
+                            a.add("aaa");添加方法
+
+                            a.add("bbb");
+
+                            a.add("aaa");   
+
+                            System.out.println(a); 输出的是 [aaa, bbb, aaa]
+
+                            Iterator b=a.iterator(); ArrayList类实现了List类的方法，也就是Collection的方法，
+
+返回的是实现了Iterator接口类的对象。创建Iterator接口的引用，指向该对象，去调用本接口提供的方法。
+
+                            while(b.hasNext()){
+
+                                   System.out.println(b.next());
+
+                            }  输出的是：
+                                         aaa
+                                         bbb
+                                         aaa        
+                        }
+                     }
+                   
+                     2）、remove(Object o)方法：删除，移除某个元素
+
+                          removeAll(Collection c): 全部删除
+
+                          clear():全部删除
+
+                     例如：
+                            
+                           ArrayList a=new ArrayList();
+ 
+                           a.add("aaa");
+
+                           a.add("bbb");
+
+                           a.add("aaa");
+                           
+                           System.out.println(a); //输出 [aaa, bbb, aaa]
+         
+                           a.remove("aaa");
+                    
+                           System.out.println(a);//输出 [bbb, aaa]
+        
+                           a.removeAll(a);  //把整个集合放进去
+
+                           System.out.println(a); //输出[]
+         
+                           a.clear();
+         
+                           System.out.println(a); //输出[]
+
+                      3）、contains(Object o)：是否包含某个元素
+
+                           里面的参数向上转型了，因为Object类是最终父类，转换成它是可以的。
+
+                      4）、addAll(Collection c)把某个集合整个加入调用这个方法的集合中去。
+
+   例子：  
+         import java.util.ArrayList;
+
+         import java.util.Iterator;
+
+         public class Demo{
+
+             public static void main(String [] args){
+      
+                ArrayList a=new ArrayList();
+ 
+                a.add("aaa1");
+
+                a.add("bbb2");
+         
+                ArrayList a1=new ArrayList();
+         
+                a1.add("aaa");
+
+                a1.add("bbb2");
+         
+                a.addAll(a1);
+        
+                System.out.println(a);//输出 [aaa1, bbb2, aaa, bbb2]
+
+                a.removeAll(a1);
+
+                System.out.println(a);  //输出 [aaa1] ，注意：与a1集合相同的元素也删除了，它们是怎么判断两个
+
+                                        元素相等的，是调用存储对象的equals方法，还有remove，contains,containsof
+  
+                                        方法，都是底层调用了equals方法，在判断元素相同方面上。
+               }
+            }
+
+                         5）、修改：set(int index,E element)
+
+              例如：
+
+                     ArrayList a=new ArrayList();
+
+                     a.add("aaa");
+
+                     a.add("vvv");
+
+                     System.out.println(a.set(0,"ooo")); //得到的是要替换的那个值：aaa
+
+——————————————————————————-
+
+                
+                ◇  ◇  ◇  ◇ LinkedList类 ◇  ◇  ◇  ◇ 
+
+             1、实现了List接口的类
+
+             2、自身增加了许多方法：
+
+                    1）、addFirst(E e)
+
+                         addList(E e)
+          例如：
+
+               LinkedList a=new LinkedList();
+
+		a.add(1);
+
+		a.add(3);
+
+		a.addFirst(2);
+
+		System.out.println(a);输出 [2, 1, 3]
+
+		a.addLast(4);
+		
+		System.out.println(a); 输出 [2, 1, 3, 4]
+		
+                     2）、offer(Object e)
+
+                          offerFirst(Object e)
+
+                          offerLast(Object e)
+
+          例如：
+             
+                LinkedList a=new LinkedList();
+
+		a.add(1);
+
+		a.add(3);
+
+                a.offer(9);
+
+		System.out.println(a); 输出 [1, 3, 9]
+
+		a.offerFirst(7);
+
+		System.out.println(a); 输出 [7, 1, 3, 9]
+
+		a.offerLast(5);
+
+		System.out.println(a); 输出 [7, 1, 3, 9, 5]
+         
+                      3）、获取：
+
+                              getFirst() 无元素时，会报异常
+
+                              getLast()
+
+                              peek() 获取第一个  （无元素时，会返回null）
+
+                              peekFirst() peekLast()
+
+                              element() 获取第一个
+
+                            都是由集合调用，无参数
+
+                      4）、removeFirst() 无元素时，会报异常 （获取并移除第一个）
+
+                           poll() （无元素时，会返回null） 获取并移除第一个
+
+                           pollFirst()
+
+                           pollLast()
+
+                           pop() 弹出栈，只是模拟，弹出的是第一个
+
+————————————————————————————
+
+
+                 ◇  ◇  ◇  ◇   Vector  ◇  ◇  ◇  ◇
+
+         1、ArrayList
+
+                 优点: 底层数据结构是数组，查询快，增删慢。
+
+                 缺点: 线程不安全，效率高
+           
+            Vector
+ 
+                 优点: 底层数据结构是数组，查询快，增删慢。
+
+                 缺点: 线程安全，效率低
+
+           LinkedList
+
+                 优点: 底层数据结构是链表，查询慢，增删快。
+
+                 缺点: 线程不安全，效率高
+
+
+
+
+
+
+——————————————————————————————
+
+               ◇  ◇  ◇  ◇ Iterator 迭代器（接口） ◇  ◇  ◇  ◇ 
+
+         1、上面每个类均实现了这个接口，有hasNext()和next（）方法
+
+         2、要从实现了Collection接口的类的实例中取出保存在其中的元素对象，必须通过Collection接口的Iterator()方法，
+
+返回一个Iterator接口。
+
+            因为要取出元素，collection的子接口都要实现hasNext()和next()方法，所以将这两种方法提取出来，放在一个
+
+接口里，也就是Iterator接口。  
+
+
+
+
+
+————————————————————————————          
+             
+ 
+              ◇  ◇  ◇  ◇   HashSet类    ◇  ◇  ◇  ◇
+
+         1、作为Set集合的一种，首先是无序的，不可重复的；允许存放null值；底层封装HashMap；
+
+实现是不同步的，线程不安全；
+
+            HashSet继承自AbstractSet，实现了Set接口。内部使用HashMap来存储数据，数据存储在HashMap的key中，
+
+value都是同一个默认值：
+
+         2、HashSet
+底层数据结构是哈希表。(无序,唯一)
+如何来保证元素唯一性?
+
+
+                  1）、依赖两个方法：hashCode()和equals()
+
+
+                        它就是让地址与里面存放的值建立起联系。
+
+          其用法：
+
+                  HashSet a=new HashSet();
+
+                  a.add("aaa");
+
+                  a.add("nnn");
+
+                  a.add("sss"); 
+
+                  a.add("sss");
+
+                  System.out.println(a); //输出 [aaa, sss, nnn] ，不重复
+         
+                  for(Object c:a) {
+        	        
+                     System.out.println(c); 输出 aaa
+                                                 sss
+                                                 nnn
+                  }
+
+    解析上面代码：
+		
+        1）、通过查看add()方法的源码，底层是使用HashMap的put()方法实现元素的存取，继续查看put存储元素的源码，
+
+             可知要保证存储元素的唯一性依赖于元素的equals和hashCode方法的实现，首先看hashCode方法，
+
+             如果存在hash值和待存储元素的hash值相等的元素，则继续通过equals方法比较二者。如果相等则不存储。
+
+        2）、由于String类重写了equals()和hashCode()方法: 这两个方法都是依赖于String对象的内容，只有字符串内容
+
+             一样就认为是相等的，不会在集合中存储。
+
+
+另：
+
+    既然HashSet的底层封装HashMap，
+
+    HashMap存储的key的内部数据结构是数组+链表+红黑树，HashMap是key-value来存储的，HashSet只是用到它的Key，value
+
+都为null。
+
+    假如用的哈希算法是与地址有关，就是对存放的对象的地址进行一定的修改，这个算出来的值就是hash值，假如另外一个对
+
+象的地址算出来与里面的对象有一个相同，则在其下面挂上，把上面的地址复制在自己身上，这就是链表，假如链表的长度
+
+超过了8个，则java内部会将链表结果换成红黑树。
+
+    HashMap的键不能重复，所谓不能重复，是hash值能冲突，hashcode()方法算出来的就是hash值，hash值相同，会继续用
+
+equals()方法来判断，如果它不相同，则可以存放，相同，则不会存放。
+
+
+——————————————————————————
+
+
+                   ◇  ◇  ◇  ◇  LinkedHashSet 类  ◇  ◇  ◇  ◇
+
+
+   1、LinkedHashSet
+底层数据结构是链表和哈希表。 (FIFO插入有序,唯一)
+
+
+         1）、由链表保证元素有序
+
+    
+         2）、由哈希表保证元素唯一
+
+  2、public class LinkedHashSet<E>  extends HashSet<E> implements Set<E>, Cloneable, Serializable
+
+     这里的<E>指的是泛型
+
+     关于泛型：
+
+             所谓的泛型，就是类型的参数化
+
+     如果有泛型，不使用时，参数的类型会自动提升成Object类型，如果再取出来的话就需要向下强转，就可能发生
+
+类型转化异常(ClassCaseException)；
+
+    不加泛型就不能在编译期限定向集合中添加元素的类型，导致后期的处理麻烦。
+
+    例如：
+
+          List<String> list = new ArrayList<String>();  // <String> 就是加了泛型
+
+          list.add("123");list.add("hello");
+        
+          Iterator<String> it = list.iterator();
+
+          while(it.hasNext()){
+
+            // 因为添加了泛型，就说明集合中装的全部都是String类型的数据
+
+            // 所以这里用String类型接收，就不会发生异常，并且可以使用String的方法
+
+            String str = it.next();
+
+            System.out.println(str.length());
+
+          }
+
+使用泛型的注意点:
+
+             1、泛型不支持基本数据类型
+
+             2、泛型不支持继承，必须保持前后一致（比如这样是错误的：List<Object> list = new ArrayList<String>();
+
+    3、所谓的有序，是按我们插入的顺序输出，它与HashSet唯一的区别是LinkedHashSet内部使用的是LinkHashMap。
+
+这样做的意义或者好处就是LinkedHashSet中的元素顺序是可以保证的，也就是说遍历序和插入序是一致的。
+
+   4、LinkedHashSet : 存储有序,元素不可以重复.
+
+      TreeSet : 存取无序, 但是可以排序 (自然排序), 元素不可以重复.
+
+   
+————————————————————————————
+
+                ◇  ◇  ◇  ◇   TreeSet类   ◇  ◇  ◇  ◇
+
+
+         1、TreeSet
+底层数据结构是红黑树。(唯一，有序)
+，jdk8之后是红黑树，之前是二叉树。
+  
+            1）、 如何保证元素排序的呢?    
+自然排序 和 
+比较器排序（也叫定制排序 ）
+
+            2）、如何保证元素唯一性的呢?
+   根据比较的返回值是否是0来决定
+
+         2、TreeSet是JAVA中集合的一种，TreeSet 是一个有序的集合，它的作用是提供有序的Set集合。
+
+         3、排序：当向TreeSet中添加自定义对象时，有2种排序方法:
+
+                                                 1：自然排序  2、定制排序
+
+                  1）、自然排序：要求自定义类实现java.lang.Comparable接口并重写compareTo(Object obj)方法。
+
+                       在此方法中，指明按照自定义类的哪个属性进行排序
+
+                  2）、定制排序实现的是comparator接口
+
+            在使用定制排序或是自然排序时，在其用到的类中都要重写hashCode()与equals()方法
+
+         4、“ 自然排序 ”或者“根据创建TreeSet 时提供的 Comparator 进行排序，这取决于使用的构造方法
+
+              如果是自然排序，就用无参构造函数，即：
+
+                        TreeSet a=new TreeSet();
+              
+              如果是用比较器排序，则用到：
+
+                     TreeSet a=new TreeSet(Comparator<? super E> comparator)，即参数传入实现了Comparator接口的
+
+类的对象。
+
+         <>是指泛型，<? super E> 里的“ ? ”是通配符，这里设置的是泛型的下限，例如：<? super Number>这个
+
+表示只能接受Number类及Number类的父类。Number类就是下限
+
+         <? extends E>设置的是泛型的上限，例如：<? extends Num>这个表示只能接受Num类及它的子类，Num类就是上限。
+
+例如：
+
+       上课的练习:
+
+       用字符串的长度给TreeSet存储：
+
+       import java.util.Comparator;
+
+       import java.util.TreeSet;
+
+               public class C{
+
+                  public static void main(String [] args){
+
+                     TreeSet a=new TreeSet(new My());
+
+                     a.add("aaa");
+
+                     a.add("kkkk");
+
+                     a.add("vv");
+
+                     System.out.println(a);// 输出[vv,aaa,kkkk]
+
+                 }
+               }
+ 
+               class My implements Comparator{
+
+                   public int compare(Object o,Object o1){
+
+                        String s=(String)o;
+
+                        String s1=(String)o1;
+
+                        int a=s.length()-s1.length();
+
+                        return a==0?s.compareTo(s1):a; //字符串String类已经实现了compareTo()方法。
+
+                        长度相同，则比较字符串的内容，再决定是否要存进去。
+                   }
+                }
+
+例如：
+
+     二叉树：
+
+         TreeSet的底层是封装着TreeMap，一样是用着键值对。
+
+     二叉树是有节点一说，根据值来确定节点，先传进去的数当父节点，后面传进的数与它进行比较，比它大就放在右边，
+
+比它小就放在左边，后面来的数继续比较，假如左节点有数，则与左节点的左节点比较，没有了节点则插入，右边也是一样。
+
+     比到没有节点则插入。（只是写一个可以存int的TreeSet，并不是用TreeSet去存储）
+
+     public class H{
+	
+            private class Node{  //表示二叉树的节点
+
+                 public int value;  //表示节点里存放的值
+ 
+                 public Node left;  //左节点
+
+                 public Node right; //右节点
+
+                 public Node(int value){  //带参数的构造函数，将值传入新的节点中
+
+                            this.value=value;
+
+                  }
+             }
+
+     public Node root; //根节点
+
+     public void add(int value){ //将值传进来进行比较
+
+        if(root==null){  //也就是没有根节点
+
+           root=new Node(value); //则第一个数就是跟节点，将值传进根节点中去。
+
+        }
+      
+        insert(root,value); //有了根节点，则传进去进行与根节点的值比较
+     }
+
+     public void insert(Node Parents,int value){
+
+        if(Parents.value>value){ //比较节点的值与传进去的值
+
+                if(Parents.left==null){  //判断左节点是否为空
+
+                        Parents.left=new Node(value); //为空则将值传入左节点
+                 }
+           else insert(Parents.left,value); //不为空，则递归，继续与左节点的值进行比较
+           
+        }
+
+        if(Parents.value<value){ //与上面一样，只不过这个是与右边
+
+                  if(Parents.right==null){
+
+                       Parents.right=new Node(value);
+                  }
+           else insert(Parents.right,value);
+        }
+        else return ;//如果相等，则直接返回，不添加
+     }
+
+     public static void main(String [] args){
+
+             H a=new H();
+
+             a.add(10);//引用方法
+
+             a.add(2);
+
+             a.add(5);
+
+             a.add(7);
+
+             a.add(11);
+       
+             a.print(); //打印数字
+     }
+     
+     public void print() {
+   
+    	  print(root); //因为静态方法不能引用非静态变量，所以要另外弄一个print方法
+     }
+     
+     public void print(Node a) {
+
+    	if(a==null)
+
+    		return ; //节点为空，则返回
+    	
+    	print(a.left); //先打左节点
+
+    	System.out.println(a.value);
+
+    	print(a.right);//再右边
+    	
+     }
+
+}
+
+         5、TreeSet中存储的类型必须是一致的，不能一下存int，一下又存string
+
+
+——————————————————————————————————————
+
+     ◇  ◇  ◇  ◇  ◇  ◇  ◇  ◇ Map接口 ◇  ◇  ◇  ◇  ◇  ◇  ◇  ◇
+
+  1、Map接口是集合的另一大类，Map接口中键和值一一映射. 可以通过键来获取值。
+
+  2、实现它的类有HashTable、HashMap、TreeMap等等
+
+  3、Map的基础操作：
+
+            Map 初始化：
+
+                      Map<String, String> map = new HashMap<String, String>();
+
+            其中，<>是泛型，jdk5之前前后必须都加类型，且一致
+
+，之后，Map<String, String> map = new HashMap<>();
+
+编译器自己会判断，且运行时，泛型会被擦除，即JVM是会自己去判断类型转换的（通过getClass()方法）。
+
+           插入元素：
+ 
+                      
+
+map.put("key1", "value1");
+
+
+
+           获取元素：
+
+                      
+
+map.get("key1")
+
+ ，获得是key1的值value
+
+           移除元素：
+
+                      
+
+map.remove("key1");
+
+ 返回的是它要移除的Key1的值value
+
+           清空：
+
+                      map
+
+map.clear(); 返回类型为空：void
+
+
+————————————————————————————————————————————
+
+    ◇  ◇  ◇  ◇  ◇  ◇  ◇ HashMap类  ◇  ◇  ◇  ◇  ◇  ◇  ◇    
+
+   1、它里面的方法：
+
+       1）、put(K key,V value):插入元素
+
+       2）、获取元素：get(Object key),键是唯一的，可以通过键来找到它的值，返回的是它的值。
+
+       3）、entrySet(),返回的是Set<Map.Entry<K,V>>，也就是键值对的关系。
+
+            Map接口内部有一个接口：Entry。
+
+            因为接口是不能实例化的，内部接口只有当它是静态的才有意义。因此，默认情况下，内部接口是静态的，
+
+不管你是否手动加了static关键字。
+
+            Interface Map.Entry<K,V>，外部要访问内部接口，通过外部接口直接调用内部接口，也就是Map.Entry
+
+            Entry里有可以获得键和值的方法，getKey()、getValue()
+
+用法：
+
+     import java.util.HashMap;//代码里用到的接口都要导入进包
+
+     import java.util.Iterator; //用到了迭代器
+
+     import java.util.Map.Entry; //用到了内部接口
+
+     import java.util.Set; //用entrySet()方法时返回的Set的对象，向上转型了，所以也要导入Set接口
+
+     public class Hello{
+
+           public static void main(String [] args){
+
+              HashMap a=new HashMap();
+
+              a.put("a","aa");
+
+              a.put("ab","aaa");
+
+              a.put("cc","aa");
+
+              a.put("cc","aaa");//HashMap键不能重复，后面若是重复了，会替换掉前面相同的，有一种替换的感觉，修改
+
+用这种进行修改值。
+
+              Set a1=a.entrySet();
+      
+              Iterator a2=a1.iterator();
+      
+              while(a2.hasNext()) {
+    	  
+    	           Entry a3=(Entry)a2.next();//用到的是Entry接口，所以要先强转成Entry，再调用它里面接口的方法
+
+    	           System.out.println(a3.getKey()+":"+a3.getValue());
+    	  
+              }
+  
+              ///打印的是：cc:aaa
+
+                           a:aa
+
+                           ab:aaa
+     
+             }
+        }
+
+       Entry接口里还有一个方法：setValue(V Value)，返回的是V，这个是修改所有键的值。
+
+       4、keySet():返回的是Set对象的key值，即：Set<K>
+
+   用法：
+
+        import java.util.HashMap;
+
+        import java.util.Iterator;
+ 
+        import java.util.Set;
+
+        public class Hello{
+
+            public static void main(String [] args){
+
+               HashMap a=new HashMap();
+
+               a.put("a","aa");
+
+               a.put("ab","aaa");
+
+               a.put("cc","aa");
+
+               a.put("cc","aaa");
+
+               Set Key1=a.keySet();//获得的是键值
+      
+               Iterator a2=key1.iterator(); //用迭代器来进行迭代，通过来实现Collection接口的iterator()方法，
+
+来返回Iterator接口的对象，再由Ietrator接口的引用来指向该对象，这个对象其实就是实现了Iterator接口的类的对象，
+
+用Iterator接口的引用调用接口里的方法（此时已经被实现了这些方法，只需接口的引用调用即可）
+      
+               while(a2.hasNext()) {
+    	  
+    	              Object  key=a2.next(); 
+
+    	              System.out.println(a.get(key)); //get(Object key)是HashMap的方法，自然要用HashMap的对象
+
+                      的引用来调用，它返回的是与Key相对应的值。
+
+                      //输出：aaa
+                              aa
+                              aaa
+
+                      //  HaspMap也是无序的，键不能重复，可以为空（null)
+                } 
+            }
+        }
+  
+        5、3个大类的比较：
+
+              HashTable: 其内部结构是哈希表，是同步的，不允许null作为键，不允许null作为值。
+
+              HashMap: 其内部结构是哈希表加链表（jdk8之后修改为哈希表配合红黑树），允许null作为键，允许null作为
+
+       值。不同步。
+
+              TreeMap:其内部结构为二叉树，不同步，可以对map集合的键进行排序。
+
+
+
+——————————————————————————————————————————-——————
+
+            ◇  ◇  ◇  ◇  ◇  ◇  ◇  TreeMap类  ◇  ◇  ◇  ◇  ◇  ◇  ◇ 
+
+     1、TreeMap类，其描述：
+
+                         public   class   TreeMap<K,V>   extends   AbstractMap<K,V>
+
+                         implements   NavigableMap<K,V>, Cloneable, Serializable
+
+        <K,V>就是泛型，K是指key的类型，即“ 键 ”。
+
+                       V是指values的类型，即“ 值 ”。
+
+     2、几种Map接口的实现类：
+
+          1）、HashMap可实现快速存储和检索，但其缺点是其包含的元素是无序的，这导致它在存在大量迭代的情况下表现不佳。
+
+          2）、LinkedHashMap保留了HashMap的优势，且其包含的元素是有序的。它在有大量迭代的情况下表现更好。
+
+
+    LinkedHashMap类是HashMap类的子类——》
+
+               public  class  LinkedHashMap<K,V> extends HashMap<K,V> implements Map<K,V>
+
+               它的有序是按照你插入的顺序排序。
+
+          3）、TreeMap能便捷的实现对其内部元素的各种排序，但其一般性能比前两种map差。
+     
+     3、TreeMap类里面有两种排序，取决于你选择的构造方法：
+
+          1）、自然排序：
+
+                  就是无参数构造方法：TreeMap<K,V> a=new TreeMap<>();
+ 
+               实现Comparable接口的compareTo(T t)方法，该方法返回值类型为int，Comparable接口是java.lang包里的接口，
+
+          它只有一个抽象方法。
+
+例子：
+
+     import java.util.TreeMap;
+
+     import java.util.Set;
+
+     import java.util.Iterator;
+
+     public class H{
+
+        public static void main(String [] args){
+
+              TreeMap<String,Integer> a=new TreeMap<>();
+
+              a.put("bbb",24);
+
+              a.put("aaa",12);
+
+              a.put("ccc",39);
+
+              Set<String> key=a.keySet();
+
+              Iterator<String> i=key.iterator();//如果从一开始就用到了泛型，那么要一直用，这里的迭代器的泛型也要
+
+                                                  与上面的一致。
+
+              while(i.hasNext()){
+
+                   System.out.println(i.next()); 
+
+              }
+          }
+     }
+
+      上面的代码就是有序输出 aaa bbb ccc ，这就是自然排序，因为String类已经实现了Comparable接口的compareTo(T t)
+
+方法，是按照字母表的顺序来进行排序的。   
+
+      如果是按值来进行排序，则可以用另外一个方法 ——》 values()
+
+                Collection<Integer> b=a.values();
+
+                Iterator<Integer> i=b.iterator(); 
+
+      Integer类也是已经实现了Comparable接口的compareTo(T t)方法，是按照数字的从小到大来进行排序的。
+
+      也就是会输出：12 24 39
+
+      还有一种方法，将键值对都输出来，就是entrySet()
+
+代码如下：
+
+         import java.util.TreeMap;
+
+         import java.util.Map;
+
+         import java.util.Set;
+
+         import java.util.Iterator;
+
+         import java.util.Map.Entry;
+
+         public class H{
+
+             public static void main(String [] args){
+ 
+                      TreeMap<String,Integer> a=new TreeMap<>();
+
+                      a.put("ccc",39); //注意Map接口里的添加元素的方法是put()方法
+
+                      a.put("aaa",89);
+
+                      a.put("bbb",24);
+
+                      Set<Map.Entry<String,Integer>> b=a.entrySet();//注意：这里用到了Map的内部接口Entry，要引入
+
+                                                                      包里的Map接口
+
+                      Iterator<Map.Entry<String,Integer>> i=b.iterator();
+
+                      while(i.hasNext()){
+
+                                System.out.println(i.next()); //这里输出的就是：aaa=89
+                                                                                bbb=24
+                                                                                ccc=39
+                      }
+             }
+       }
+
+ 上面输出的就是键值对的关系，也可以利用Entry接口里的方法getKey()和getValue()将他们的键和值单独提取出来。
+
+   while(i.hasNext()){
+
+                   Entry<String,Integer> c=(Entry<String,Integer>)i.next();//注意：你前面加了泛型，后面强转的时候
+
+                                                                             也要加，不然不能编译
+
+                   //这里用到了Entry接口，要引入Entry接口，import java.util.Map.Entry;
+
+                   System.out.println(c.getKey()+":"+c.getValue()); //这里输出来就是：aaa:89
+                                                                                      bbb:24
+                                                                                      ccc:39
+
+              }
+
+                2）、定制排序：
+
+                         按照自己想要的去排序：这个时候用的构造方法是：
+
+                                 TreeMap<K,V> a=new TreeMap<>((Comparator<? super K> comparator));
+
+                     Comparator接口是函数式接口，只有一个抽象方法：compare(T t1,T t2)，它是java.util包里的。
+
+        例如：
+ 
+         import java.util.Map; 
+
+         import java.util.TreeMap;
+
+         import java.util.Set;
+
+         import java.util.Iterator;
+
+         public class H{
+
+             public static void main(String [] args){
+
+                TreeMap<String,Integer> a=new TreeMap<>(
+
+                                                        ( String s1,String s2 )->{
+
+                                                         int a1=s1.length()-s2.length();
+
+                                                         return a1==0?s1.compareTo(s2):a1;
+
+                                                        }); //因为Comparator
+
+                接口是函数式接口，所以可以用Lambda表达式，这里就是实现了compare()方法，以字符串的长度来排序。
+                                                   
+                    a.put("kkk",20);
+
+                    a.put("iiii",25);
+
+                    a.put("yy",23);
+
+                    a.put("e",21);
+
+                    a.put("c",45); //注意长度相同，就用compareTo()方法来比较它们在字母表的顺序，上面写的方法是
+
+                                     这样定义的
+
+                    a.put("yy",89); //注意这里长度与上面的相等，且内容又一样，所以这里只会输出一个，后面的会输出，
+
+                                      也有一种替换的感觉。
+
+                    Set<Map.Entry<String,Integer>> b=a.entrySet();
+
+                    Iterator<Map.Entry<String,Integer>> i=b.iterator();
+
+                    while(i.hasNext()){
+
+                                System.out.println(i.next());//这里输出的是c=45
+
+                                                                           e=21
+
+                                                                           yy=89
+
+                                                                           kkk=20
+
+                                                                           iiii=25 
+                    }
+             }
+       }
+
+————————————————————————————————————————————
+ 
+            ◇  ◇  ◇  ◇  ◇  ◇  ◇  红黑树  ◇  ◇  ◇  ◇  ◇ ◇  ◇  ◇ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+————————————————————————————————————————————
+
+            ◇  ◇  ◇  ◇  ◇  ◇  collections工具类  ◇  ◇  ◇  ◇  ◇  ◇
+
+   1、collections工具类里面就是封装了一些可以用于集合的方法。
+
+   2、在java.util包里，  它的描述：  public class Collections extends Object
+   
+   3、它里面的方法都是静态的，可以直接类名调用。
+
+         1）、排序：sort(List<T> list)，这里的<T>就是泛型。
+
+                    它还有一种重载方法，就是可以实现comparator接口的compare(Object o,Object o1)方法，来进行自己
+
+想要的排序:sort<List<T> list,Comparator<? super T> c) ，其中 <? super T> ，super是父类，这里表示泛型的下限，即T
+
+和T的父类才能用。
+
+   例如：
+
+        import java.util.List;
+
+        import java.util.Iterator;
+
+        import java.util.ArrayList;
+
+        import java.util.Collections;
+
+        public class L{
+
+           public static void main(String [] args){
+
+              List<String> list=new ArrayList<>();
+
+             list.add("a");
+
+             list.add("d");
+
+             list.add("b");
+
+             list.add("k");
+     
+             list.add("ccccc");
+
+     System.out.println(list); //输出  [a, d, b, k, ccccc]，list所谓的有序是指输出的顺序与插入的顺序一致
+
+     Iterator<String> a=list.iterator(); //迭代，输出：a
+                                                       d
+                                                       b
+                                                       k
+                                                       ccccc 
+
+     while(a.hasNext()){
+
+         System.out.println(a.next());
+
+     }
+    
+    Collections.sort(list);//它的排序是按照字母在字母表来排序的，不是字符串长度
+
+    System.out.println(list); // 输出的是[a, b, ccccc, d, k]
+
+    }
+   }
+
+
+ 
+如果想要让它是以字符串的长度来进行排序：
+
+  则可以用Collections的sort的另一个重载方法：sort<List<T> list,Comparator<? super T> c)
+
+  在它的参数里返回Comparator的对象，也就是该接口的实现类的对象，该对象只有一个抽象方法：
+
+compare(Object o,Object o1),所以它是函数式接口，可以用Lambda表达式。
+
+  也就是
+
+       Collections.sort(list,(s1,s2)->{int a=s1.length()-s2.length();return a==0?s1.compareTo(s2):a;});
+
+  字符串类已经实现了compareTo方法。
+
+      2）、swap(list<T>,int i,int j)
+
+   用法：（借用上面的代码）
+
+           Collection.swap(list 2,3); //第2个与第3个进行交换，它这个是从1开始算
+
+           System.out.println(list);
+
+      3）、reverse(List<T> list)
+ 
+  用法：（用上面的代码）
+
+      Collections.reverse(list);
+
+      System.out.println(list); //将list集合反着输出，与插入顺序相反。
+
+      4）、max()和min()
+
+  用法：
+
+      System.out.println(Collections.max(list)); //集合的最大值，集合里是字母的话，按照字母表来进行排序
+
+      System.out.println(Collections.min(list)); //集合的最小值
+
+    
+     5）、reverseOrder(): 将排序规则反着来。
+
+          它还有一种重载方法：reverseOrder(Comparator a),它们返回的都是Comparator接口的对象。
+
+  用法：（一样是借用上面的代码）
+
+         因为这里用了Comparator接口来创建引用，所以要引入该接口：import java.util.Comparator;
+
+     Comparator<String> a=Collections.reverseOrder();
+
+     Collections.sort(list,a);
+
+     System.out.println(list);
+
+     还有一种就是将你定的规则来排序（反着来）
+
+       Comparator<String> a=Collections.reverseOrder(
+    		 
+                         (s1,s2)->{ int a1=s1.length()-s2.length();return a1==0?s1.compareTo(s2):a1;}
+    		    );
+
+       Collections.sort(list,a);
+
+       System.out.println(list);
+
+
+
+
+
+
+
+——————————————————————————————————————————————
+
+           ◇  ◇  ◇  ◇  ◇  ◇ 泛型 ◇  ◇  ◇  ◇  ◇  ◇
+
+  1、<>就是泛型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+——————————————————————————————————————————
+     ◇  ◇  ◇  ◇   ◇  ◇  可变参数   ◇  ◇  ◇  ◇   ◇  ◇  ◇  
+
+  1、可变参数就是...
+
+  2、就是不限制你输入多少
+
+  3、例如：
+
+           public class A{
+
+             public static void main(String[] args){
+
+                  o(1,11,2,3,4); //可以输入任意的数字进去
+
+             }
+
+             public static void o(int...a){
+
+                for(int i=0;i<a.length;i++){
+
+                        System.out.println(a[i]);
+
+                 }
+              }
+           }
+
+  注意，前面可以加别的参数，但是后面不行，会影响JVM的判断，不知道该在哪里取数。
+
+        就是：
+
+              o(String a,int...a){ } 这个可以
+
+              o(int...a,String a){ }这个不行
+
+
+
+
+——————————————————————————————————————————
+
+    ◇  ◇  ◇  ◇  ◇  ◇    Lambda表达式   ◇  ◇  ◇  ◇  ◇  ◇  ◇  ◇  
+
+     1、java8的新特性之一
+
+     2、匿名内部类的简化，只不过Lambda是要在接口上使用，且内部只有一个抽象方法
+
+     3、有且仅有一个抽象方法的接口称为函数式接口，且可以用注解 @FunctionalInterface 来判断是否是函数式接口，即使
+
+没有显式注解，也会隐式声明。
+
+     4、Lambda表达式与匿名内部类的区别：
+
+          除了语句简化外，匿名内部类编译是有字节码文件的，而lambda表达式是没有的。
+
+     5、它的符号：   （）->{    };  
+
+        左边是它的接口里的抽象方法的参数，右边是抽象方法的具体实现，也就是方法体的内容。
+
+例如：
+       public class Hello {
+
+          public static void main(String [] args){
+	   
+	       ab a=(new ab() {
+ 
+		   public void s() {
+
+			   System.out.println("jkjkjk");
+		   }
+	       });  //这个就是匿名内部类，里面实现的是接口的抽象方法
+	   
+	      a.s();用接口的引用指向实现了该接口的类的对象，再来调用本接口的方法，此时调用的是已经实现了得方法。
+          }
+      }
+       interface ab{
+	             void s();
+       }
+
+  用Lambda表达式来简化匿名内部类：
+
+       ()->{ System.out.println("jkjkjk"); };   或者    ()-> System.out.println("jkjkjk");
+ 
+   其中，如果方法里有参数，有一个参数，左边的括号可去掉。且参数类型可省略，Lambda表达式会自己推算。
+
+      6、还有一种双冒号操作：
+
+         当方法里有一个参数时，且方法体内只是要输出这个参数，则可以用上双冒号  “  ::  ”
+
+    例如：
+        
+         public class H{
+
+             public static void main(String [] args){
+
+                     ab a1=System.out::println;// 等于 ab a1=(b)->System.out.println(b);
+
+                     a1.c(2);   
+             }
+         }
+         interface ab{
+
+              void c(int b);
+         }
+
+       7、一些常用的函数式接口：
+
+            这些常用的函数式接口在java.util.function包里
+
+            1）、Consumer接口：Interface Consumer<T> 像T、E这种都是指任意类型
+
+         T - the type of the “ input ” to the operation
+
+                 它里面只有一个抽象方法：accept(T t)，返回值为空，根据接口名：消耗，即消耗完元素即释放。
+
+                 还有一个默认方法：
+
+                                      返回值类型                     方法名
+
+                                   default Consumer<T>	   andThen(Consumer<? super T> after)
+
+                 即可连着调用
+
+  例如：
+
+      import java.util.function.Consumer; //记得引入接口Consumer
+
+      public class H{
+  
+             public static void main(String [] args){
+
+                 String [] a={"1111,2","3333,5"};
+
+                  b(a,(s1)->{ 
+
+                              System.out.println(s1.split(",")[0]);
+
+                  // 注意：split(String a)方法就是按照里面的
+
+                     字符串来分割数组里的一个字符串的，它的返回值还是数组。所以这里返回的数组里的第一个字符串
+
+                     的“ 逗号 ”的前面的字符串。
+                        
+                             },
+
+                      (s2)->{
+                              System.out.println(s2.split(",")[1]);
+
+                  // 注意：这里仍然是进行分割，以“ ， ”来进行
+
+                     分割，只不过这里打印的是第一个字符串的“ 逗号 ”的后面的字符串。
+
+                     的字符串。
+                         
+                             }
+                   );
+
+              }
+       public static void b(String [] s,Consumer<String> a,Consumer<String> a1){ //注意：这里的Consumer是要加泛型
+
+                                 的，与它里面的抽象方法accept(T t)一致，接收的是字符串，所以这里的泛型是String。
+
+           for(String st:s){
+
+                   a.andThen(a1).accept(st); //这里用到了循环，是因为数组里的字符串不止一个，要一个一个来
+  
+                 进行分割，一个一个来打印出来。
+
+               
+           }
+ 
+       }       
+   }
+
+    这个例子就是将String数组的两个字符串按照“ ，”来分割，然后一一打印出来。
+
+   
+            2）、Function接口：Interface Function<T,R>
+
+  T - the type of the “ input ” to the function
+
+  R - the type of the “ result ” of the function
+
+这个接口有3个默认方法，其中一个一样是 andThen():
+ 
+                             返回值类型                             方法名
+
+                        default <V> Function<T,V>	andThen(Function<? super R,? extends V> after)
+
+只有一个抽象方法是：apply(T t)
+
+                             返回值类型                             方法名
+
+                                R	                           apply(T t)
+“ T ”是输入的类型，“ R ”是输出的类型
+
+例子：
+
+     import java.util.function.Function;
+
+     public class L{
+
+         public static void main(String [] args){
+
+            String st="行行,25";
+
+            System.out.println(ab(st,(s)->s.split(",")[1],(i)->Integer.parseInt(i),(j)->j+100));
+        }
+
+        public static int ab(String str,Function<String,String> a,Function<String,Integer> a1,
+
+Function<Integer,Integer> a2){ //注意：这里会犯的一个错误，这里Function<String,String>，中间要加上逗号！！！
+
+                        return a.andThen(a1).andThen(a2).apply(str);
+        }
+
+      }
+
+
+上面这个例子就是，将一个字符串的数字提取出来，将它转换成int型，并将它加上100，再打印出来。
+
+
+            3）、Predicate接口： Interface Predicate<T>
+
+T - the type of the “ input ” to the predicate
+
+它里面的抽象方法是test(T t),返回的布尔值，可以用来做一些判断。
+
+用法：
+
+     import java.util.function.Predicate;
+
+     public class L{
+
+        public static void main(String [] args){
+	 
+	   int a=110;
+	 
+	   System.out.println(ab(a,(a1)->a1>=100));
+
+        }
+
+       public static boolean ab(int a,Predicate<Integer> a1) { //注意泛型一定要加
+
+	   return a1.test(a);
+       }
+
+     }
+
+  上面的例子只是简单做了一下判断
+
+            4）、Supplier接口 ： Interface Supplier<T>
+
+   T - the type of “ results ” supplied by this supplier
+
+  它里面只有一个抽象方法：get()，返回的是“ T ”类型
+  
+  例子：
+           
+        import java.util.function.Supplier;
+
+        public class A{
+
+              public static void main(String [] args){
+
+                   int []a ={2,4,1,6,8,9};
+
+                   System.out.println(c(a,()->{
+
+                                               int c=0;for(int i=0;i<a.length;i++){
+
+                                                   if(a[i]>c){
+
+                                                            c=a[i];
+
+                                                   }
+
+                                                }
+
+                                               return c; })
+
+                                       );
+
+           }
+
+     public static int c(int []a,Supplier<Integer> b){
+
+               return b.get();
+
+     }
+}
+
+ 上面的例子是查找数组的最大值。               
+
+————————————————————————————————————————————————
+
+                ◇  ◇  ◇  ◇  ◇  ◇   Stream流    ◇  ◇  ◇  ◇  ◇  ◇
+
+   1、Stream 是接口，定义在java.util.stream包里的接口。
+
+   2、其描述：
+
+             Interface Stream<T>   ——————》T - the type of the stream elements
+
+   3、Stream 中文称为 “流”，通过将集合转换为这么一种叫做 “流” 的元素序列，通过声明性方式，能够对集合中的
+
+每个元素进行一系列并行或串行的流水线操作。
+
+      也就是Stream流是一个集合元素的函数模型，它不是集合，也不是数据结构，它本身并不存储任何元素，它是按需计算。
+
+      数据源是流的来源，可以是集合，可以是数组。
+
+   4、讲到流Stream就要提到集合，集合框架的Collection接口提供了一个方法stream()可以返回Stream接口的对象，可以去
+
+调用Stream接口的方法，其实也就是返回的是实现了该接口的类的对象，有一种向上转型的感觉。
+
+         1）、既然是Collection接口里的方法，那么自然它的子接口----》 List接口也能用，因为继承关系，子类如果
+
+不重写父类的方法，那么子类用的就是父类的原有的方法。
+
+    用法：
+
+         import java.util.List;
+
+         import java.util.stream.Stream;
+
+         import java.util.ArrayList;
+ 
+         public class A{
+
+           public static void main(String [] args){
+
+               List<String> a=new ArrayList<>();//注意：你前面加了泛型，那后面的 “ <> ”一定要加上，不能漏掉，
+
+                     //不然编译不通过，本来在之前是前后都要加上且一致，后面优化，可以自己判断，但<>一定要加上。
+
+               a.add("aaa");
+
+               a.add("bbb");
+
+               a.add("ooo");
+
+               a.add("uuu");
+
+               Stream<String> s=a.stream();
+
+               s.forEach(System.out::println);//这是Stream流的终结方法之一，forEach()，它里面的参数是函数式接口
+
+    Consumer接口的对象，它是接口，不能去创建实例，但可以让它的引用指向实现了这个接口的类的对象，也就是实现该接口
+
+    的抽象方法：accept(T t)方法，该方法返回值类型为空，即消耗完即结束。
+
+                                              //所以它可以用Lambda表达式来简化匿名内部类
+       
+               Stream <String> b=Stream.of("aaa","bbb","ooo","uuu");
+
+               b.forEach((c)->System.out.println(c)); //这个就是Lambda表达式的简写，上面的“System.out::println”
+
+    是双冒号操作，就是当方法里只有一个参数，且方法体内也只输出这个参数时，可以直接写成上面这样。
+
+            }
+         }
+
+           2）、那Map接口不是Collection接口的子接口，它就不能用直接调用Collection接口的方法Stream()，去将集合里
+
+    的元素放到Stream流中去，但它可以转换，它可以转换到Set集合里去，它里面有不少方法是返回Set接口的对象的，也就是
+
+    Set接口是Collection接口的子接口，可以调用Stream()方法。
+
+例子：
+
+     import java.util.Set;
+
+     import java.util.Map;
+
+     import java.util.HashMap;
+
+     import java.util.Map.Entry;
+
+     import java.util.Collection;
+ 
+     public class A{
+
+        public static void main(String [] args){
+
+            Map<String,Integer> a=new HashMap<>();
+
+            a.put("kkk",1);
+ 
+            a.put("ppp",2);a.put("www",3);
+
+      //第一种方法可以用keySet()方法，这个方法返回的是键，返回Set接口的对象，可以将它的键放到流中去。
+
+            Set<String> s=a.keySet(); //注意：你前面都用了泛型，自然这里也要与前面一致，也要与Map接口里的键的
+
+      类型一致，Map接口里的抽象方法keySet()【HashMap类已经实现了Map接口的抽象方法】是返回键到Set集合中去。
+
+            s.stream().forEach(System.out::println); //Set集合的对象可以直接调用Colleaction接口的stream()方法，
+
+      然后再调用流的终结方法，打印的是它的键。
+
+ 
+       //第二种方法，是返回Map集合的键值对的关系，返回Set接口的对象：entrySet()，将键值对一并放到流中去。
+
+         Set<Entry<String,Integer>> s=a.entrySet();
+
+         s.stream().forEach(System.out::println);//打印的是：ppp=2
+
+                                                             www=3
+
+                                                             kkk=1 （HashMap是无序的）
+
+
+       //还有一种方法，values()，这个是返回值，返回Collection接口的对象，可以将它的值放到流中去
+
+         Collection<Integer> c=a.values();//一样是要加泛型，与Map接口的值类型一致
+
+         c.stream().forEach(System.out::println); //打印出的是它的值
+        }
+      }
+
+   5、Stream接口里的方法分为两种：
+
+                1、延迟方法：方法返回类型是一个Stream，以便进行链式调用（除了终结方法，其余的都是）。
+
+                2、终结方法：返回值类型不是Stream接口对象，因此不在支持链式调用，比如count()和forEach()。
+
+   6、它里面的方法：
+
+         1）、静态方法：of(T...values)，其中3个点“...”代表就是可变参数，任意输入。还有一种重载方法 of(T t)，
+
+  一样返回的都是Stream接口的对象，也就是返回的一个Stream流。
+
+              静态方法，可以直接接口名调用。（上面已经说了流里面的数据源可以是集合，可以是数组。）
+
+              将数组的数据传到流中去，可以用of()方法：
+  用法：
+
+       import java.util.stream.Stream;
+
+       public class H{
+
+           public static void main(String [] args){
+
+                String [] a=new String[]{"1","2","3"};//创建String类型的数组有好几种方式，String是类，也就是引用
+
+           类型，
+
+                String [] a={"1","2","3"}; //也可以这样创建
+
+                Stream.of(a).forEach(System.out::println); //将数组的元素存放到流中去，再打印出来
+
+                Stream.of("2","3","4","1","5","6").forEach(System.out::println); //这样也可以，就是直接将字符串
+
+                存放进去。
+     
+              ————————————————
+
+                 Integer []a=new Integer[]{1,2,3};
+
+                 Stream.of(a).forEach(System.out::println); //这样打印出来是1，2，3
+  
+                 int [] a={1,2,3};
+
+                 Stream.of(a).forEach(System.out::println); //而这样打印出来就是数组的地址
+
+                 Stream.of(1,2,3).forEach(System.out::println);//这样打印出来的是1，2，3
+
+           }
+        }
+
+          2）、它的延迟方法：
+
+                   1、filter():过滤
+
+                        返回值类型                      方法名
+
+                        Stream<T>	        filter(Predicate<? super T> predicate)
+
+               Predicate接口是函数式接口，只有一个抽象方法：test(T t)，返回值类型是布尔值。用于做判断。
+
+    例子：
+          import java.util.stream.Stream;
+
+          public class H{
+
+              public static void main(String [] args){
+
+               Stream.of("张a","张b","yuan","张郁郁").filter((v)->v.startsWith("张")&&v.length()==3)).forEach(
+
+               System.out::println);
+          }
+       }
+                 
+          上面的例子就是找出那几个名字中姓张的且是3个字的。
+
+                    2、map方法：
+
+                         返回值类型                    方法名
+
+                        <R> Stream<R>	    map(Function<? super T,? extends R> mapper)
+
+                     map方法里面的参数是Function接口的对象，也就是该接口的引用指向实现这个接口的类的对象，因为它是
+
+       函数式接口，所以可以用Lambda表达式。
+
+ 例子：
+
+      比如就是将Person类里的名字取出来打印出来：
+
+     import java.util.stream.Stream;
+
+      class Person{
+
+           private String name;
+
+           private int age;
+
+           public Person(String name,int age){
+
+                this.name=name;
+
+                this.age=age;
+
+           }
+
+           public String getName(){
+
+             return name;
+
+           }
+
+           public int getAge(){
+
+            return age;
+
+           }
+
+          public String toString(){
+
+            return "Person["+"name:"+name+"age:"+age+"]";
+
+          }
+
+        }
+
+      
+      public class H{
+
+         public static void main(String [] args){
+
+             Stream<Person> a=Stream.of(new Person("v",23),new Person("jk",21),new Person("jm",23));
+
+             Stream<String> b=a.map((p)->p.getName());
+
+             b.forEach(System.out::println); //打印   v
+                                                      jk
+                                                      jm
+
+         }
+
+      }
+
+  map方法就是输进去的Person对象的数据，但返回的是他的名字
+
+                    3、collect()方法：
+
+                             返回值类型                    方法名
+
+                               <R,A> R  	collect(Collector<? super T,A,R> collector)
+
+     这个方法里面的参数也是一个接口的对象：Collector，也就是传进去返回是这个接口的对象即可,java.util.stream包里
+
+有一个final类Collectors，它里面有许多静态方法，有一种就是返回的是Collector接口的对象：
+
+                            返回值类型                                方法名
+
+                    static <T> Collector<T,?,List<T>>	             toList()
+
+     它的作用就是将流放到新的集合中去。
+
+     Collectors辅助类提供了大量的静态辅助方法来创建收集器为常见的使用场景服务，像将元素收集到一个集合中、分组和
+
+分割元素，或者根据不同的标准来概述元素。
+
+     所以将上面的例子稍微改一下，就是将Person对象的名字提取出来放到新的集合中去：
+
+     也就是，在map()方法后面加一个collect方法即可：
+
+             Stream<Person> a=Stream.of(new Person("v",23),new Person("jk",21),new Person("jm",23));
+
+             List<String> list=a.map((p)->p.getName()).collect(Collectors.toList());
+
+             System.out.println(list); //打印的是[v, jk, jm]
+
+     注意：记得引入List接口和Collectors类：
+
+             import java.util.List;
+
+             import java.util.stream.Collectors;
+
+                     4、还有一些较简单的方法：
+
+                        返回值类型                    方法名
+
+                        Stream<T>	         limit(long maxSize)
+
+                        Stream<T>	             skip(long n)
+
+                        Stream<T>	              distinct()
+
+                        long	                       count()
+
+                       static <T> Stream<T>	concat(Stream<? extends T> a, Stream<? extends T> b)
+
+             这3个方法，看名字就知道是干什么的，limit()方法就是限制流的最大长度，skip()方法就是跳过前面的长度，
+
+distinct()方法就是去重。
+
+             另一个方法，是终结方法，它的返回类型不是流，自然就是终结方法。，它的作用是计数。
+
+             concat()就是连接两个流，静态方法，直接接口名调用。
+
+例子：
+
+     import java.util.stream.Stream;
+
+     public class A{
+
+        public static void main(String [] args){
+
+          Stream.of("1","2","3","4").limit(3).forEach(System.out::println);//输出1，2，3
+
+          Stream.of("1","2","3","4").skip(2).forEach(System.out::println); //输出3，4
+
+          Stream.of("1","2","3","3").distinct().forEach(System.out::println);//输出1，2，3
+
+          System.out.println(Stream.of("1","2","3","3").count()); //输出4，也就是流里面的元素的个数
+        }
+    }
+          
+                  5、flatMap()方法：
+
+                   返回值类型                            方法名
+
+                  <R> Stream<R>	       flatMap(Function<? super T,? extends Stream<? extends R>> mapper)
+
+      这个方法里面的参数是Function接口的对象，也就是传入实现了它的抽象方法的类，让引用指向实现了它的类的对象即可，
+
+这个方法就是将一个元素的子集打散，再和起来成为另一个类型的集合，其前提是Function接口的返回类型要么是数组，要么是
+
+新的流。
+
+例如：
+
+      import java.util.stream.Stream;
+
+      public class H{
+
+        public static void main(String [] args){
+
+              Stream.of("he,1","ge,2","yu,3").flatMap((s)->Stream.of(s.split(","))).forEach(System.out::println);
+
+        }
+    }
+
+  解析上面的代码：
+
+             Stream.of(s.split(","))，可以看到Function接口的返回类型是一个新的流。
+
+  这个方法要在思考思考？？？？？
+
+
+
+
+
+  
+————————————————————————————————————————————————
+
+               ◇  ◇  ◇  ◇  ◇  ◇ io流 ◇  ◇  ◇  ◇  ◇  ◇
+ 
+    1、流的概念：IO流用来处理设备之间的数据传输,Java对数据的操作是通过流的方式
+
+    2、Java用于操作流的类都在java.io包里
+
+    3、流按流向分为两种:
+
+                     输入流（读取数据）input
+
+                     输出流（写数据） output
+   
+      流按操作类型分为两种:
+
+                    字节流 : 字节流可以操作任何数据,因为在计算机中任何数据都是以字节的形式存储的
+
+                    字符流 : 字符流只能操作纯字符数据，比较方便。
+
+    4、常用的IO流类：
+
+                1）、字节流的抽象父类：
+
+                 字节输入流 ：InputStream   ——》其描述：public abstract class InputStream
+
+                                                          extends Object
+ 
+                                                          implements Closeable
+
+ ◇ ◇ FileInputStream类，是InputStream的直接子类，其描述：public class FileInputStream extends InputStream
+
+       FileInputStream 从文件系统中的某个文件中获得输入字节。FileInputStream 用于读取诸如图像数据之类的原始
+
+字节流。 【文件输入流】
+
+       构造方法：  FileInputStream(File file)   和   FileInputStream(String name)
+
+       成员方法：  int read() 从输入流中读取一个数据字节，读到了-1就不读了，说明了没有了内容。
+
+       这里有一个小知识点：
+
+                   read()方法读取的是一个字节,为什么返回是int,而不是byte ？
+
+                   因为字节输入流可以操作任意类型的文件,比如图片音频等,这些文件底层都是以二进制形式的存储的,
+
+      如果每次读取都返回byte,有可能在读到中间的时候遇到111111111 那么这11111111是byte类型的-1,我们的程序是遇到-1
+
+      就会停止不读了,后面的数据就读不到了,所以在读取的时候用int类型接收,如果11111111会在其前面补上24个0凑足4个字
+
+      节,那么byte类型的-1就变成int类型的255了这样可以保证整个数据读完,而结束标记的-1就是int类型。
+
+例子：
+
+      读取文件里的内容：
+
+      import java.io.FileInputStream;
+
+      import java.io.IOException; 
+
+      public class A{
+
+          public static void main(String [] args)throws IOException{ //这里一定要抛出异常，否则编译不会通过，
+
+        【 【   H.java:13: 错误: 未报告的异常错误FileNotFoundException; 必须对其进行捕获或声明以便抛出
+
+                FileInputStream a=new FileInputStream("e:/1.txt");
+                              ^
+ FileNotFoundException是IOException异常的子类。
+                           
+                H.java:19: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+
+                while((i=a.read())!=-1){
+                       ^
+                H.java:29: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+
+                a.close(); 】】
+
+              FileInputStream a=new FileInputStream("e:/1.txt"); //文件里的内容是abc
+
+              int b;
+
+              while((b=a.read())!=-1){ // 不等于“ -1 ”就一直读
+
+                   System.out.println(b); //输出的是97 98 99，这里有编码的原因
+              }
+
+              a.close(); 【 要关闭资源 】
+           }
+       }
+     
+                 字节输出流 ：OutputStream  ——》其描述：public abstract class OutputStream
+
+                                                          extends Object
+
+                                                          implements Closeable, Flushable
+
+◇ ◇FileOutputStream 是OutputStream类的直接子类，其描述：public class FileOutputStream extends OutputStream
+
+     文件输出流是用于将数据写入 File 的输出流。FileOutputStream 用于写入诸如图像数据之类的原始字节的流。
+
+     知识点：
+
+           new FileOutputStream(file)这种构造方法，会把以前的内容都删除
+
+           new FileOutputStream(file,true);这种构造方法能追加内容
+
+           FileNotFoundException是IOException的子类
+
+           write(int b)，写数据
+
+           write(byte[] b) ;//一次写多个字节
+例子：
+
+      import java.io.FileOutputStream;
+ 
+      import java.io.IOException;
+
+      public class H{
+
+           public static void main(String [] args)throws IOException{
+
+                    FileOutputStream b=new FileOutputStream("e:/1.txt",true);//后面加了个true，就是写的内容不会
+
+                    覆盖原有的内容
+
+                    byte [] a={97,98,99};
+
+                    b.write(a);
+
+                    b.close();
+
+        }
+    }
+                      
+                2）、字符流的概念：
+
+                            1、字符流是可以直接读写字符的IO流
+
+                            2、字符流读取字符, 就要先读取到字节数据, 然后转为字符.
+
+                            3、写入字符, 需要把字符转为字节再写出.
+
+                    字符流的抽象父类：
+
+                              Reader  ——》其描述：public abstract class Reader
+
+                                                    extends Object
+
+                                                    implements Readable, Closeable
+
+◇ ◇ FileReader 读取字符流类，其描述：
+                                      public class FileReader extends InputStreamReader
+   
+                                      public class InputStreamReader extends Reader
+      就是Reader的子类：
+
+用法：
+
+     import java.io.FileReader;
+
+     import java.io.IOException
+
+     public class A{
+
+          public static void main(String [] args){
+
+              FileReader a=new FileReader("e:/1.txt");
+
+              int i;
+
+              while((i=a.read())!=-1){ //读取的仍是字节数据
+
+                 System.out.println((char)i); //转换成字符数据
+              }
+
+              ————————
+        
+              读数据还可以将读到的放到字符数组中去，一次性读完
+
+              FileReader a=new FileReader("e:/1.txt");
+
+              char [] b=new char[1024];
+
+              a.read(b);//将读到的放进字符数组中去
+
+              System.out.println(new String(b));//String类的构造方法，将字符数组转换为字符串。
+
+              ——————————
+
+              上面的读入过字符数组不够存放就会后面的内容就不会都出来
+
+              FileReader a=new FileReader("e:/1.txt");
+
+              char [] b=new char[1024];
+
+              int len=0; //定义读到的长度
+
+              while((len=a.read(b))!=-1){ //如果读到的是 -1，则说明没有内容了
+
+                    System.out.println(new String(b,0,len)); //打印到读到的长度的内容
+                 
+               }
+            }
+         }
+            
+               ————————————
+
+               还有一种类似数组，就是带缓冲的字符流类BufferedReader和BufferedWriter
+
+               字符流类 ：BufferedReader ，其描述：public  class  BufferedReader  extends  Reader
+
+      用法：
+
+             import java.io.FileReader;
+
+             import java.io.IOException;
+
+             import java.io.BufferedReader;
+
+             public class A{
+ 
+               public static void main(String [] args)throws IOException{ //抛出异常
+
+                      FileReader a=new FileReader("e:/1.txt");
+
+                      BufferedReader b=new BufferedReader(a); //创建缓冲区对象
+
+                      String s=null; 
+
+                      while((s=b.readLine())!=null){ //一行一行地读
+
+                             System.out.println(s);
+
+                      }
+ 
+                      a.close();
+
+                      b.close();//记住要关闭流
+              
+                  }
+              }
+
+                       Writer  ——》其描述：public abstract class Writer
+
+                                             extends Object
+
+                                             implements Appendable, Closeable, Flushable
+
+◇ ◇FileWriter类，其描述是： 
+
+                            public class FileWriter extends OutputStreamWriter
+
+                            public class OutputStreamWriter extends Writer
+
+    就是Writer类的子类：
+
+用法：
+
+    import java.io.FileWriter;
+
+    import java.io.IOException;
+
+    public class H{
+
+      public static void main(String [] args)throws IOException{
+
+           FileWriter a=new FileWriter("e:/1.txt");
+
+           a.write("aaa"+System.lineSeparator());//System.lineSeparator()这个是换行,下次写入东西的时候换行
+
+           a.flush();  //刷新，对于字符流而言，写的数据并未真正写入文件中去，只是写进了缓存区，
+
+                         要刷新一下才能写进文件去
+
+           a.write("bbb");
+ 
+           a.close(); //关闭就带有刷新功能
+
+       }
+    }
+
+ ——————————
+
+和Reader一样它也有字符流缓冲区 BufferedWriter类，其描述：public  class  BufferedWriter  extends  Writer
+
+缓冲区字符流的好处：
+
+      BufferedReader：
+
+             read()方法读取字符时会一次读取若干字符到缓冲区,然后逐个返回给程序, 降低读取文件的次数, 提高效率。
+
+      BufferedWriter：
+
+             write()方法写出字符时会先写到缓冲区缓冲区写满时才会写到文件, 降低写文件的次数, 提高效率
+
+             查看源码:字符缓冲区的大小是8192
+
+用法：
+
+     import java.io.FileWriter;
+
+     import java.io.BufferedWriter;
+
+     import java.io.IOException;
+
+     public class H{
+
+       public static void main(String [] args)throws IOException{
+
+            FileWriter a=new FileWriter("e:/1.txt");
+
+            BufferedWriter b=new BufferedWriter(a);
+
+            b.write("sadfhjv");
+ 
+            b.newLine();  //换行
+
+            b.write("11212");
+
+            b.close(); //对于缓冲对象而言，关闭流的时候，只要关闭流的时候，只要关闭了缓冲区流，就会先关闭被包装的
+
+                          流
+
+           // a.close();
+       }
+
+   }
+
+        5、关于文件复制：所谓的复制也就是从一个文件读取，写入另一个文件，图片复制也是一样。
+
+  1）、图片复制：
+
+       图片用字节流来复制：
+
+  import java.io.FileInputStream;
+
+  import java.io.FileOutputStream;
+
+  import java.io.IOException;
+
+  public class A{
+
+     public static void main(String [] args)throws IOException{
+ 
+      FileInputStream a=new FileInputStream("e:/timg.jpg");
+
+      FileOutputStream b=new FileOutputStream("d:/1.jpg");
+
+      int i;
+
+      while((i=a.read())!=-1){
+
+         b.write(i);
+      }
+
+      a.close();
+
+      b.close();
+   }
+} 
+
+   2）、文件复制用字符流（ 缓冲区 ）更好：
+
+   import java.io.FileReader;
+
+   import java.io.FileWriter;
+
+   import java.io.BufferedReader;
+
+   import java.io.BufferedWriter;
+
+   import java.io.IOException;
+
+   public class H{
+
+      public static void main(String [] args)throws IOException{ //记得抛出异常
+
+         BufferedReader a=new BufferedReader(new FileReader("e:/1.txt"));
+
+         BufferedWriter b=new BufferedWriter(new FileWriter("d:/2.txt"));
+
+         String buff;
+
+         while((buff=a.readLine())!=null){ //一行一行的读
+
+            b.write(buff);
+
+            b.newLine();//换行
+
+            b.flush(); //刷新以下写入文件，不刷新只是写进缓冲区内，防止缓存区已满
+         }
+
+         a.close(); //记得关闭资源
+
+         b.close();
+      }
+  }
+
+   3）、(1)里面的例子，读取太慢，字节流有缓冲流：BufferedInputStream和BufferOutputStream
+
+         这两个流是内置了缓冲区流,也就是说内部有一个 字节数组。
+
+         缓冲思想：
+
+                字节流一次读写一个数组的速度明显比一次读写一个字节的速度快很多，
+
+                java本身在设计的时候,加入了数组这样的缓冲区效果，
+
+                也考虑到了这样的设计思想(装饰设计模式后面讲解)，所以提供了字节缓冲区流
+
+         BufferedInputStream ————》
+
+                BufferedInputStream内置了一个缓冲区(数组)
+
+               从BufferedInputStream中读取一个字节时 ，BufferedInputStream会一次性从文件中读取8192个(8Kb),
+
+存在缓冲区中, 返回给程序，程序再次读取时, 就不用找文件了, 直接从缓冲区中获取，直到缓冲区中所有的都被使用过, 
+
+才重新从文件中读取8192个。
+
+         BufferedOutputStream  ————》
+
+                BufferedOutputStream也内置了一个缓冲区(数组)
+
+                程序向流中写出字节时, 不会直接写到文件, 先写到缓冲区去，直到缓冲区写满, BufferedOutputStream
+
+才会把缓冲区中的数据一次性写到文件里。
+
+         BufferOutputStream的flush和close方法的区别
+
+          1）、flush()方法  ————》 用来刷新缓冲区的,刷新后可以再次写出
+
+          2）、close()方法  ————》用来关闭流释放资源的的,如果是带缓冲区的流对象的close()方法,不但会关闭流,
+
+还会再关闭流之前刷新缓冲区,关闭后不能再写出。
+
+将（1）的例子修改一下：
+
+    import java.io.FileInputStream;
+
+    import java.io.FileOutputStream;
+
+    import java.io.BufferedInputStream;
+
+    import java.io.BufferedOutputStream;
+
+    import java.io.IOException;
+
+    public class H{
+
+      public static void main(String [] args)throws IOException{
+
+        BufferedInputStream a=new BufferedInputStream(new FileInputStream("e:/timg.jpg"));
+
+        BufferedOutputStream b=new BufferedOutputStream(new FileOutputStream("d:/1.jpg"));
+
+        int i;
+
+        while((i=a.read())!=-1){
+
+          b.write(i);
+ 
+          b.flush();
+
+        }
+
+       ——————————————
+
+        // 虽然上面的可以，但最好用数组
+
+        byte [] a1=new byte[1024]; //这是字节流，所以要用字节数组存储
+
+        int b1; //定义读取到的数，为-1则说明没有内容了
+
+        while((b1=a.read(a1))!=-1){
+
+             b.write(a1,0,b1);
+
+             b.flush();
+
+         }
+
+         ——————————————
+
+          a.close();
+
+          b.close();
+      }
+   }
+
+   4）、将键盘输入的内容打印在控制台上：
+
+        import java.io.InputStream;
+ 
+        import java.io.IOException;
+
+         public class H{
+
+             public static void main(String [] args)throws IOException{
+
+               InputStream a=System.in; //System是类，in是成员变量，但它的定义是输入流
+
+                                          也就是返回了一个输入流的对象，后面当然可以引用read()方法
+
+               int read=a.read(); //这里引用了read()方法，就要抛出IO流异常
+
+               System.out.println(read); //打印在控制台上
+
+             }
+         }
+
+       上面只能输入一次，打印一次，要想它可以一直打印，可以改用循环：
+
+          InputStream a=System.in;
+
+          while(true){ //这个就是死循环的一种
+
+             int read=a.read();
+   
+             System.out.println(read);
+
+          }
+        注意上面，你输入一个字母a，再换行，它打印的是 “ 97 ” 和“ 换行符 ”在ASCII码表的数字
+
+   5）、转换流：
+
+        将输入字节流转换为输入字符流：
+
+          import java.io.IOException;
+
+          import java.io.InputStream;
+
+          import java.io.InputStreamReader;
+
+          import java.io.BufferedReader;
+
+          public class H{
+
+             public static void main(String [] args)throws IOException{
+
+                InputStream a=System.in; //字节流
+
+                InputStreamReader i=new InputStreamReader(a); //字符流的子类
+
+                BufferedReader b=new BufferedReader(i); //缓冲字符流，也是字符流的子类
+
+                String buff;
+
+                while((buff=b.readLine())!=null){ //缓冲字符流的方法是readLine()，返回值类型是String，所以当没有
+
+                                                    内容时，它返回的是null。
+
+                        System.out.println(buff);
+
+                }
+                i.close();
+
+                b.close();
+
+             }
+         }
+
+    6）、转换流：
+
+         将输出字节流转换为输出字符流
+
+         import java.io.IOException;
+
+         import java.io.BufferedWriter;
+
+         import java.io.FileOutputStream;
+
+         import java.io.OutputStreamWriter;
+
+         public class H{
+
+            public static void main(String [] args)throws IOException{
+
+               FileOutputStream a=new FileOutputStream("e:/1.txt",true);
+
+               OutputStreamWriter b=new OutputStreamWriter(a);
+
+               BufferedWriter s=new BufferedWriter(b);
+
+               b.write("always  love my grandmom");
+
+               s.newLine();
+
+               s.close();
+          }
+       }     
+
+    7）、转换流：
+
+         将输入字节流转化为输出字符流：
+ 
+         import java.io.IOException;
+
+         import java.io.InputStream;
+
+         import java.io.BufferedReader;
+
+         import java.io.BufferedWriter;
+
+         import java.io.FileOutputStream;
+
+         import java.io.OutputStreamWriter;
+
+         import java.io.InputStreamReader;
+
+         public class H{
+
+               public static void main(String [] args)throws IOException{
+
+                       InputStream a=System.in; // 这个System类里的成员变量in和out差不多，也是实现好了的内置对象，
+
+                                                   InputStream类是抽象类，但是可以将实现了它的子类的对象传个它，
+
+                                                   这就是多态。
+
+                       InputStreamReader b=new InputStreamReader(a);
+
+                       BufferedReader s=new BufferedReader(b);
+
+                       FileOutputStream f=new FileOutputStream("e:/1.txt");
+
+                       BufferedWriter s1=new BufferedWriter(new OutputStreamWriter(f));
+
+                       String buff;
+
+                             while((buff=s.readLine())!=null){
+
+                             s1.write(buff);
+
+                             s1.newLine();
+
+                             s1.flush();
+                        }
+
+                        s.close();
+
+                        s1.close();
+
+                      }
+                   }
+
+                    
+          
+
+
+
+
+
+
+——————————————————————————————————————————————————-
+
+               ◇  ◇  ◇  ◇  ◇    File类   ◇  ◇  ◇  ◇  ◇  
+
+1、是java.io包里的类，其描述：public  class  File  extends  Object
+
+                              implements Serializable , Comparable<File>
+
+     稍微讲一下这两个接口：Serializable接口的描述是 public interface Serializable ，这个接口没有任何东西，它只是
+
+                           定义了实现了这个接口的类的对象可以序列化。
+
+                           Comparable接口是java.lang包里的，它里面只有一个抽象方法：compareTo(T o)
+
+2、File类的构造方法：
+
+       有4个，主讲3个：
+
+               1）、File(File parent, String child)
+
+               2）、File(String pathname)
+
+               3）、File(String parent, String child)
+
+      这里提到绝对路径和相对路径：
+
+               1）、绝对路径：从根目录开始直到文件位置
+
+               2）、相对路径：相对于程序当前所在目录到文件位置
+
+      例：程序运行在C:/user/dell下，假设有一个文件test.txt
+
+          绝对路径：C：/user/dell/test.txt
+
+          相对路径：./test.txt （也就是把前面相同的目录去掉，相对而言的目录。）
+
+     以一些代码来讲一下它的一些方法：
+
+
+（1）、代码举例说明 “ 获取一类的方法 ”：
+
+       import java.util.Date;
+
+       import java.io.IOException;
+
+       import java.io.File;
+
+       public class H {
+
+          public static void main(String [] args)throws IOException{ //(a.getCanonicalPath()，这个抛出IO异常
+
+               File a=new File("f:/a.txt"); //这里的目录可以真实存在，也可以不存在
+
+               File a1=new File("f:/a","a.txt"); 
+
+               File a2=new File(new File("f:/a"),"a.txt");
+
+               System.out.println(a.getName()); //获得文件的名称
+
+               System.out.println(a1.getName());
+
+               System.out.println(a.getPath()); //这里的路径与new File("  ")里的一致
+
+               System.out.println(a.getAbsolutePath()); //获取绝对路径
+
+               System.out.println(a.getCanonicalPath()); //将存储的盘变成大写
+
+               System.out.println(a.length()); //文件大小
+
+               System.out.println(new Date(a.lastModified())); //文件最后修改的时间，但它是long型的，所以要把它
+
+                                                                 转换Date类型的日期时间。
+      
+          } 
+       }
+
+
+（2）、代码举例说明 “ 判断一类的方法 ”：
+
+       import java.io.IOException;
+
+       import java.io.File;
+
+       public class H {
+
+            public static void main(String [] args)throws IOException{  //创建文件也会报IO异常
+
+                File a=new File("f:/v.txt");
+
+                System.out.println(a.createNewFile());//当文件没有的时候，会创建，返回的值是布尔值，即  True ,
+
+            当文件已经存在时，不会创建，会返回false，注意，如果没有告诉“ v ”是什么类型的文件，一样不会创建，
+
+            也就是它不会去创建文件夹。
+
+                System.out.println(a.exists()); //判断是否存在
+
+                System.out.println(a.isDirectory()); //判断是否是目录（目录就是里面可以放文件，比如，上面的就不
+
+            是目录，“ F:/V ”这个就是目录
+
+                System.out.println(a.isFile()); //判断是否是文件（文件夹就不是文件）
+
+                System.out.println(a.isAbsolute()); //判断是否是绝对路径
+
+                System.out.println(a.isHidden()); //判断是否隐藏
+    
+   }
+
+}
+     
+（3）、代码举例说明“ 删除 ”:
+
+       import java.io.File;
+
+       public class H {
+
+           public static void main(String [] args){
+
+               File a=new File("f:/oo");
+
+               System.out.println(a.delete());//文件夹里有东西的删不掉，返回的是false，要指定
+
+               File b=new File("f:/a/b/c/d");
+
+               System.out.println(b.mkdirs()); //这个方法是创建多级目录，返回的是布尔值
+
+               System.out.println(b.delete()); //注意：创建的多级目录，并不能删掉，只能删掉最里面的子文件夹。
+
+               File c=new File("f:/m"); 
+ 
+               System.out.println(c.mkdir()); //创建单个目录
+
+               System.out.println(c.delete()); //可以删掉单个目录（注意能删掉的都是空目录）
+      
+        }
+
+      }
+
+  还有一个删除方法：就是在最后虚拟机JVM关掉之前，会先删除某个文件（也就是调用这个方法的对象（目录）的文件）
+
+       返回值类型             方法名
+
+         void	          deleteOnExit()
+
+（4）、另外再说一些方法：
+
+        1）、
+ 
+               返回值类型             方法名
+
+                 boolean	  renameTo(File dest)  
+
+    用法：
+
+       File a=new File("e:/1.txt");
+
+       a.renameTo(new File(d:/2.txt"); // 这个方法相当于剪切再复制，先将E盘的文件删掉，再将它的副本拷贝到指定
+
+                                          位置下。
+        2）、
+
+               返回值类型             方法名
+
+               static File[]	    listRoots()  静态方法，可以类名直接调用，这个就是返回根目录，但返回值的类型
+
+       是File类类型的数组，也就是根目录都存在这个数组中。
+
+    用法：
+
+         File [] a=File.listRoots();
+
+         for(File s:a){
+
+               System.out.println(s); //这个输出的是 C:\
+                                                     D:\
+                                                     E:\
+                                                     F:\
+                                                     G:\
+         } 
+
+        3）、
+
+            返回值类型             方法名
+
+              File[]	         listFiles() //获取文件名称
+
+    用法：
+ 
+         File a1=new File("f:/Tae"); 
+  
+         File [] a=a1.listFiles(); //获取上面目录下的文件名称
+
+         for(File s:a){
+
+                     System.out.println(s); //输出的是f:\Tae\A.java
+                                                      f:\Tae\H.class
+                                                      f:\Tae\H.java
+                                                      f:\Tae\L.class
+                                                      f:\Tae\L.java
+                                                      f:\Tae\Person.class
+                                                      f:\Tae\作业
+         } 
+          
+
+      上面这个方法可以看出有一个是目录，并不是文件 ——》 f:\Tae\作业 ，这个作业是文件夹，里面还有文件，要想
+
+把所有文件都打印出来，可以用isFile()方法进行判断，用递归：
+
+         File a1=new File("f:/Tae"); 
+
+         v(a1);
+
+         //上面的代码定义在main()方法里
+
+         public static void v(File a1){
+  
+            File [] a=a1.listFiles(); 
+
+            for(File s:a){
+
+             if(s.isFile()){
+
+                     System.out.println(s); 
+
+             }else v(s);
+
+           }
+        }
+ 
+        4）、关于怎么删除多级目录
+
+             因为delete()只能删掉多级目录里的子里面的目录，要删除必须从里面开始删除，一样可以从上面的例子获得
+
+灵感，也就是判断是否是目录，然后再删除，一样用到递归：
+
+     代码：
+
+           import java.io.File;
+
+           public class H{
+
+               public static void main(String [] args){
+
+                   File a=new File("f:/a/b/c/d");
+
+                   a.mkdirs();
+
+                   File a1=new File("f:/a");
+
+                   v(a1);
+               }
+
+               public static void v(File a){
+
+                   File [] b=a.listFiles();
+
+                   for(File s:b){
+
+                      if(s.isDirectory()){
+                          
+                               v(s);
+
+                               s.delete();
+
+                      }
+
+                   }
+                
+               }
+           }
+
+
+
+
+
+——————————————————————————————————————————————
+
+
+   ◇  ◇  ◇  ◇  ◇  ObjectInputStream 类和 ObjectOutputStream 类  ◇  ◇  ◇  ◇  ◇ 
+ 
+
+1、ObjectInputStream 反序列化，ObjectOutputStream 序列化。
+
+2、序列化： Java 序列化是指把 Java 对象转换为字节序列的过程；
+
+   反序列化： Java 反序列化是指把字节序列恢复为 Java 对象的过程；
+
+3、序列化和反序列化的用途：
+
+           其一，实现了数据的持久化，通过序列化可以把数据永久的保存在硬盘上；
+
+           其二，利用序列化实现远程通信，即在网络上传递对象的字节序列。
+
+           序列化与反序列化则实现了 进程通信间的对象传送，发送方需要把这个Java对象转换为字节序列，才能在网络上
+
+传送；接收方则需要把字节序列再恢复为Java对象。
+
+4、序列化与反序列化的API:
+
+            ObjectOutputStream （对象输出流）和  ObjectInputStream （对象输入流）
+
+      1）、 ObjectOutputStream 类中：通过使用 writeObject(Object object) 方法，将对象以二进制格式进行写入。
+
+      2）、 ObjectInputStream 类中：通过使用 readObject（）方法，从输入流中读取二进制流，转换成对象。
+
+
+5、代码说明：
+
+       1）、序列化：
+
+       首先如果要从输入里读取对象，肯定是要这之前先存对象进文件：（也就是序列化）
+
+             import java.io.Serializable;//这个接口之前有提到过，实现了这个接口的类表示这个类的对象可以序列化
+
+             import java.io.ObjectOutputStream; //序列化对象
+
+             import java.io.FileOutputStream; //序列化进硬盘的文件
+
+             import java.io.IOException; //这里有IO流，自然要抛出IO异常
+
+             public class L{
+
+                  public static void main(String [] args)throws IOException{
+
+                     Person a1=new Person("王二小");
+
+                     FileOutputStream a=new FileOutputStream("d:/1.txt");
+
+                     ObjectOutputStream b=new ObjectOutputStream(a);
+
+                     b.writeObject(a1);
+
+                     a.close();
+
+                     b.close();
+                 }
+
+             }
+
+           class Person implements Serializable{
+
+                public String name;
+
+                public Person(String name){
+
+                         this.name=name;
+                }
+  
+                public String toString(){
+
+                    return "Person.name:"+name;
+
+                 }
+
+              }
+
+      2）、反序列化：
+
+           从输入流读取对象，也就是将字节序列恢复为 Java 对象。
+
+      代码：
+
+           import java.io.Serializable;
+
+           import java.io.ObjectInputStream;
+
+           import java.io.FileInputStream;
+
+           import java.io.IOException;
+
+           public class L{
+
+                public static void main(String [] args)throws IOException,ClassNotFoundException{    //注意：
+
+           这里要抛出ClassNotFoundException异常，这是java.lang包的异常，不用引入，因为 b1.readObject()，这个
+
+           readObject()方法读的是类的对象，可能存在找不到类的异常。
+
+                     FileInputStream a2=new FileInputStream("d:/1.txt");
+
+                     ObjectInputStream b1=new ObjectInputStream(a2);
+
+                    System.out.println( b1.readObject()); //输出的是：Person.name:王二小
+
+                    b1.close();
+               }
+
+           }
+
+          class Person implements Serializable{
+
+              public String name;
+
+              public Person(String name){
+
+                      this.name=name;
+              }
+  
+              public String toString(){
+
+                      return "Person.name:"+name;
+
+              }
+
+           }
+
+6、有一个关键字：transient（瞬态关键字）
+
+   这个关键字可以保护对象的数据不被显示，显示的是默认初始值。
+
+
+——————————————————————————————————————————————
+
+
+                  ◇  ◇  ◇  ◇  ◇  网络编程 ◇  ◇  ◇  ◇  ◇
+
+
+    1、关于java的“ 网络编程 ”，这里要扯到计算机网络的一些基础知识。
+
+    2、“ 网络编程 ”就就是编写程序使联网的两个(或多个)设备(例如计算机)之间进行数据传输。Java语言对网络编程提供
+
+了良好的支持，通过其提供的接口我们可以很方便地进行网络编程。
+
+    3、网络体系结构：物理层、数据链路层、网络层、传输层、应用层
+
+       这里有两个层的协议很重要：
+
+                      一个是传输层的TCP/IP协议（还有一个UDP协议）
+
+                      一个是应用层的HTTP协议
+
+    4、Java的网络编程主要涉及到的内容是Socket编程：
+
+                       Socket，套接字，就是两台主机之间逻辑连接的端点。TPC/IP协议是传输层协议，主要解决数据如何
+
+在网络中传输，而HTTP是应用层协议，主要解决如何包装数据。
+
+                       Socket，本质上就是一组接口，是对TCP/IP协议的封装和应用(程序员层面上)。
+
+    5、 Socket通常称为套接字，用于应用程序之间建立远程连接，Socket内部通过TCP/IP协议进行数据传输，可以简单的
+
+  理解为对IP地址和端口号的描述。
+
+        Socket接口是由计算机操作系统提供的，编程语言提供对Socket接口调用的封装。通常计算机同时运行多个应用程序，
+
+仅仅有IP地址是无法确定由哪个应用程序接收数据，所以操作系统抽象出Socket接口，每个应用程序对应不同的socket（每个
+
+网络应用程序分配不同的端口号）。端口号的范围是0~65535，小于1024的端口需要管理员权限，大于1024的端口可以任意用户
+
+的应用程序打开。
+
+        Socket编程需要实现服务器端和客户端，因为这两个设备通讯时，需要知道对方的IP和端口号。通常服务器端有个
+
+固定的端口号，客户端直接通过服务器的IP地址和端口号进行访问服务器端，同时告知客户端的端口号，于是他们之间就可以
+
+通过socket进行通信。
+
+    6、Java提供了Socket类ServerSocket类对计算机操作系统的Socket进行调用。
+
+       ServerSocket类和Socket类都是java.net包里的类
+
+       1）、Socket类，其描述：public  class  Socket  extends  Object  implements  Closeable
+
+       这个类还有一个描述是：This class implements client sockets (also called just "sockets"). 
+
+       也就是这个类实现了客户端socket接口。
+
+       TCP客户端：
+
+          客户端使用Socket(InetAddress, port)构造方法传入IP地址和端口号打开Socket，与远程服务区指定端口进行连接,
+
+然后调用socket的getInputStream和getOutputStream方法获取输入和输出流就可以读写TCP的字节流:
+
+          Socket的这些方法：
+                   
+                 这个是客户端使用的构造方法：Socket(InetAddress host, int port, boolean stream)，通过这个构造
+
+          方法可以传入IP地址和端口号打开客户端接口Socket。
+
+                  返回值类型             方法名
+  
+                 InputStream	   getInputStream()   //返回的是输入流
+
+                 OutputStream	   getOutputStream()  //返回的是输出流              
+
+  用法：
+
+         import java.net.Socket;
+
+         import java.net.ServerSocket;
+
+         import java.io.OutputStream;
+
+         import java.io.IOException; 
+
+         import java.net.UnknownHostException;
+
+          public class H{
+
+               public static void main(String [] args) throws UnknownHostException,IOException{ //这里用到了
+
+               IO流，肯定要抛出IO异常，Socket类的构造方法找的是IP地址，可能存在找不到的异常，自然要抛出。
+
+                         Socket a=new Socket("127.0.0.1",8090);
+
+                         OutputStream b=a.getOutputStream();  
+
+                         b.write("Hello World".getBytes());  //向服务器发送了Hello World
+
+                         a.close();
+
+              }
+
+           }
+
+       2）、ServerSocket类，其描述是 public   class   ServerSocket  extends   Object  implements Closeable
+
+       TCP服务端:
+
+                 服务器端创建ServerSocket对象，调用accept方法返回Socket对象。
+
+                 客户端创建Socket对象，通过端口连接到服务器
+
+                 客户端、服务器端都使用Socket中的getInputStream方法和getOutputStream方法获得输入流和输出流，
+
+进一步进行数据读写操作。
+
+       它的构造方法及方法：
+
+                 ServerSocket(int port)——》 创建绑定到特定端口的服务器套接字。
+
+                 accept() ——》 侦听并接受到此套接字的连接，返回的Socket类的对象。
+
+   用法：
+
+       public class H{
+
+             public static void main(String [] args){
+
+                 ServerSocket a=new ServerScoket(8090); //这里的端口与上面的客户端的端口一致，监听的是上面的客户端
+
+                                                          的端口
+
+                 Server b=a.accept();  //接收上面客户端的连接，注意，服务器不能主动连接客户端，要等客户端来主动
+
+                                         连接
+
+                 InputStream c=b.getInputStream(); //从输入流获取
+
+                 InputStreamReader d=new InputStreamReader(c);
+
+                 char [] a=new char[1024];
+
+                 int len;
+ 
+                 while((len=d.read(a))!=-1){
+
+                     System.out.println(new String(a,0,len)); //这里获取的就是上面客户端发送的Hello World
+
+                  }
+
+                  b.close();
+
+                  a.close(); //记得关闭资源
+
+              }
+
+          }
+           
+    7、HTTP编程：
+
+                 HTTP协议（HyperText Transfer Protocol）又叫做超文本传输协议，它是基于TCP协议上的请求和响应协议，
+
+是目前使用最广泛的高级协议。
+
+       
+   
+
+
+
+
+
+————————————————————————————————————————————
+
+
+
+     ◇  ◇  ◇  ◇  ◇  ◇  多线程  ◇  ◇  ◇  ◇  ◇  ◇
+
+1、进程和线程：
+
+         一个开启的应用程序就是一个进程，进程的内存空间是独立的，互不相干。cpu在进程之间来回切换时，会有必要的
+
+上下文切换的开销。
+
+         而线程是cpu可调用的最小单元。一个进程可以拥有多个线程，并且这些线程之间可以共享内存数据。
+
+         线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多
+
+个线程的，这个应用程序也可以称之为多线程程序。
+
+         进程和线程都和并行与并发有关系，都是对计算机资源划分的一种单位。
+
+         并发:指应用能够交替执行不同的任务。
+
+         并行:指应用能够同时执行不同的任务。
+
+
+——————————————————————————————————————》
+
+
+2、什么是多线程呢？即就是一个程序中有多个线程在同时执行。
+
+   线程的生命周期（也就是状态）：
+
+                                   新生态 （ new Thread() ）
+
+                                     ↓
+                                   start()
+
+                                     ↓                  休眠结束，join结束，该输入也已输入，也接收到了socket
+
+            Blocked锁池     →     就绪态  （ Runnable ）       ←     ←     ←    
+                
+  锁已经释放      ↑       yield() ↑    ↓ （抢到了cpu时间片）                 ↑
+
+                       这个方法释放
+                  ↑               ↑    ↓                                     ↑
+                       了cpu的主权
+
+
+                  ↑               ↑    ↓                                     ↑
+
+           Blocked等待队列   ←    运行态 （ Running ）   →    →    →   阻塞态Blocked
+
+              这边是锁               ↓                     进入阻塞态有多种情况：如：sleep()方法，表示休眠多久，
+                                     
+当加了锁：synchronized             结束 （ Dead ）        这个毫秒为单位，就是sleep(1000)表示休眠1秒。
+
+或者用了wait()                                              调用join()方法
+
+                                                            等待用户控制台输入，等待io读取，等待socket     
+
+
+
+
+
+
+
+
+——————————————————————————————————————————————》
+                                           
+
+3、创建线程有不同的方法：
+
+        1）、第一种继承Thread类：java.lang包下的Thread类是非常重要的线程类，它实现了Runnable接口。
+
+             其描述： Thread类  public class Thread  extends Object  implements Runnable
+
+       注意，继承Thread类必须重写run方法，在run方法中定义具体要执行的任务。
+
+  用法：
+
+        public class A extends Thread{
+
+              public static void main(String [] args){
+
+                    A a=new A();
+
+                    a.start(); //启动线程
+
+                    System.out.println("这是主线程");  //main()也是一个线程，还是主线程，这个先输出
+
+                    
+              }
+
+              public void run(){
+
+                  System.out.println("你好"); //启动线程后，当线程获得了cpu的时间片，也就是cpu的执行时间，便会
+
+                                                进入run()方法，去执行具体的任务
+
+             }
+     
+        }
+
+          2）、上面的方法一般不用，一般直接去实现Runnable接口，它是函数式接口，只有一个抽象方法 run() 。
+
+               Runnable接口是java.lang包里的。
+
+          通过Runnable接口创建线程的步骤如下：
+
+                      1、定义实现Runnable接口的类，并实现该类中的run（）方法。
+
+                      2、建立一个Thread对象，并将实现的Runnable接口的类的对象作为参数传入Thread类的构造方法。
+ 
+          Thread的构造方法：  Thread(Runnable target)
+
+                      3、通过Thread类中的start()方法启动线程，并运行。
+
+  用法：
+
+          public class E {
+
+                  public static  void main(String [] args){
+
+                     B a1=new B();
+
+                     Thread a=new Thread(a1); //接口是不能 new 实例的，但是可以指向实现类的对象
+
+                     Thread a2=new Thread(a1); //创建了2个线程
+
+                     a.start();  //要先启动
+ 
+                     a2.start();
+
+                     System.out.println(Thread.currentThread().getName()); //这个是获得当前线程的名字
+
+                                                                             这条语句输出的是 main
+
+                  }
+            }
+
+           class B implements Runnable{
+
+                public void run(){
+ 
+                       System.out.println(Thread.currentThread().getName()); //这个一样是获得当前线程的名字
+
+                                                          当你并没有指定线程名字，系统会帮你命名：Thread-0 ，
+
+                                                          多个线程时依次累加数字 Thread-1 等等。
+
+                        若是想自己命名，可以用另外一个构造方法：Thread(Runnable target, String name)
+                }
+          }
+
+          currentThread() 是静态方法，返回值是Thread类类型的对象
+   
+上面的代码还可以简化成下面这样：
+
+
+          public class E{
+
+                  public static main void (String [] args){
+
+                     Thread a=new Thread(()->System.out.println(Thread.currentThread().getName()));//Runnable
+
+                       接口是函数式接口，自然可以用Lambda表达式，也就是一个实现了该接口的内部类。
+
+                     a.start();
+
+                     System.out.println(Thread.currentThread().getName());
+
+                  }
+          }
+
+
+
+——————————————————————————————————————————》
+
+
+           
+4、Thread类的方法：
+
+    1）、  返回值类型         方法名
+
+          ThreadGroup	  getThreadGroup()
+
+          Thread类的getThreadGroup()方法用于返回该线程所属的线程的线程组。 如果此线程已死(已停止)，
+
+则此方法返回null。
+
+  用法：
+
+         public class E {
+
+              public static  void main(String [] args){
+
+                  Thread a=new Thread(()->System.out.println(Thread.currentThread().getName()));
+
+                  Thread a1=new Thread(()->System.out.println(Thread.currentThread().getName()));
+
+                  a.start();
+
+                  a1.start();
+
+                  System.out.println(Thread.currentThread().getThreadGroup()==a1.getThreadGroup()); //true
+
+                  System.out.println(a.getThreadGroup());  //输出：java.lang.ThreadGroup[name=main,maxpri=10]
+
+                  System.out.println(a.getThreadGroup()==a1.getThreadGroup());  //true
+
+                 }
+           }
+    
+         总的输出是： true
+                      Thread-1
+                      Thread-0
+                      java.lang.ThreadGroup[name=main,maxpri=10]
+                      true                           
+     
+
+    2）、休眠方法：sleep() ：让线程先休眠一段时间 （静态方法）
+
+用法：
+      
+      public class E{
+
+            public static void main(String [] args){
+
+                 Thread a=new Thread(()->{
+
+                      try{
+
+                          Thread.sleep(5000);  //注意sleep方法要捕捉异常InterruptedException，只能捕捉，不能抛出，
+
+                                              不然会报错，休眠时间是以毫秒为单位，是long型的，这个线程会等待5秒
+
+                                              再进入就绪态，继续抢cpu时间片执行。
+
+                        }catch(InterruptedException e){
+
+                            e.printStackTrace();
+
+                        }
+
+                        System.out.println(Thread.currentThread().getName()); // 打印 Thread-0
+
+                  });
+
+                 a.start();
+
+                 System.out.println("这是主线程"); //这个会先打印出来
+
+              }
+
+        }
+
+    3）、设置优先级的方法：setPriority()
+
+         返回值类型         方法名
+
+         void	setPriority(int newPriority)
+
+         这个方法就是可以让现场线程抢到cpu时间片的概率更大一些，一共是1到10，越大越概率越大，默认值是5。
+
+用法：
+
+      public class E{
+
+         public static void main(String [] args){
+
+              Thread a=new Thread(()->System.out.println("aaaa"));
+
+              Thread a1=new Thread(()->System.out.println("aaaa11111")); //这个有很大可能会先打印出来
+
+              a.setPriority(1); //不能是0，否则会报错
+
+              a1.setPriority(10);
+
+              a.start();
+
+              a1.start();
+
+         }
+
+      }  
+
+    4）、yield():这个方法就是主动释放cpu资源的持有权
+
+          返回值类型         方法名
+
+         static void	     yield()  //静态方法
+
+用法：
+
+     public class E{
+
+         public static void main(String [] args){
+
+             Thread a=new Thread(()->{ Thread.yield();System.out.println("pppp");},"aaaa");
+
+             Thread a1=new Thread(()->{ System.out.println("pppp11111");},"aaaa1111");  //这个会先打印
+
+             a.start();
+
+             a1.start();
+
+         }
+
+     }
+
+    5）、join():哪个线程调用了这个方法，这它所在的主线程会等它执行完。
+
+          返回值类型         方法名
+
+             void	     join()
+
+用法：
+
+      public class E{
+
+         public static void main(String [] args){
+
+             Thread a=new Thread(()->{ System.out.println("pppp");Thread.yield();},"aaaa");
+
+             Thread a1=new Thread(()->{System.out.println("pppp11111");},"aaaa1111");
+
+             a.start();
+
+             a1.start();
+
+         try{
+
+             a.join(); //注意：该方法要捕捉和sleep()方法一样会遇到的异常
+
+             a1.join();
+
+         }catch(InterruptedException e){
+
+             System.out.println(e);
+         }
+
+             System.out.println("这是主线程"); //这个main线程会等上面两个线程执行完再执行
+         }
+
+     }
+
+
+————————————————————————————————————————》
+
+
+
+5、关于多线程加锁：
+
+           线程只有独立的栈，和堆。它们共享父线程的堆，因此，它们很容易访问到一些全局的数据，由于一个数据不允许
+
+同时被多线程修改，为了保证线程写的独享性，就需要用到锁。
+
+           加锁用到关键字：synchronized ，锁是任何对象。
+
+           静态方法加上了锁，它就是拿当前类的字节码对象作为锁：也就是 类名.class
+
+            public static synchronized void v(){ }
+
+           如果是成员方法，则拿的是当前对象，this
+
+           public synchronized void v(){ } ==  public  void v() {  synchronized(this){  } }
+
+  用法：
+
+        下面这个例子是关于几个线程卖票的，在这种情况下，就要用到锁，因为如果不用锁，会出现多卖票的情况。
+
+        一次一个线程去操作，这样不会乱
+
+
+           public class E{
+
+               int num=10;
+
+               public static void main(String [] args){
+
+                    E b=new E();
+
+                    Runnable a=()->{
+
+                       while(b.num>0){ //票数大于0就继续卖
+
+                   //  synchronized(b){  //使用E类的对象来作为对象
+
+                          if(b.num>0) 加了锁这里还要再判断一下，防止出项票数为-1的情况
+
+                          System.out.println(Thread.currentThread().getName()+"卖出了一张,还剩："+--b.num);
+
+                     //  }
+                   }
+              };
+
+                   Thread a1=new Thread(a,"a1");
+
+                   Thread a2=new Thread(a,"a2");
+
+                   Thread a3=new Thread(a,"a3");
+
+                   a1.start();
+
+                   a2.start();
+  
+                   a3.start();
+              }
+         }
+
+ 
+    没有用锁的效果：
+                   a3卖出了一张,还剩：9
+                   a1卖出了一张,还剩：8
+                   a2卖出了一张,还剩：9  //有两个9 ，这就说明卖出了11张票 ，这是错误的，总共就10张
+                   a1卖出了一张,还剩：6
+                   a3卖出了一张,还剩：7
+                   a1卖出了一张,还剩：4
+                   a2卖出了一张,还剩：5
+                   a1卖出了一张,还剩：2
+                   a3卖出了一张,还剩：3
+                   a1卖出了一张,还剩：0
+                   a2卖出了一张,还剩：1
+
+    用了锁的效果：
+
+                   a1卖出了一张,还剩：9
+                   a1卖出了一张,还剩：8
+                   a1卖出了一张,还剩：7
+                   a1卖出了一张,还剩：6
+                   a1卖出了一张,还剩：5
+                   a1卖出了一张,还剩：4
+                   a1卖出了一张,还剩：3
+                   a1卖出了一张,还剩：2
+                   a2卖出了一张,还剩：1
+                   a2卖出了一张,还剩：0  //无错误，且没有乱序
+ 
+
+——————————————————————————————————————————》
+
+
+6、有时候任何对象都用来做对象不大好，java有专门的创建锁的类：ReentrantLock
+ 
+   这个类是 “ java.util.concurrent.locks ” 包里的类。
+
+   其描述：public   class   ReentrantLock  extends   Object  implements Lock, Serializable
+
+   该类的对象就是锁，它有上锁和解锁的方法：lock() 和 unlock() 
+
+   注意：上了锁之后一定要释放锁，也就是解锁，不然别的线程拿不到锁。
+
+将上面的例子改一下：
+
+   import java.util.concurrent.locks.ReentrantLock;
+
+   public class E{
+
+         int num=10;
+
+         public static void main(String [] args){
+
+           E b=new E();  
+
+           ReentrantLock c=new ReentrantLock(); //这个就是创建了一把锁
+           
+           Runnable a=()->{
+
+               while(b.num>0){
+
+                     c.lock(); //也就是将原本的任何对象换成了专门的锁，要上锁
+ 
+                     if(b.num>0)
+
+                     System.out.println(Thread.currentThread().getName()+"卖出了一张,还剩："+--b.num);
+
+                     c.unlock(); //上了锁就要解锁
+
+                }
+            };
+
+            Thread a1=new Thread(a,"a1");
+
+            Thread a2=new Thread(a,"a2");
+
+            Thread a3=new Thread(a,"a3");
+
+            a1.start();
+
+            a2.start();
+  
+            a3.start();
+
+       }
+
+     }
+
+  用了上面的锁的情况：
+
+                     a1卖出了一张,还剩：9
+                     a2卖出了一张,还剩：8
+                     a3卖出了一张,还剩：7
+                     a1卖出了一张,还剩：6
+                     a2卖出了一张,还剩：5
+                     a3卖出了一张,还剩：4
+                     a1卖出了一张,还剩：3
+                     a2卖出了一张,还剩：2
+                     a3卖出了一张,还剩：1
+                     a1卖出了一张,还剩：0
+
+
+——————————————————————————————————————————》
+
+
+          
+7、死锁：
+
+   环环相扣，都在等待对方线程手上的锁，互不放下手上的锁，一直在等待中。。。。
+
+比如：
+      public class E{
+
+          public static void main(String [] args){
+
+             String a="a";
+
+             String b="b"; //创建了两把锁，对象都可以当锁，这一样是对象，只不是在常量池内
+
+             Runnable c=()->{
+
+                     synchronized(a){
+
+                        System.out.println(Thread.currentThread().getName()+"拥有了a锁");
+
+                     synchronized(b){
+
+                        System.out.println(Thread.currentThread().getName()+"拥有a和b锁");
+
+                      }
+
+                     }
+                   };
+
+              Runnable c1=()->{
+
+                     synchronized(b){ //持有了b锁，但还要持有a锁才能释放这两个锁
+
+                        System.out.println(Thread.currentThread().getName()+"拥有了b锁");
+
+                     synchronized(a){
+
+                        System.out.println(Thread.currentThread().getName()+"拥有a和b锁");
+
+                        }
+
+                      }
+                   };
+
+                 Thread d=new Thread(c,"d1");
+
+                 Thread d1=new Thread(c1,"d2");
+
+                 d.start();
+
+                 d1.start();
+ 
+              }
+
+             }
+
+   上面就是两个线程互相在等对方的锁。
+
+   避免这种方法：
+
+        等待唤醒机制：
+
+           wait()：当前的线程释放自己的锁标记，并且让出自己的cpu资源
+
+           notify() ：释放了自己锁的资源的线程，必须要被唤醒，否则一直处于等待队列，不会进入锁池去抢锁，
+
+                      这个方法只是唤醒一个线程
+
+           notifyAll() ：这个方法是唤醒所有处于等待队列的线程，使这些线程都进入锁池
+
+           这3个方法都是Object类的3个方法，因为Object类是终极父类，所有的类都是它的子类，所以自然都可以继承到
+
+这3个方法。
+
+   将上面的进行修改：
+
+      public class E{
+
+          public static void main(String [] args){
+
+             String a="a";
+
+             String b="b"; //创建了两把锁，对象都可以当锁，这一样是对象，只不是在常量池内
+
+             Runnable c=()->{
+
+                     synchronized(a){
+
+                        System.out.println(Thread.currentThread().getName()+"拥有了a锁");
+
+                     synchronized(b){
+
+                        System.out.println(Thread.currentThread().getName()+"拥有a和b锁");
+
+                        b.notify(); //线程要被唤醒才能够进入锁池
+
+                     // b.notify(); //这里换成这句话也可以，这条语句是唤醒所有在等待被唤醒的进程进入锁池
+
+                                      注意：哪把锁等待了，唤醒的就是哪把锁。
+
+                      } 
+                     }
+                   };
+
+              Runnable c1=()->{
+
+                     synchronized(b){  
+
+                     try{
+
+                        b.wait();  //持有了b锁，让线程将b锁“礼让”出来，线程进入等待队列中
+
+                    }catch(InterruptedException e){
+
+                        System.out.println(e);
+
+                    }
+                        System.out.println(Thread.currentThread().getName()+"拥有了b锁");
+
+                     synchronized(a){
+
+                        System.out.println(Thread.currentThread().getName()+"拥有a和b锁");}
+
+                     }
+                    
+                   };
+
+                 Thread d=new Thread(c,"d");
+
+                 Thread d1=new Thread(c1,"d1");
+
+                 d.start();
+
+                 d1.start();
+ 
+              }
+
+         }
+
+     上面这3个方法都是Object类的方法，多态思想，子类当然可以调用父类的方法。
+
+
+——————————————————————————————————————————》
+
+
+
+8、多线程下的单例模式:
+
+     单例模式在之前就提到过，就是某类只能被创建一个实例，也就是只能被创建一个对象。
+
+     在多线程下，可能会出问题：
+
+代码演示：
+
+ public class E{
+
+  public static void main(String [] args){
+
+    Runnable b=()->{ P.v();};
+
+    Thread a=new Thread(b,"a");
+
+    Thread a1=new Thread(b,"a1");
+
+    Thread a2=new Thread(b,"a2");
+
+    Thread a3=new Thread(b,"a3");
+
+    a.start();a1.start();a2.start(); a3.start();
+  }
+
+}
+class P{
+ 
+  private static P p;  //这个是懒汉式单例模式，这种在多线程下是不安全的，会创建多个实例
+
+  public static  P v(){
+
+       if(p==null){  //如果不加锁，会出现多个线程创建实例的情况
+
+           p=new P();  
+
+           System.out.println(Thread.currentThread().getName()+"创建了实例");
+
+         }
+
+        return p;
+  }
+} 
+
+上面输出的情况有：
+
+          a2创建了实例
+
+          a3创建了实例
+
+如果上面不是懒汉式模式，而是饿汉式单例模式：
+
+那也不会出问题
+
+class P{
+ 
+  private static P p=new P(); //就是在一开始就创建了实例，随着类的存在而被加载
+
+  public static P v(){
+
+           if(p==null){
+
+           System.out.println(Thread.currentThread().getName()+"创建了实例"); //这句话不会被输出，则说明
+
+                                                                                只有一个实例在最开始被创建了
+
+           }
+
+          return p;   
+
+      }
+  }
+
+如果一定要懒汉式单例模式，也可以，就是将上面代码加上锁：
+
+class P{
+ 
+     private static P p;
+
+     public static P v(){
+
+         synchronized(P.class){ //给下面这段代码加上代码，只能被一个线程访问
+
+               if(p==null){  //判断是否为空，为空就创建实例
+
+                 p=new P();  
+
+                System.out.println(Thread.currentThread().getName()+"创建了实例");
+
+               } 
+          }
+
+        return p;    
+  }
+}
+
+证明：上面这个是没错的：输出的只有一个线程创建了实例
+    
+注意：
+
+     class P{
+ 
+         private static P p;
+
+         public static  P v(){
+
+            if(p==null){  //注意这样是不行的，因为多个线程可能已经拿到了这个引用是空的消息了，下面抢到了锁依然
+
+                            会创建锁
+
+               synchronized(P.class){  //也就是在里面仍要判断一下“ p ”是否为空
+
+                p=new P(); 
+
+               System.out.println(Thread.currentThread().getName()+"创建了实例");
+
+             } 
+         }
+        return p;   
+  }
+} 
+
+事实证明：
+          a2创建了实例
+
+          a1创建了实例  //上面的代码还是会出现多个线程创建实例的情况
+
+9、生产与消费模式：
+
+   所谓的生产与消费模式：
+
+       就是有多个线程，一种是生产者，一种是消费者，生产者生产了食物，消费者便消费，如果没有了食物，消费者
+
+便暂停等待，他们有一个共同操作的东西，就是放食物的池，池中食物满了，生产者就不生产。
+
+       要知道，生产者和消费者就是一个一个线程
+
+      这里要创建多个类：
+
+                  食物类、消费者类、生产者类、放食物的池的类、测试类（也就是创建一个一个线程去运行这个模式）
+
+代码演示：
+
+   （这些类都在一个包里）
+
+    食物类：
+
+           public class Food{
+
+               public String food;
+
+               public Food(String food){
+
+                   this.food=food;
+
+               }
+
+               public String toString(){
+
+                 return food;
+
+               }
+
+             }
+
+    消费者类：
+
+            public class Consumer implements Runnable{ //消费者是线程
+
+                private Pool pool;
+
+                public Consumer(Pool pool){
+
+                    this.pool=pool;
+
+                }
+                
+                 public void run(){
+
+                     pool.pop();  //执行的是池中的吃的方法
+
+                  }
+
+               }
+                
+     生产者类：
+
+            public class Producer implements Runnable{
+
+                  private Pool pool;
+
+                  public Producer(Pool pool){
+
+                      this.pool=pool;
+
+                  }
+
+                  public void run(){
+
+                      pool.push(new Food("棒棒糖")); //这里你自己多理解，也就是创建对象，将食物对象传进去，
+
+                                                        这里是调用方法
+                  }
+              }
+
+     放食物的池的类：
+
+             import java.util.LinkedList; //记得引入包
+
+             pulic class Pool{
+
+                LinkedList<Food> list;
+
+                int size;
+
+                public Pool(int size){
+
+                   list=new LinkedList<>();
+
+                   this.size()=size;
+
+                }
+
+                public synchronized void push(Food food){
+
+                     if(list.size>=size){
+
+                        try{
+
+                            this.wait();   //记住wait()方法是要抛出中断异常的
+
+                        }catch(InterruptedException e){
+
+                            System.out.println(e);
+
+                        }
+                      }
+
+                      list.add(food);
+
+                      System.out.println("生产了一件，还有食物数："+list.size); 
+                      
+                      this.notifyAll();
+                                      
+                  }
+
+                 public sychronized void pop(){
+
+                      if(list.size<1){
+
+                           try{
+
+                              this.wait();   //记住wait()方法是要抛出中断异常的
+
+                           }catch(InterruptedException e){
+
+                              System.out.println(e);
+                           }
+                       }
+ 
+                       list.removeFirst();
+
+                       System.out.println("已经吃了一个,还剩食物数:"+list.size());
+
+                       this.notifyAll();
+                 }
+              }
+
+     测试类:
+
+              public class Main{
+
+                  public static void main(String [] args){
+
+                       Pool a=new Pool(20);
+
+                       Thread a1=new Thread(new Producer(a),"生产者");
+
+                       Thread a2=new Thread(new Consumer(a),"消费者1");
+
+                       Thread a3=new Thread(new Consumer(a),"消费者2");
+
+                       Thread a4=new Thread(new Consumer(a),"消费者3");
+
+                       a1.start();
+
+                       a2.start();
+
+                       a3.start();
+
+                       a4.start();
+
+                   }
+
+              }
+
+   上面的生产与消费模式，会存在浪费资源的那么一种情况，就是可能消费者刚吃完一个，生产者就立马生产一个，而这在
+
+现实中并不现实。可以利用Lock与Conditon，来控制生产者什么时候开始生产。
+
+
+
+
+
+
+        ——————————————   Lock与Conditon配合多监视器的实现：  ——————————————
+
+
+     从整体上来看Object的wait和notify/notify是与对象监视器配合完成线程间的等待/通知机制，而Condition与Lock配合完
+
+成等待通知机制，前者是java底层级别的，后者是语言级别的，具有更高的可控制性和扩展性。两者除了在使用方式上不同外，
+
+在功能特性上还是有很多的不同：
+
+       1）、
+
+Condition能够支持不响应中断，而通过使用Object方式不支持；
+
+
+       2）、Condition能够支持多个等待队列（new 多个Condition对象），而Object方式只能支持一个；
+
+       3）、
+Condition能够支持超时时间的设置，而Object不支持
+
+
+
+      * * *  Condition与Lock配合完成等待通知机制。
+
+     Lock与Condition都是接口，都是 java.util.concurrent.locks包里的接口
+
+       创建锁，ReentrantLock类，这个类创建锁，该类有还一个方法，new Condition()，该方法是返回Condition接口的
+
+一个对象（ Condition是接口，不能new对象，但是可以指向实现类的对象 ）
+
+       Condition接口自有一套等待通知机制，但要配合Lock完成，它里面有 “ await() ”和“ signal()/signalAll() ”
+
+       返回值类型      方法名
+  
+          void	       await()
+
+          void	       signal()
+
+          void	       signalAll() 
+
+       这个接口的等待通知机制：
+
+       调用await()方法后会使得当前获取lock的线程进入到等待队列，如果该线程能够从await()方法返回的话一定是该线
+
+程获取了与condition相关联的lock。
+
+       signal()：唤醒一个等待在condition上的线程，将该线程从等待队列中转移到同步队列中，如果在同步队列中
+
+能够竞争到Lock则可以从等待方法中返回。
+
+       signalAll()：与1的区别在于能够唤醒所有等待在condition上的线程。
+
+
+
+【】【】
+
+如果想要深入了解这个Condition接口的机制，可以去参考这篇文章：https://www.jianshu.com/p/28387056eeb4 
+
+
+【】【】
+
+
+
+将上面生产与消费模式稍微修改一下：
+
+     其实也就是换把锁，在与Condition接口配合来实现等待通知机制：
+
+     也就是将池里面的方法修改一下：
+
+
+           import java.util.concurrent.locks.ReentrantLock;//用到的类或者接口要先引入包
+
+           import java.util.concurrennt.locks.Condition;
+
+
+           ...
+
+           ReentrantLock lock=new ReentrantLock();
+
+           Condition pro=lock.newCondition(); //创建生产者的Condition对象
+
+           Condition con=lock.newCondition(); //创建消费者的Condition对象
+   
+
+           public void push(Food food){
+
+                     lock.lock(); //上锁
+
+                     if(list.size>=size){
+
+                        try{
+
+                            pro.wait();   //await()方法一样是要抛出中断异常的
+
+                        }catch(InterruptedException e){
+
+                            System.out.println(e);
+
+                        }
+                      }
+
+                      list.add(food);
+
+                      System.out.println("生产了一件，还有食物数："+list.size); 
+                      
+                      if(list.size==size){
+
+                           con.signalAll(); //当池中的食物满了，通知消费者来吃
+
+                      }
+
+                      lock.unlock(); //解锁
+                     
+                  }
+
+             public  void pop(){
+
+                      lock.lock();
+
+                 try{
+
+                      if(list.size<1){
+
+                           try{
+
+                              con.await();   //await()方法一样是要抛出中断异常的
+
+                           }catch(InterruptedException e){
+
+                              System.out.println(e);
+
+                           }
+
+                       }
+ 
+                       list.removeFirst();
+
+                       System.out.println("已经吃了一个,还剩食物数:"+list.size());
+
+                       if(list.size<1){
+
+                          pro.signalAll();当池中的食物小于1时，就通知生产者 
+
+                       }
+                  }finally{
+
+                     lock.unlock();//解锁
+                   }
+               }
+
+  这上面的代码并没有去运行，你可以试着去运行。
+
+
+
+
+——————————————————————————————————————————》
+
+10、ThreadGroup
+
+    线程组：每一个线程都有自己所属的线程组，如果未用构造函数手动创建线程组，那么这个线程就属于其父线程所在的线程
+
+组，比如在main函数中启动的线程，其父线程就是main线程，因此它和父亲在同一个线程组中。
+
+   关于线程组的构造函数有好几个，比如：Thread(ThreadGroup group, Runnable target)
+
+
+
+
+         
+11、stackSize的改变：
+
+    通过改变stackSize，可以控制栈内存溢出的情况。
+
+    Thread类里有一个构造方法是可以改变栈内存大小的T：
+
+             hread(ThreadGroup group, Runnable target, String name, long stackSize)
+ 
+
+
+
+
+
+12、volatile关键字
+
+    这个可以保证可见性：
+
+代码演示：
+
+    public class E{
+
+         public static int i=0;
+
+         public static final int max=5;
+
+         public static void main(String [] args){
+
+              Thread a=new Thread(()-> {  int local=i;
+
+                          while(local<max){
+
+                               if(local!=i){
+
+                                   System.out.println(Thread.currentThread().getName()+"i的值更新为："+i);
+
+                                   local=i;
+        
+                               }
+                          }  },"a1");
+
+             a.start();
+
+             new Thread(()->{  int local=i; while(local<max){
+          
+                System.out.println(Thread.currentThread().getName()+"i的值为："+(++local));i=local;
+
+            try{
+
+                Thread.sleep(500);
+
+             }catch(InterruptedException e){
+
+                System.out.println(e);
+             }
+
+           } },"a2").start();
+
+      }
+}
+
+  上面的代码输出为：
+                   a2i的值为：1
+                   a1i的值更新为：1 
+                   a2i的值为：2
+                   a2i的值为：3
+                   a2i的值为：4
+                   a2i的值为：5
+
+  出现这种情况是因为有高速缓存的原因，cpu与内存的读写速度差距有点大，所以cpu设置了缓存机制，当java检测到值“i”
+
+在一个线程中只有读的操作时，就不会从主内存中获取值，而是直接让cpu从缓存中拿值，导致“ a1 ”线程感知不到“ i ”
+
+的更新。
+
+  而volatile关键字保证了可见性，它会让cpu去主存中去取值：
+
+上面的代码稍微修改下：
+
+    只需要在 “ i ”的值那里加上关键字volatile
+
+    public static volatile int i=0;
+
+然后代码输出：
+               a2i的值为：1
+               a1i的值更新为：1
+               a2i的值为：2
+               a1i的值更新为：2
+               a2i的值为：3
+               a1i的值更新为：3
+               a2i的值为：4
+               a1i的值更新为：4
+               a2i的值为：5
+               a1i的值更新为：5
+
+    这个关键字还能保证代码不被重排序：
+
+     重排序会让多线程的代码造成错误：
+
+
+   加上这个关键字就不会被重排序了： boolean volatile a=flase; 
+
+    ——————————
+
+    E a=new E();   //没有关联性的代码会被重排序
+
+    a=true;  //假如代码被重排序，上面的后执行，那下面的代码会出错
+
+  ——————————————
+
+  while(!a){
+
+    sleep();
+  }
+
+   use(e)  //伪代码
+
+   volatile关键字保证了可见性，和不会被重排序，但它并不会保证原子性。
+
+
+13、并发编程的三个特性：原子性、可见性以及有序性
+
+    并发：不同时进行，只有一个cpu，而多个线程都在争取这个cpu资源。
+
+             并发程序正确地执行，必须要保证原子性、可见性以及有序性。只要有一个没有被保证，
+
+就有可能会导致程序运行不正确。
+
+             原子性：一个操作或多个操作要么全部执行完成且执行过程不被中断，要么就不执行。
+
+             可见性：当多个线程同时访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看得到修改的值。
+
+             有序性：程序执行的顺序按照代码的先后顺序执行。
+
+    可见性和有序性在上面的synchronized的关键字已经提到过，这里主讲原子性：
+
+             原子性，就是不可分割，也就是代码要么全部操作，要么全部不操作。
+
+比如：
+
+    i=i+1;//这个语句就不具有原子性，分成两部分，当线程执行这个语句时，会先从主存当中读取i的值，然后复制一份到
+
+高速缓存当中，然后CPU执行指令对i进行加1操作，然后将数据写入高速缓存，最后将高速缓存中i最新的值刷新到主存当中。
+
+    这条语句在单线程下是没有任何问题的，在多线程下就有问题了。
+    
+           那么如何保证这三者：
+
+             1）、原子性：Java内存模型只保证了基本读取和赋值是原子性操作，如果要实现更大范围操作的原子性，可以
+
+通过synchronized和Lock来实现。由于synchronized和Lock能够保证任一时刻只有一个线程执行该代码块，那么自然就不存在
+
+原子性问题了，从而保证了原子性。
+
+             2）、可见性：对于可见性，Java提供了volatile关键字来保证可见性。
+
+　　                     当一个共享变量被volatile修饰时，它会保证修改的值会立即被更新到主存，当有其他线程需要
+
+读取时，它会去内存中读取新值。
+
+　　                     而普通的共享变量不能保证可见性，因为普通共享变量被修改之后，什么时候被写入主存是不确
+
+定的，当其他线程去读取时，此时内存中可能还是原来的旧值，因此无法保证可见性。
+
+　　                     另外，通过synchronized和Lock也能够保证可见性，synchronized和Lock能保证同一时刻只有一
+
+个线程获取锁然后执行同步代码，并且在释放锁之前会将对变量的修改刷新到主存当中。因此可以保证可见性。
+
+             3）、有序性：
+
+                        在Java内存模型中，允许编译器和处理器对指令进行重排序，但是重排序过程不会影响到单线程程
+
+序的执行，却会影响到多线程并发执行的正确性。
+
+　　                    在Java里面，可以通过volatile关键字来保证一定的“有序性”。
+
+                        另外可以通过synchronized和Lock来保证有序性，很显然，synchronized和Lock保证每个时刻是有
+
+一个线程执行同步代码，相当于是让线程顺序执行同步代码，自然就保证了有序性。
+
+注意：　　 
+
+         Java内存模型具备一些先天的“有序性”，即不需要通过任何手段就能够得到保证的有序性，
+
+这个通常也称为 happens-before 原则。如果两个操作的执行次序无法从happens-before原则推导出来，
+
+那么它们就不能保证它们的有序性，虚拟机可以随意地对它们进行重排序。
+
+         happens-before原则:
+
+         1）、程序次序规则：一个线程内，按照代码顺序，书写在前面的操作先行发生于书写在后面的操作
+
+         2）、锁定规则：一个unLock操作先行发生于后面对同一个锁额lock操作
+
+         3）、volatile变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作
+
+         4）、传递规则：如果操作A先行发生于操作B，而操作B又先行发生于操作C，则可以得出操作A先行发生于操作C
+
+         5）、线程启动规则：Thread对象的start()方法先行发生于此线程的每个一个动作
+
+         6）、线程中断规则：对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生
+
+         7）、线程终结规则：线程中所有的操作都先行发生于线程的终止检测，我们可以通过Thread.join()方法结束、
+
+Thread.isAlive()的返回值手段检测到线程已经终止执行
+
+         8）、对象终结规则：一个对象的初始化完成先行发生于他的finalize()方法（终结）的开始
+
+
+——————————————————————————————————————————》
+
+
+
+14、解决缓存不一致的情况：
+
+    1）、加悲观锁（加 lock 或者 synchronized 关键字）
+
+    2）、乐观锁
+
+悲观锁上面已经讲了，这里讲乐观锁：
+
+         AtomicInteger 一连串的类型的类 （在 java.util.concurrent.atomic 包里）
+
+代码演示：
+
+   import java.util.List;
+
+   import java.util.Collections;
+
+   import java.util.stream.Collectors;
+
+   import java.util.ArrayList;
+
+   public class E{    
+
+              public static volatile int i; //这个关键字保证了可见性和有序性
+
+              public static  List<Integer> c=Collections.synchronizedList(new ArrayList<Integer>()); 
+
+              //ArrayList是线程不安全的，但可以用Collecctions工具类里的方法synchronizedList(List<T> t)来获得
+
+安全的list集合，但这只是防止并发情况下出现多次初始化的问题。
+
+              public static int max=10;
+
+              public static void main(String [] args)throws InterruptedException{
+
+                Runnable a=()->{ 
+
+                  while(i.get()<max){  
+
+                            c.add(++i);  //这行代码没有原子性，在多线程的情况下容易出现问题的，++i是分成两个步骤
+
+                                           的，先读“ i ”的值，再加1，假如有有两个线程拿到i值，此时为0，有一个
+
+                                           线程的cpu跳走了，另一个线程加了1，这个值还没有被刷新到内存，刚刚拿到
+
+                                           为0的i的线程又加了1，则此时就有了两个1。
+
+                                           所以防止出现这种问题，则要保证这条语句具有原子性，只被一个线程全部
+
+                                           执行完。
+
+                    }
+                };          
+
+          Thread b=new Thread(a,"b");
+  
+          Thread b1=new Thread(a,"b1");
+
+          Thread b2=new Thread(a,"b2");
+
+          Thread b3=new Thread(a,"b3");
+
+          b.start();
+
+          b1.start();
+
+          b2.start();
+
+          b3.start();
+
+          b.join();
+
+          b1.join();
+		
+          b2.join();
+		
+          b3.join();
+		
+          System.out.println(c.size());
+
+          System.out.println(c.stream().sorted().collect(Collectors.toList()));//用了流的形式来输出
+
+         }
+    }
+
+ 运行上面代码：出现了这种情况：
+
+                                11
+
+                                [1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+ 这明显是不对的，可以用悲观锁：
+
+     import java.util.List;
+
+     import java.util.Collections;
+
+     import java.util.stream.Collectors;
+
+     import java.util.ArrayList;
+
+     public class F{    
+
+              public static volatile int i;
+
+              public static  List<Integer> c=Collections.synchronizedList(new ArrayList<Integer>());
+
+              public static int max=10;
+
+              public static void main(String [] args)throws InterruptedException{
+
+                Runnable a=()->{ 
+
+                  while(i<max){  
+
+                      synchronized("A"){  //就是这段代码加锁，保证原子性
+
+                        if(i<max){
+
+                            c.add(++i); } }
+
+                    }
+                };          
+
+          Thread b=new Thread(a,"b");
+  
+          Thread b1=new Thread(a,"b1");
+
+          Thread b2=new Thread(a,"b2");
+
+          Thread b3=new Thread(a,"b3");
+
+          b.start();
+
+          b1.start();
+
+          b2.start();
+
+          b3.start();
+
+          b.join();
+
+          b1.join();
+		
+          b2.join();
+		
+          b3.join();
+		
+          System.out.println(c.size());
+
+          System.out.println(c.stream().sorted().collect(Collectors.toList()));
+
+         }
+    }
+
+ 运行上面代码，输出：
+  
+                   10
+
+                   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    但是被悲观锁也有不好的地方，就是只允许cpu访问这一块，不能干别的，这明显不好。
+
+
+
+——————————————————————————————》
+
+
+
+    于是有了乐观锁（所谓的乐观锁，其实并没有加什么锁，只是一种叫法）
+
+                 乐观锁的一种技术，当多个线程尝试使用CAS同时更新同一个变量时，只有其中一个线程能更新变量的值，
+
+而其它线程都失败，失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次尝试。
+
+    Atomic保证了原子性的原因：
+
+         是因为Atomic包用了CAS算法，这个包里的方法都没有加锁，只是调用了unsafe包里的compareAndSwapInt()方法，
+
+这个方法是看不到源码的，因为它是c++写的，并且它是绕过操作系统直接对cpu发出指令的。
+
+          CAS算法：即compare and swap（比较与交换）
+
+         它这有3个值，分别是预期值，计算结果（要更新的值），实际值，每个线程运行了之后，带着这两个值去与内存中
+
+的实际值进行比较，当实际值和预期值不相符时，就重新获取实际值，再计算，再提交，如果实际值和预期值相符，则更新
+
+内存里的实际值。
+
+
+例如上面的代码改用乐观锁：
+
+   import java.util.List;
+
+   import java.util.concurrent.atomic.AtomicInteger;//atomic包里有一系列乐观锁的类，也就是操作的类型不同，
+
+                                                      AtomicInteger只是其中的一种，AtomicBoolean等等
+
+   import java.util.Collections;
+
+   import java.util.stream.Collectors;
+
+   import java.util.ArrayList;
+
+   public class E{    
+
+             public static volatile AtomicInteger i = new AtomicInteger(); //将int型的 “ i ”换成AtomicInteger
+
+                                                                             默认初始值为0，你也可以给它赋值
+
+                                                                             就是用另外一个构造方法：
+
+                                                                             AtomicInteger(int initialValue)
+
+             public static  List<Integer> c=Collections.synchronizedList(new ArrayList<Integer>());
+
+             public static int max=10;
+
+        public static void main(String [] args)throws InterruptedException{ //join方法要抛出中断异常
+
+                  Runnable a=()->{ 
+
+                      while(i.get()<max){   //i.get() ，调用AtomicInteger类的方法，获取它的值
+
+                         c.add(i.incrementAndGet();  //注意，这一样是调用AtomicInteger类的方法，这个方法是加1
+
+                                                       并获取它的值，这个方法就实现了原子性，因为它里面用到了
+
+                                                       CAS算法。
+                      }
+
+                   };
+
+          Thread b=new Thread(a,"b");
+ 
+          Thread b1=new Thread(a,"b1");
+
+          Thread b2=new Thread(a,"b2");
+
+          Thread b3=new Thread(a,"b3");
+
+          b.start();
+
+          b1.start();
+          
+          b2.start();
+
+          b3.start();
+
+          b.join();
+
+          b1.join();
+		
+          b2.join();
+		
+          b3.join();
+		
+          System.out.println(c.size());
+
+          System.out.println(c.stream().sorted().collect(Collectors.toList()));
+
+      }
+}
+
+  上面代码运行：
+
+               10
+               [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+
+————————————————————————————————————————》
+
+
+
+
+15、HashMap在多线程下是不安全的，所以引入了ConcurrentHashMap类以使在多线程编程中可以使用一个高性能的线程安全
+
+HashMap方案。
+
+    1）、 ConcurrentHashMap类是java.util.concurrent包里的类，其描述：public class ConcurrentHashMap<K,V>
+
+                                                               extends AbstractMap<K,V>
+
+                                                               implements ConcurrentMap<K,V>, Serializable
+ 
+    2）、ConcurrentHashMap从JDK1.5开始随java.util.concurrent包一起引入JDK中，主要为了解决HashMap线程不安全和
+
+Hashtable效率不高的问题。
+
+         HashMap在多线程编程中是线程不安全的，而Hashtable由于使用了synchronized修饰方法而导致执行效率不高；
+
+         JDK1.7之前的ConcurrentHashMap使用分段（segment）锁机制实现：
+
+            分段锁机制
+
+Hashtable之所以效率低下主要是因为其实现使用了synchronized关键字对put等操作进行加锁，而
+
+synchronized关键字加锁是对整个对象进行加锁，也就是说在进行put等修改Hash表的操作时，锁住了整个Hash表，从而使得
+
+其表现的效率低下；
+
+            因此，在JDK1.5~1.7版本，Java使用了分段锁机制实现ConcurrentHashMap.
+
+简而言之，ConcurrentHashMap在对
+
+象中保存了一个Segment数组，即将整个Hash表划分为多个分段；而每个Segment元素，即每个分段则类似于一个Hashtable；
+
+这样，在执行put操作时首先根据hash算法定位到元素属于哪个Segment，然后对该Segment加锁即可。因此，ConcurrentHashMap
+
+在多线程并发编程中可是实现多线程put操作。
+
+           JDK1.8则使用数组+链表+红黑树数据结构和CAS原子操作实现ConcurrentHashMap，它抛弃了原有的 Segment 分段锁
+
+，而采用了 CAS + synchronized 来保证并发安全性。
+ 
+
+
+——————————————————————————————————————————————》
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

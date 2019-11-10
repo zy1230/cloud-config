@@ -1,0 +1,933 @@
+
+
+这里大多数是你没太弄清楚的知识点：
+
+——————————————————————————————
+
+【1】、接口：interface ———》定义接口的关键字：
+
+   举例说明：
+
+     public class H implements A{
+
+      public static void main(String [] args){
+
+        A a=new H();
+
+        a.m(1230);
+
+        A.v(1995);
+
+        System.out.println(A.a);//？？？？？？？？？？？？？？？？？？？
+
+        System.out.println(A.k);
+
+      // A.k=A.k+2;
+
+      }
+    }
+ 
+    interface A{
+
+      static int a; //待考量？？？？？？？？？？？？？？？？？？？？？？？？？
+
+                    //考量结果是不能这样做，必须要赋予它初值，也就是接口存的变量应该是只能是常量
+
+      int k=7;
+
+      void s();
+
+      default void m(int i){
+
+          System.out.println(i);
+
+      }
+
+      static void v(int i){
+
+          System.out.println(i);
+
+      }
+     }
+
+————————————————————————————————-————————————————
+
+
+【1】、关于集合的一些相关知识点：
+
+
+1. HashSet是通过HashMap实现的,TreeSet是通过TreeMap实现的,只不过Set用的只是Map的key
+
+2. Map的key和Set都有一个共同的特性就是集合的唯一性.TreeMap更是多了一个排序的功能.
+
+3. hashCode和equal()是HashMap用的, 因为无需排序所以只需要关注定位和唯一性即可.
+
+   a. hashCode是用来计算hash值的,hash值是用来确定hash表索引的.
+
+
+   b. hash表中的一个索引处存放的是一张链表, 所以还要通过equal方法循环比较链上的每一个对象
+
+       才可以真正定位到键值对应的Entry.
+
+
+   c. put时,如果hash表中没定位到,就在链表前加一个Entry,如果定位到了,则更换Entry中的value,并返回旧value
+
+
+4. 由于TreeMap需要排序,所以需要一个Comparator为键值进行大小比较.当然也是用Comparator定位的.
+
+   a. Comparator可以在创建TreeMap时指定
+
+    b. 如果创建时没有确定,那么就会使用key.compareTo()方法,这就要求key必须实现Comparable接口.
+
+   c. TreeMap是使用Tree数据结构实现的,所以使用compare接口就可以完成定位了.
+
+————————》
+
+上面主要是为了解释为什么要覆盖hashcode()和equals()方法
+
+1、关于hashcode()和equals()方法:
+
+   首先这两个方法都是终极父类Object类的方法，如果子类不重写它们，则调用的就是父类原本的方法。
+
+   来看一下Object类的这两个方法是怎么定义的：
+
+        hashcode():
+
+             public int hashCode() 这个方法返回的是对象的哈希码值。如果子类不重写它，那么就调用父类的方法，父类的
+
+就是：public native int hashCode() ,这句话的意思就是本地会帮你算
+
+        equals():
+
+             它在object类里的定义：
+
+                            返回值类型            方法
+                             
+                             boolean	    equals(Object obj)
+
+              如果不重写，它比较的就是对象
+
+——————》
+
+
+import java.util.TreeMap;
+
+public class A{
+
+  public static void main(String [] args){
+
+   TreeMap<Per,String> a=new TreeMap<>((Per o1,Per o2)->{int o=o1.name.length()-o2.name.length();return o==0?
+
+                                      o1.name.compareTo(o2.name):o;});
+ 
+
+    a.put(new Per("naa"),"a");
+
+    a.put(new Per("aa"),"9");
+
+    System.out.println(a.get(new Per("naa")));
+    
+    System.out.println(a);
+
+ }
+}
+
+class Per{
+
+   public String name;
+
+   public Per(String name){
+
+   this.name=name;
+
+ }
+
+  public String toString(){
+
+   return name;
+ }
+
+
+}
+
+// 注意：上面的“ TreeMap ”和“ HashMap ”不一样，它不用覆盖hashcode()和equals()方法，因为它实现了Comparator接口，
+
+   也就是实现了定制排序，它是有序的，也就是它已经实现了定位，可以找到位置。
+
+   而“ HashMap ”是无序的，它需要靠hashcode()和equals()方法来实现定位，所以要覆盖（而基础类型的类是已经覆盖了的，
+
+自己写的对象什么的就要对其进行覆盖了。）
+
+
+——————————————————————————————————————————》
+
+1、泛型：
+
+       这里仔细讲一下泛型：
+
+       1）、泛型，即“参数化类型”。
+
+      就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），
+
+然后在使用/调用时传入具体的类型（类型实参）。
+
+      也就是将参数的类型不具体化，只是在调用是具体化。
+
+      就是说在泛型使用过程中：操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为
+
+“ 泛型类 ”、“ 泛型接口 ”、“ 泛型方法 ”。
+
+      泛型只在编译阶段有效。
+
+         （1）、泛型类：
+
+                泛型类型用于类的定义中，被称为泛型类。通过泛型可以完成对一组类的操作对外开放相同的接口。最典型的
+
+就是各种容器类，如：List、Set、Map。
+
+         List<Person> list=new ArrayList<>();//传入Person类类型
+
+         Set<Integer> set=new TreeSet<>();
+
+         Map<String> map=new HashMap<>(); //list、Set、Map都是接口，不能实例化，所以传给给它们的都是实现类的对象。  
+
+         ——————》
+
+         这上面都是集合的接口，其实普通的类一样都是能用泛型的，只是平时不怎么用：
+
+泛型类的写法：
+
+    public class 类名<泛型标识，一般为E、T、K、V>{
+
+      private T a;  //这说明了这个成员变量由外界传入的类型定
+
+             ...
+
+    }
+ 
+    泛型的类型参数只能是类类型，不能是简单类型。
+
+例子：
+
+     class F<T>{  //这就一个普通泛型类
+
+         public T a; //这个成员变量就是由外界传入的类型来定
+
+         public F(T a){
+
+         this.a=a;
+    }
+
+     public String toString(){ //重写一下父类Object的toString()方法，来打印这个传入的 a
+
+         return "a="+a;  
+
+     }
+
+   }
+
+public class H{
+
+  public static void main(String [] args){
+
+    F<String> b=new F<>("jjj"); //注意：创建 F 类的对象时，也要带上泛型
+
+    //参照集合接口的话，也是可以不用带上泛型的，也就是： F a=new F("kkk");
+
+    System.out.println(b);
+
+  }
+
+}
+
+          （2）、泛型接口：
+
+  与泛型类相似，它的写法：
+
+            public interface 接口名<泛型标识：T、E、K、V>{
+
+                  public T a();//这个抽象方法的返回值类型就是外界传入的
+
+                  ...
+
+            }
+            
+ 例子：
+
+      public interface A<T>{
+
+          T a();
+
+      }
+
+
+      public class H implements A<String>{  //注意实现该接口也要传入泛型的具体类型
+
+          public static void main(String [] args){
+
+              A t=new H();
+
+              System.out.println(t.a());
+
+           }
+
+           public String a(){  //这个方法的返回值类型自然要与传给接口的类型一致。
+
+               return "always love youself";
+
+           }
+
+      }
+
+           （3）、泛型方法：
+
+            泛型类，是在实例化类的时候指明泛型的具体类型；泛型方法，是在调用方法的时候指明泛型的具体类型 。
+
+    说明：
+
+         *  public 与 返回值中间<T>非常重要，可以理解为声明此方法为泛型方法。
+
+         *  只有声明了<T>的方法才是泛型方法，泛型类中的使用了泛型的成员方法并不是泛型方法。
+
+         *  <T>表明该方法将使用泛型类型T，此时才可以在方法中使用泛型类型T。
+
+         *  与泛型类的定义一样，此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型。
+
+    例如：
+
+         public <泛型标识符类型：T、E、K、V> T a(){  }  
+
+         看上面的代码：
+
+                 只有在“访问标识符 public ”和“ 方法返回值类型 T “加上了<T>才叫泛型方法。
+
+                 只不过上面的方法中，它的返回类型也是泛型。
+
+
+         泛型通配符：？
+
+                 类型通配符一般是使用？代替具体的类型实参，注意，此处’？’是类型实参，而不是类型形参 。
+
+                 再直白点的意思就是，此处的？和Number、String、Integer一样都是一种实际的类型，可以把？看成所有类
+
+型的父类。是一种真实的类型。
+
+                 可以解决当具体类型不确定的时候，这个通配符就是 ?  ；
+
+                 当操作类型时，不需要使用类型的具体功能时，只使用Object类中的功能。那么可以用 ? 通配符来表未知
+
+类型。
+
+          泛型方法调用的时候，在方法名前面的方括号中放入具体类型：
+
+             a.<String>b();//就像这样
+
+             当编译器有足够的信息来判断出调用的方法，也可以省略泛型。
+
+——————————————————————————————————--
+
+【1】、链表、有序链表、跳表
+
+
+
+
+   ————            ————          ————
+  |   8    |—————|   7    |————|   4    |    链表
+  |        |          |        |        |        |
+   ————            ————          ————
+ 
+      4                   7                  8        有序链表
+
+
+
+
+        
+                              ————
+ 头——》                    |   7    |        ———》尾
+                             |        |
+                              ————                                跳表
+                                 |
+                                 |
+           ————            ————          ————
+头  —》  |   4    |—————|   7    |————|   8    | ——》尾
+          |        |          |        |        |        |
+           ————            ————          ————
+ 
+  要插入的数字先与上面的数字7比较，如果比7大就跳下来，与下面的8比较，如果比8小，则插在7和8之间，如果比8大，则插在
+
+8右边。
+
+  如果数字很多的话，跳表可以少比较很多次，因为无论是链表还是有序链表，都是要一一去比较的。
+
+  
+  (1)、（单项无序）链表的代码：
+
+     首先你要大概知道建立链表的过程：
+
+              它和二叉树一样，也是用节点来计算它的表的建立：（也就是它的节点和节点的值）
+
+      public class MyLinkedList<T>{   //这个就是泛型类，看你传入的类型，在链表这里
+
+          public Node<T> first=null;  //链表的第一个节点（这个泛型其实就是你要装入链表的内容的类型）
+
+          public int size=0;  //链表的大小
+
+          protect class Node<T>{  //链表的节点的类型，一样是看外界传入的类型
+
+               protected T value; //节点的值，它的类型就是你要传入的
+ 
+               protected Node<T> next; //定义下个节点
+
+               Node(T value){
+
+                  this.value=value;
+
+                  next=null;
+
+               }
+
+           }
+
+          public MyLinkedList(){ }
+
+          public boolean isEmpty(){  //判断是否为空
+
+              return size==0;
+
+          }
+
+           public int size(){  //返回节点的大小
+
+              return size;
+
+           }
+
+           public void addFirst(T t){  //放入你一个节点 
+
+               Node<T> a=new Node<>(t);  //创建新的节点
+
+               Node<T> temp=first;  //定义个中间转换的节点，first节点是最开始已经定义的第一个节点（为null）
+
+               first=a; //把这个新的节点给第一个节点
+
+               a.next=temp; //这个节点的下一个节点就给第一个节点，相当于把第一个节点移位
+
+               this.size++; //链表的大小肯定变了，要加一
+
+          }
+
+           public boolean contains(T t){  //判断某个值是否包含在这个链表里
+
+               Node<T> current=first;  //定义一个节点，把第一个节点赋给它，其实也就是一个一个顺序去进行比较
+
+               while(current!=null){ //在节点不为空的情况下进行比较
+
+                     if(current.value.equals(t)){  //比较它们的值
+
+                        return true;  //相等就返回true
+
+                      }current=current.next; //不等就赋给下一个节点
+
+                 }
+
+                return false;
+
+            }
+
+            public T removeFirst(){  //这个方法是删掉第一个，并返回它的值
+
+                if(isEmpty())return null; //判断链表的大小，为空就返回null
+
+                Node<T> remove=this.first; //将调用这个方法的当前对象第一个节点赋给一个新的节点
+
+                this.first=remove.next;  //也就是将第二个节点赋给第一个节点
+
+                size--; //链表的大小要减1
+
+                return remove.value;
+
+            }
+
+            public static <E> MyLinkedList<E> of(E...arr){
+
+                 MyLinkedList<E> list=new MyLinkedList<>();
+
+                 for(E e:arr){
+
+                       list.addFirst(e); //调用的上面已经定义的方法：addFirst(T t)，往链表里添加节点
+
+                 }
+
+                 return list; //返回链表
+
+            }
+               
+            public String toString(){ //肯定要覆盖toString()方法，不然输出的就是地址了
+
+                  if(size==0){
+
+                        return "[]";
+
+                   }
+
+                   StringBuilder b=new StringBuilder("[");
+
+                   Node<T> current=this.first;
+
+                   while(current!=null){
+
+                         b.append(current.value).append(",");
+
+                         current=current.value;
+
+                   }
+
+                   b.replace(b.length()-1,b.length(),"]");
+
+                   return b.toString();
+
+             }
+          
+
+            public static void main(String [] args){
+
+                 MyLinkedList<Integer> list=MyLinkedList.of(1,9,2,3,45,89);
+
+                 System.out.println(list);
+
+                 System.out.println(list.removeFirst());
+
+                 System.out.println(list);
+
+                 System.out.println(list.contains(45);
+
+            }
+
+       }
+
+    (2)、有序链表：其实也就是添加元素的时候进行排序：
+
+         也就是建立在上面的链表的方法上进行排序，基本上也只需要修改一个方法：addFirst(T t)
+
+     大概思路：
+
+         新添加的值，与链表里的每个元素一一进行比较，找到比它大的元素，在它左边插入，既然是在左边插入，那肯定
+
+要记录这个元素左边的元素。（按照从小到大的顺序去插入）
+
+   代码：
+
+         public class SeqLinkedList<T extends Comparable<T>>> extends MyLinkedList<T>{ 
+
+             //<T extends Comparable<T>>
+
+            //类型 T 必须实现 Comparable 接口，并且这个接口的类型是 T。只有这样，T 的实例之间才能相互比较大小。
+
+             public void addFirst(T t){
+
+                  Node<T> newnode=new Node(t);
+
+                  Node<T> prev=null;
+
+                  Node<T> current=first;
+
+                  while(current!=full && t.compareTo(current.value)>0){  //这样才可以调用方法compareTo()
+
+                     prev=current;  //这个是比 t 小的节点
+
+                     current=current.next;
+
+                  }
+
+                  if(prev==null){
+
+                        first=newnode;
+
+                        newnode.next=current;
+
+                   }else{
+
+                         prev.next=newnode;
+
+                         newnode.next=current;
+
+                    }
+
+                    size++;
+
+               }
+
+               pubic static <E extends Comparable<E>> SeqLinkedlist<E> of(E..arr){  //泛型方法
+
+                    SeqLinkedList<E> list=new SeqlinkedList<E>();
+
+                    for(E e:arr){
+
+                       list.addFirst(e);
+
+                    }
+
+                    return list;
+
+               }
+
+               public static void main(String [] args){
+
+                   SeqLinkedList<Integer> list=SeqLinkedList.of(90,89,29,78,18,67);
+
+                   System.out.println(list);
+
+              }
+
+          }
+
+
+    （3）、跳表
+
+代码如下：（你有空记得研究一下)
+
+
+  import java.util.Random;
+
+  public class SkipList {
+
+	private final static byte HEAD_NODE = (byte)-1;
+
+	private final static byte DATA_NODE = (byte)0;
+
+	private final static byte TAIL_NODE = (byte)1;
+	
+	private Node head;
+
+	private Node tail;
+
+	private int size;
+
+	private int height=0;
+
+	private Random random;
+	
+	
+	public SkipList() {
+
+		this.head = new Node(null,HEAD_NODE);
+
+		this.tail = new Node(null,TAIL_NODE);
+
+		this.height = 0;
+
+		head.right = tail;
+
+		tail.left = head;
+
+		this.random = new Random(System.currentTimeMillis());
+	}
+	
+	
+	private class Node{
+
+		private Integer value;
+
+		private Node up,down,left,right;
+
+		private byte bit;
+		
+		Node(Integer value,byte bit){
+
+			this.value = value;
+
+			this.bit = bit;
+		}
+		
+		Node(Integer value){
+
+			this(value,DATA_NODE);
+		}
+	}
+	
+	public int size() {
+
+		return size;
+	}
+	
+	public boolean isEmpty() {
+
+		return size==0;
+	}
+	
+	
+	/**
+	 * 根据传入的Integer值找到他在跳表当中的位置
+	 * @param el
+	 * @return
+	 */
+	private Node find(Integer el) {
+
+		Node current = head;
+
+		for(;;) {
+
+	          while(current.right.bit!=TAIL_NODE &&current.bit!= TAIL_NODE && current.right.value<=el){
+
+				current = current.right;
+			}
+			
+			if(current.down!=null) {
+
+				current = current.down;
+
+			}else {
+
+				break;
+			}
+			
+		}
+
+		return current;
+	}
+	
+	public boolean contains(Integer el) {
+
+		Node node = find(el);
+
+		return node.value.equals(el);
+	}
+	
+	
+	/**
+
+	 * 遍历跳表
+
+	 */
+	public void dumpList() {
+		
+		Node currentHead= this.head;
+
+		while(currentHead!=null) {
+
+			Node current = currentHead.right;
+
+			while(current.value!=null) {
+
+
+				System.out.print(current.value+">");
+
+				current =current.right;
+
+			}
+
+			currentHead = currentHead.up;
+
+			System.out.println();
+
+			System.out.println("================================================");
+		}
+	}
+	
+	
+	/**
+
+	 * 插入新元素
+
+	 * @param el
+
+	 */
+	public void add(Integer el) {
+
+		Node nearNode = this.find(el);//左边的节点
+
+		Node newNode = new Node(el);//新的节点
+
+		//水平方向上的操作；
+
+		newNode.left = nearNode;
+
+		newNode.right = nearNode.right;
+
+		nearNode.right.left = newNode;
+
+		nearNode.right = newNode;
+
+		size++;
+		
+		//当前层数是0
+
+		int currentHeight = 0;
+
+		Node currentTail = this.tail;
+
+		Node currentHead = this.head;
+		
+		
+		//如果随机数小于0.5，就要开始对newNode进行升层
+
+		while(random.nextDouble()<0.5) {
+			
+			if(currentHeight>=height) {
+
+				//如果没有，我就创建一层
+				
+				Node newHead = new Node(null,HEAD_NODE);
+
+				Node newTail = new Node(null,TAIL_NODE);
+
+				height++;
+
+				//建立首尾节点间的关系
+
+				newHead.right = newTail;
+
+				newTail.left = newHead;
+				
+				newHead.down = currentHead;
+
+				newTail.down =currentTail;
+				
+				currentHead.up = newHead;
+
+				currentTail.up = newTail;
+				
+				break;
+			}
+			
+			
+			//找到上层最左边的节点
+
+			while(nearNode.value!=null && nearNode.up==null) {
+
+				nearNode = nearNode.left;
+			}
+			
+			//找到以后，开始对上层建立upNode
+
+			nearNode = nearNode.up;
+
+			Node upNode = new Node(el);
+			
+			//将底下的新元素和他自己的上层元素建立关联
+
+			newNode.up = upNode;
+
+			upNode.down = newNode;
+			
+			//建议上层节点与左右的关系
+
+			upNode.left = nearNode;
+
+			upNode.right=  nearNode.right;
+
+			nearNode.right.left = upNode;
+
+			nearNode.right = upNode;
+			
+			//将层数+1；
+
+			currentHeight++;
+
+			newNode = upNode; //将当前节点设置为上层节点，继续循环，因为有可能还要提升
+			
+			currentHead = currentHead.up;
+
+			currentTail = currentTail.up;
+		}
+		
+	}
+	
+	
+	public static void main(String[] args) {
+
+		SkipList list= new SkipList();
+
+		Random random = new Random();
+
+		for(int x= 0;x<30;x++) {
+
+			list.add(random.nextInt(200));
+		}
+
+		list.dumpList();
+	}
+	
+}
+                
+
+  跳表的实现思路至少要了解一下
+
+
+————————————————————————————————————-
+
+【1】、native关键字 ———》
+
+
+       1、native是与C++联合开发的时候用的！java自己开发不用的！
+
+
+       2、使用native关键字说明这个方法是原生函数，也就是这个方法是用C/C++语言实现的，并且被编译成了DLL，
+
+由java去调用。
+
+       3、这些函数的实现体在DLL中，JDK的源代码中并不包含，你应该是看不到的。对于不同的平台它们也是不同的。
+
+这也是java的底层机制，实际上java就是在不同的平台上调用不同的native方法实现对操作系统的访问的。
+
+
+          1）、native 是用做java 和其他语言（如c++）进行协作时用的，也就是native 后的函数的实现不是用java写的
+
+          2）、既然都不是java，那就不管它的源代码了先
+
+
+       4、 native的意思就是通知操作系统，这个函数你必须给我实现，因为我要使用。
+
+所以native关键字的函数都是操作系统实现的，java只能调用。
+
+
+       5、java是跨平台的语言，既然是跨了平台，所付出的代价就是牺牲一些对底层的控制，而java要实现对底层的控制，
+
+就需要一些其他语言的帮助，这个就是native的作用了。
+
+       6、Java不是完美的，Java的不足除了体现在运行速度上要比传统的C++慢许多之外，Java无法直接访问到操作系统底层
+
+如系统硬件等)，为此Java使用native方法来扩展Java程序的功能。
+
+　　      可以将native方法比作Java程序同Ｃ程序的接口，其实现步骤：
+
+　　         1）、在Java中声明native()方法，然后编译；
+
+　　         2）、用javah产生一个.h文件；
+
+　　         3）、写一个.cpp文件实现native导出方法，其中需要包含第二步产生的.h文件（注意其中又包含了JDK带的
+
+jni.h文件）；
+
+　　         4）、将第三步的.cpp文件编译成动态链接库文件；
+
+　　         5）、在Java中用System.loadLibrary()方法加载第四步产生的动态链接库文件，这个native()方法就可以在
+
+Java中被访问了。
+
+
+        7、JAVA本地方法适用的情况 
+
+            1）.为了使用底层的主机平台的某个特性，而这个特性不能通过JAVA API访问
+
+            2）.为了访问一个老的系统或者使用一个已有的库，而这个系统或这个库不是用JAVA编写的
+
+            3）.为了加快程序的性能，而将一段时间敏感的代码作为本地方法实现。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
